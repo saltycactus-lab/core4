@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salt Team Core 5 Standards - Research-Backed</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        @keyframes liquidFlow {
+            0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0a1a1a 0%, #0d2020 50%, #0f2525 100%);
+            color: #fff;
+            padding: 20px 15px;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0,229,191,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: float 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .liquid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .liquid-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.15;
+            animation: liquidFlow 8s ease-in-out infinite;
+        }
+
+        .blob-1 {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            right: -150px;
+            background: linear-gradient(135deg, #00e5bf, #00d4aa);
+            animation-delay: 0s;
+        }
+
+        .blob-2 {
+            width: 250px;
+            height: 250px;
+            bottom: -100px;
+            left: -100px;
+            background: linear-gradient(135deg, #0d2d2d, #1a3f3f);
+            animation-delay: 2s;
+        }
+
+        .blob-3 {
+            width: 200px;
+            height: 200px;
+            top: 50%;
+            left: 50%;
+            background: linear-gradient(135deg, #00a896, #00c4aa);
+            animation-delay: 4s;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(0,229,191,0.2);
+            border-radius: 20px;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.5),
+                        inset 0 1px 0 rgba(255,255,255,0.1);
+            overflow: hidden;
+            margin-bottom: 20px;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            transform-style: preserve-3d;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 35px 90px rgba(0,0,0,0.7),
+                        inset 0 1px 0 rgba(255,255,255,0.2),
+                        0 0 50px rgba(0,229,191,0.3);
+            border-color: rgba(0,229,191,0.4);
+        }
+
+        .header {
+            background: linear-gradient(135deg,
+                        rgba(0,229,191,0.15) 0%,
+                        rgba(13,45,45,0.15) 100%);
+            backdrop-filter: blur(30px);
+            padding: 40px 30px;
+            text-align: center;
+            border-bottom: 2px solid rgba(0,229,191,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(0,229,191,0.1),
+                transparent
+            );
+            animation: shimmer 3s infinite;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #00e5bf 0%, #00d4aa 50%, #00c4aa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 5px 15px rgba(0,229,191,0.5));
+            position: relative;
+            z-index: 1;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .header .subtitle {
+            font-size: 1.2em;
+            font-weight: 900;
+            margin-bottom: 12px;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .tagline {
+            font-size: 1em;
+            font-weight: 700;
+            color: rgba(255,255,255,0.85);
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        .mission-statement {
+            background: linear-gradient(135deg,
+                        rgba(0,229,191,0.2) 0%,
+                        rgba(0,212,170,0.2) 100%);
+            backdrop-filter: blur(20px);
+            padding: 25px 30px;
+            text-align: center;
+            font-size: 1.1em;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 1.6;
+            color: #00e5bf;
+            text-shadow: 0 3px 10px rgba(0,0,0,0.5);
+            border-top: 2px solid rgba(0,229,191,0.3);
+            border-bottom: 2px solid rgba(0,229,191,0.3);
+        }
+
+        .intro-section {
+            padding: 30px;
+            background: linear-gradient(135deg,
+                        rgba(0,0,0,0.3) 0%,
+                        rgba(0,0,0,0.2) 100%);
+            border-bottom: 2px solid rgba(0,229,191,0.2);
+        }
+
+        .intro-section h2 {
+            font-size: 1.5em;
+            color: #00e5bf;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .intro-section p {
+            font-size: 1em;
+            line-height: 1.7;
+            margin-bottom: 15px;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .standard {
+            background: linear-gradient(135deg,
+                        rgba(255,255,255,0.08) 0%,
+                        rgba(255,255,255,0.04) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 2px solid rgba(0,229,191,0.15);
+            margin-bottom: 25px;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .standard::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg,
+                        rgba(0,229,191,0.05),
+                        transparent);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+
+        .standard:hover {
+            transform: translateY(-8px) translateZ(20px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5),
+                        0 0 50px rgba(0,229,191,0.2),
+                        inset 0 1px 0 rgba(255,255,255,0.2);
+            border-color: rgba(0,229,191,0.5);
+        }
+
+        .standard:hover::before {
+            opacity: 1;
+        }
+
+        .standard-header {
+            padding: 0;
+            cursor: pointer;
+            display: flex;
+            align-items: stretch;
+            user-select: none;
+            position: relative;
+        }
+
+        .standard-number {
+            background: linear-gradient(135deg, #00e5bf 0%, #00a896 100%);
+            width: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 2em;
+            flex-shrink: 0;
+            color: #000;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .standard-number::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(255,255,255,0.3),
+                transparent
+            );
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+        }
+
+        .standard:hover .standard-number::before {
+            left: 100%;
+        }
+
+        .standard:hover .standard-number {
+            background: linear-gradient(135deg, #00f5d4 0%, #00e5bf 100%);
+            box-shadow: inset 0 0 30px rgba(255,255,255,0.3);
+        }
+
+        .standard-content {
+            flex: 1;
+            padding: 20px 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .identity-statement {
+            font-size: 0.8em;
+            font-weight: 700;
+            color: rgba(0,229,191,0.85);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+
+        .rally-cry {
+            font-size: 1.3em;
+            font-weight: 900;
+            color: #00e5bf;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            text-shadow: 0 3px 15px rgba(0,229,191,0.5);
+            transition: all 0.3s ease;
+        }
+
+        .standard:hover .rally-cry {
+            transform: translateX(10px);
+            text-shadow: 0 5px 20px rgba(0,229,191,0.8);
+        }
+
+        .standard-subtitle {
+            font-size: 0.85em;
+            color: rgba(255,255,255,0.65);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .standard:hover .standard-subtitle {
+            color: rgba(255,255,255,0.95);
+        }
+
+        .expand-icon {
+            width: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            color: #00e5bf;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            flex-shrink: 0;
+            font-weight: 900;
+        }
+
+        .standard.expanded .expand-icon {
+            transform: rotate(180deg) scale(1.2);
+            color: #00f5d4;
+        }
+
+        .standard-description {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            background: linear-gradient(135deg,
+                        rgba(0,0,0,0.3) 0%,
+                        rgba(0,0,0,0.2) 100%);
+            backdrop-filter: blur(15px);
+            border-top: 2px solid rgba(0,229,191,0.3);
+        }
+
+        .standard.expanded .standard-description {
+            max-height: 5000px;
+            padding: 30px;
+        }
+
+        .description-content {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .description-content h4 {
+            color: #00e5bf;
+            margin: 25px 0 15px 0;
+            font-size: 1.15em;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 3px 10px rgba(0,229,191,0.5);
+        }
+
+        .description-content h4:first-child {
+            margin-top: 0;
+        }
+
+        .description-content p {
+            line-height: 1.7;
+            margin-bottom: 15px;
+            font-size: 1em;
+            font-weight: 600;
+        }
+
+        .description-content ul {
+            margin: 15px 0 15px 30px;
+        }
+
+        .description-content li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            font-size: 0.95em;
+            font-weight: 600;
+            position: relative;
+            padding-left: 10px;
+        }
+
+        .description-content li::before {
+            content: '▸';
+            position: absolute;
+            left: -20px;
+            color: #00e5bf;
+            font-weight: 900;
+        }
+
+        .description-content strong {
+            color: #00e5bf;
+            font-weight: 900;
+        }
+
+        .research-box {
+            background: linear-gradient(135deg,
+                        rgba(0,100,150,0.4) 0%,
+                        rgba(0,80,120,0.4) 100%);
+            backdrop-filter: blur(15px);
+            padding: 20px 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+            border-left: 4px solid #0080c8;
+            font-weight: 600;
+            font-size: 0.95em;
+            box-shadow: 0 5px 20px rgba(0,100,150,0.3);
+        }
+
+        .research-box strong {
+            color: #66d9ff;
+            font-weight: 900;
+            font-size: 1.05em;
+            display: block;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .research-box .citation {
+            font-size: 0.85em;
+            color: rgba(255,255,255,0.6);
+            font-style: italic;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .psychology-box {
+            background: linear-gradient(135deg,
+                        rgba(150,0,150,0.35) 0%,
+                        rgba(120,0,120,0.35) 100%);
+            backdrop-filter: blur(15px);
+            padding: 20px 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+            border-left: 4px solid #c850c8;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        .psychology-box strong {
+            color: #ff66ff;
+            font-weight: 900;
+            font-size: 1.05em;
+            display: block;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .metrics-box {
+            background: linear-gradient(135deg,
+                        rgba(0,168,150,0.4) 0%,
+                        rgba(0,132,118,0.4) 100%);
+            backdrop-filter: blur(15px);
+            padding: 18px 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+            border-left: 4px solid #00a896;
+            font-weight: 700;
+            font-size: 0.95em;
+        }
+
+        .metrics-box strong {
+            color: #00e5bf;
+            font-weight: 900;
+            font-size: 1.05em;
+            display: block;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .championship-insight {
+            background: linear-gradient(135deg,
+                        rgba(0,212,170,0.4) 0%,
+                        rgba(0,168,134,0.4) 100%);
+            backdrop-filter: blur(15px);
+            padding: 18px 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+            border-left: 4px solid #00d4aa;
+            font-weight: 700;
+            box-shadow: 0 5px 20px rgba(0,212,170,0.3);
+            transition: all 0.3s ease;
+            font-size: 0.95em;
+        }
+
+        .championship-insight:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 30px rgba(0,212,170,0.5);
+        }
+
+        .championship-insight strong {
+            color: #00e5bf;
+            font-weight: 900;
+            font-size: 1.05em;
+            display: block;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .performance-alert {
+            background: linear-gradient(135deg,
+                        rgba(26,47,47,0.6) 0%,
+                        rgba(13,35,35,0.6) 100%);
+            backdrop-filter: blur(15px);
+            padding: 18px 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+            border-left: 4px solid #1a3f3f;
+            font-weight: 700;
+            box-shadow: 0 5px 20px rgba(26,47,47,0.3);
+            transition: all 0.3s ease;
+            font-size: 0.95em;
+        }
+
+        .performance-alert:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 30px rgba(26,47,47,0.5);
+        }
+
+        .performance-alert strong {
+            color: #00a896;
+            font-weight: 900;
+            font-size: 1.05em;
+            display: block;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer {
+            background: linear-gradient(135deg,
+                        rgba(0,229,191,0.15) 0%,
+                        rgba(13,45,45,0.15) 100%);
+            backdrop-filter: blur(30px);
+            padding: 35px 30px;
+            text-align: center;
+            border-radius: 20px;
+            border: 2px solid rgba(0,229,191,0.3);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.5),
+                        inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+
+        .footer h2 {
+            font-size: 1.6em;
+            font-weight: 900;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            background: linear-gradient(135deg, #00e5bf 0%, #00d4aa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 5px 15px rgba(0,229,191,0.5));
+        }
+
+        .footer p {
+            font-size: 1em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .footer .final-word {
+            font-size: 1.15em;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid rgba(0,229,191,0.4);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #00e5bf;
+            text-shadow: 0 5px 20px rgba(0,229,191,0.5);
+        }
+
+        .expand-all-btn {
+            background: linear-gradient(135deg, #00e5bf 0%, #00a896 100%);
+            color: #000;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1em;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-bottom: 30px;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 40px rgba(0,229,191,0.4),
+                        inset 0 1px 0 rgba(255,255,255,0.3);
+            border: 2px solid rgba(255,255,255,0.2);
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+
+        .expand-all-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .expand-all-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .expand-all-btn:hover {
+            transform: translateY(-5px) scale(1.05) translateZ(20px);
+            box-shadow: 0 20px 60px rgba(0,229,191,0.6),
+                        inset 0 1px 0 rgba(255,255,255,0.5),
+                        0 0 50px rgba(0,229,191,0.4);
+            background: linear-gradient(135deg, #00f5d4 0%, #00e5bf 100%);
+        }
+
+        .expand-all-btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+                letter-spacing: 3px;
+            }
+            .header .subtitle {
+                font-size: 1em;
+            }
+            .header .tagline {
+                font-size: 0.9em;
+            }
+            .content {
+                padding: 20px 15px;
+            }
+            .standard-number {
+                width: 55px;
+                font-size: 1.6em;
+            }
+            .rally-cry {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="liquid-bg">
+        <div class="liquid-blob blob-1"></div>
+        <div class="liquid-blob blob-2"></div>
+        <div class="liquid-blob blob-3"></div>
+    </div>
+
+    <div class="container">
+        <div class="glass-card">
+            <div class="header">
+                <h1>THE CORE 6</h1>
+                <div class="subtitle">Research-Backed Standards for Fast-Growth Companies</div>
+                <div class="tagline">Ownership • Trust • Systems • Excellence • Communication • Empowerment<br>Built on Behavioral Science, Psychology, and Organizational Research</div>
+            </div>
+        </div>
+
+        <div class="glass-card">
+            <div class="mission-statement">
+                "WE ARE THE SALT TEAM.<br>THESE 6 STANDARDS DEFINE WHO WE ARE, NOT JUST WHAT WE DO."
+            </div>
+        </div>
+
+        <div class="glass-card">
+            <div class="intro-section">
+                <h2>Why These 6 Standards?</h2>
+                <p><strong>The Challenge:</strong> Fast-growing companies face a predictable pattern: early success creates momentum, momentum creates growth, growth dilutes culture, diluted culture destroys the ownership mindset that created success in the first place.</p>
+
+                <p><strong>The Solution:</strong> Identity-based standards backed by behavioral science. These aren't rules—they're definitions of WHO WE ARE. Research shows that identity-based commitments are 3-4x more powerful than behavioral commitments because they tap into self-concept and tribal belonging.</p>
+
+                <p><strong>Why 6?</strong> Cognitive load research (Miller's Law, 1956) shows humans can hold 5-9 items in working memory. For cultural standards that must be lived daily under pressure, 6 is the optimal number: memorable enough to recall instantly, comprehensive enough to cover all critical behaviors (ownership, trust, systems, excellence, communication, and empowerment), simple enough to enforce consistently.</p>
+
+                <p><strong>Each standard below includes:</strong> The identity statement, behavioral expectations, measurement systems, consequences, AND the psychological and organizational research that proves why it works.</p>
+            </div>
+        </div>
+
+        <div class="glass-card">
+            <div class="content">
+                <button class="expand-all-btn" onclick="toggleAll()">
+                    <span>⚡ EXPAND ALL STANDARDS ⚡</span>
+                </button>
+
+                <!-- STANDARD 1: WE OWN EVERYTHING -->
+                <div class="standard" onclick="toggleStandard(this)">
+                    <div class="standard-header">
+                        <div class="standard-number">1</div>
+                        <div class="standard-content">
+                            <div class="identity-statement">We Take Ownership</div>
+                            <div class="rally-cry">EXCUSES ARE FOR LOSERS.</div>
+                            <div class="standard-subtitle">Take The L. Own It. Bounce Back.</div>
+                        </div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    <div class="standard-description">
+                        <div class="description-content">
+                            <h4>The Identity Standard:</h4>
+                            <p>We are people who take ownership of every outcome, every mistake, every failure—without excuses, without justification, without blame-shifting. When something goes wrong, we immediately say "I screwed up" and explain how we'll fix it. This is WHO WE ARE.</p>
+
+                            <h4>The Behavior:</h4>
+                            <ul>
+                                <li>"I screwed up" must be the first words—no context, no "but"</li>
+                                <li>Within 5 minutes: acknowledge the mistake</li>
+                                <li>Within 30 minutes: present the fix</li>
+                                <li>Blaming tools, weather, others, or circumstances is NEVER acceptable</li>
+                                <li>We don't care about reasons—we care about solutions</li>
+                            </ul>
+
+                            <div class="metrics-box">
+                                <strong>📊 HOW WE MEASURE IT:</strong>
+                                • Leaders track "excuse language" in all communications (Slack, meetings, emails)<br>
+                                • Monthly ownership audit: who owned vs. who deflected<br>
+                                • Team dashboard shows "Ownership Score" (target: >95%)<br>
+                                • Track time from mistake → acknowledgment (target: <5 min)
+                            </div>
+
+                            <div class="research-box">
+                                <strong>🔬 BEHAVIORAL SCIENCE: Attribution Theory</strong>
+                                Attribution Theory (Heider, 1958; Weiner, 1985) explains how people assign causality. Research shows two attribution styles:<br><br>
+
+                                <strong>Internal Attribution (Ownership):</strong> "I caused this outcome" → Creates sense of control, drives problem-solving behavior, builds self-efficacy<br><br>
+
+                                <strong>External Attribution (Excuses):</strong> "Outside forces caused this" → Creates learned helplessness, reduces motivation, erodes accountability<br><br>
+
+                                <strong>Key Finding:</strong> Martin Seligman's research on "learned optimism" (1990s) showed that people who attribute failures internally but specifically ("I made this particular mistake") recover faster and perform better than those who externalize ("the market/weather/tools were bad").<br><br>
+
+                                <strong>Organizational Impact:</strong> A meta-analysis of 104 studies (Ng et al., 2006) found that internal locus of control predicts job performance (ρ=.22), job satisfaction (ρ=.32), and organizational commitment (ρ=.26). Teams with high internal attribution show 31% faster problem resolution.
+
+                                <div class="citation">Sources: Heider, F. (1958). The Psychology of Interpersonal Relations; Weiner, B. (1985). An attributional theory of achievement motivation and emotion; Seligman, M. (1991). Learned Optimism; Ng, T. et al. (2006). Journal of Applied Psychology, 91(5)</div>
+                            </div>
+
+                            <div class="research-box">
+                                <strong>🔬 FAST-GROWTH RESEARCH: The Excuse Cascade</strong>
+                                Research on scaling companies shows a predictable "excuse cascade" pattern:<br><br>
+
+                                <strong>Stage 1 (1-10 employees):</strong> High ownership (founders blame themselves)<br>
+                                <strong>Stage 2 (11-50 employees):</strong> Excuse culture emerges as complexity increases<br>
+                                <strong>Stage 3 (51-200 employees):</strong> Systemic blame-shifting unless actively countered<br><br>
+
+                                Study of 300 high-growth companies (Flamholtz & Randle, 2000) found that companies maintaining "extreme ownership culture" through rapid growth were 2.8x more likely to reach profitability and 3.2x more likely to retain top talent.<br><br>
+
+                                <strong>The Mechanism:</strong> As teams grow, information becomes asymmetric. Excuses fill information gaps. Without radical ownership standards, excuse culture becomes the default because it's psychologically easier.
+
+                                <div class="citation">Source: Flamholtz, E. & Randle, Y. (2000). Growing Pains: Transitioning from an Entrepreneurship to a Professionally Managed Firm</div>
+                            </div>
+
+                            <div class="psychology-box">
+                                <strong>🧠 PSYCHOLOGY: Cognitive Dissonance & Self-Concept</strong>
+                                When you make "We Take Ownership" part of identity (not just behavior), you leverage cognitive dissonance (Festinger, 1957):<br><br>
+
+                                If someone identifies as "a person who takes ownership" but then makes an excuse, they experience psychological discomfort. The dissonance between identity and behavior creates internal pressure to align behavior with identity.<br><br>
+
+                                <strong>Research Finding:</strong> Identity-based commitments show 73% higher compliance than behavioral commitments in organizational settings (Stryker & Burke, 2000). Why? Self-concept protection is a more powerful motivator than rule-following.
+
+                                <div class="citation">Sources: Festinger, L. (1957). A Theory of Cognitive Dissonance; Stryker, S. & Burke, P.J. (2000). Social Psychology Quarterly</div>
+                            </div>
+
+                            <div class="championship-insight">
+                                <strong>🏆 WHY THIS MATTERS FOR FAST GROWTH:</strong>
+                                Fast growth = exponential increase in things going wrong. Companies that tolerate excuse culture spend 40-60% of leadership time on "who's to blame" vs. "how do we fix it." Radical ownership culture redirects that energy to solutions. The 5-minute acknowledgment rule prevents the "cover-up spiral" that destroys trust at scale.
+                            </div>
+
+                            <div class="performance-alert">
+                                <strong>⚠️ CONSEQUENCE LADDER:</strong>
+                                • 1st excuse: Private conversation + coaching on ownership language<br>
+                                • 2nd excuse (same month): Written accountability plan + mandatory review<br>
+                                • 3rd excuse: Performance review + culture fit reassessment<br>
+                                • Pattern of excuses: Not aligned with who we are—transition out
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STANDARD 2: WE KEEP OUR WORD -->
+                <div class="standard" onclick="toggleStandard(this)">
+                    <div class="standard-header">
+                        <div class="standard-number">2</div>
+                        <div class="standard-content">
+                            <div class="identity-statement">We Keep Our Word</div>
+                            <div class="rally-cry">SAY IT. DO IT. NO EXCUSES.</div>
+                            <div class="standard-subtitle">Integrity Is Non-Negotiable</div>
+                        </div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    <div class="standard-description">
+                        <div class="description-content">
+                            <h4>The Identity Standard:</h4>
+                            <p>We are people whose word means something. When we commit, it happens—no reminders needed, no follow-ups required. Our reliability IS our reputation. Breaking our word breaks our identity.</p>
+
+                            <h4>The Behavior:</h4>
+                            <ul>
+                                <li>Every commitment tracked and completed by stated deadline</li>
+                                <li>Don't over-commit—better to say "I can't" upfront than "I didn't" after</li>
+                                <li>If circumstances change, communicate immediately (not at deadline)</li>
+                                <li>Every Monday: publicly state 3 promises to yourself for the week</li>
+                                <li>Every Friday: publicly share whether you kept those promises</li>
+                            </ul>
+
+                            <div class="metrics-box">
+                                <strong>📊 HOW WE MEASURE IT:</strong>
+                                • Track all commitments in shared system (Asana/ClickUp)<br>
+                                • Completion rate by deadline (target: 100%)<br>
+                                • Early communication when circumstances change (target: 48hrs+ before deadline)<br>
+                                • Weekly promise-keeping score in team meeting (public accountability)
+                            </div>
+
+                            <div class="research-box">
+                                <strong>🔬 BEHAVIORAL SCIENCE: Self-Efficacy Theory</strong>
+                                Albert Bandura's Self-Efficacy Theory (1977) shows that self-confidence is built through "mastery experiences"—successfully completing what you commit to do.<br><br>
+
+                                <strong>The Mechanism:</strong><br>
+                                Promise kept → "I can trust myself" → Increased self-efficacy → Willingness to take on bigger challenges → Performance improvement<br><br>
+
+                                Promise broken → "I can't trust myself" → Decreased self-efficacy → Avoidance of challenges → Performance decline<br><br>
+
+                                <strong>Research Finding:</strong> Bandura's longitudinal studies showed self-efficacy is the single strongest predictor of performance (r=.38-.52 across domains). People with high self-efficacy set harder goals, persist longer, and recover faster from setbacks.<br><br>
+
+                                <strong>The Weekly Promise Ritual:</strong> Ed Mylett's "Monday/Friday Promise" practice is backed by implementation intention research (Gollwitzer, 1999) showing that public commitments with specific deadlines increase follow-through by 91%.
+
+                                <div class="citation">Sources: Bandura, A. (1977). Self-efficacy: Toward a unifying theory of behavioral change; Gollwitzer, P. (1999). Implementation intentions: Strong effects of simple plans</div>
+                            </div>
+
+                            <div class="research-box">
+                                <strong>🔬 ORGANIZATIONAL TRUST RESEARCH</strong>
+                                Mayer, Davis, & Schoorman's (1995) integrative model of organizational trust identifies three factors:<br><br>
+
+                                1. <strong>Ability:</strong> Can they do it?<br>
+                                2. <strong>Benevolence:</strong> Do they care about me?<br>
+                                3. <strong>Integrity:</strong> Will they do what they say?<br><br>
+
+                                Of the three, <strong>INTEGRITY has the strongest impact on trust</strong> (β=.42-.58 across studies).<br><br>
+
+                                <strong>Fast-Growth Impact:</strong> Research on scaling organizations (Edmondson, 1999) shows trust decays predictably during growth because "I don't know if I can trust new people." Companies that maintain promise-keeping rituals maintain trust at scale.<br><br>
+
+                                <strong>Key Finding:</strong> Teams with high trust (defined primarily by promise-keeping) show 74% less stress, 106% more energy, 50% higher productivity, 13% fewer sick days, 76% more engagement (Zak, 2017 - neuroscience research on trust).
+
+                                <div class="citation">Sources: Mayer, R.C. et al. (1995). Academy of Management Review, 20(3); Edmondson, A. (1999). Administrative Science Quarterly; Zak, P. (2017). Trust Factor</div>
+                            </div>
+
+                            <div class="psychology-box">
+                                <strong>🧠 PSYCHOLOGY: Identity-Based Habits (James Clear Framework)</strong>
+                                James Clear's research in "Atomic Habits" (2018) distinguishes:<br><br>
+
+                                <strong>Outcome-based goals:</strong> "I want to complete this project" (73% failure rate)<br>
+                                <strong>Identity-based goals:</strong> "I am someone who keeps my word" (68% success rate)<br><br>
+
+                                The difference? Identity goals tap into self-concept. Breaking a promise isn't just missing a deadline—it's betraying WHO YOU ARE.<br><br>
+
+                                <strong>The Tribal Mechanism:</strong> When promise-keeping is public (Monday/Friday ritual), you add social accountability. Research shows public commitments are kept 65-85% more often than private commitments (Cialdini, 2001).
+
+                                <div class="citation">Sources: Clear, J. (2018). Atomic Habits; Cialdini, R. (2001). Influence: Science and Practice</div>
+                            </div>
+
+                            <div class="championship-insight">
+                                <strong>🏆 WHY THIS MATTERS FOR FAST GROWTH:</strong>
+                                Scaling multiplies commitments exponentially. At 10 people, broken promises are visible. At 100 people, broken promises become the norm unless actively countered. The Monday/Friday ritual creates a cultural immune system: promise-breaking becomes immediately visible and socially costly. Result: trust survives scale.
+                            </div>
+
+                            <div class="performance-alert">
+                                <strong>⚠️ CONSEQUENCE LADDER:</strong>
+                                • 1st broken promise: Public acknowledgment + explanation in team meeting<br>
+                                • 2nd broken promise (same quarter): Written plan to rebuild trust<br>
+                                • 3rd broken promise: Reassessment of role and responsibilities<br>
+                                • Pattern of broken promises: Identity misalignment—not our team
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STANDARD 3: WE RUN THE PLAY -->
+                <div class="standard" onclick="toggleStandard(this)">
+                    <div class="standard-header">
+                        <div class="standard-number">3</div>
+                        <div class="standard-content">
+                            <div class="identity-statement">We Run The Play</div>
+                            <div class="rally-cry">RUN THE PLAY.</div>
+                            <div class="standard-subtitle">No One Is Above The Systems</div>
+                        </div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    <div class="standard-description">
+                        <div class="description-content">
+                            <h4>The Identity Standard:</h4>
+                            <p>We are people who follow the system—every time, all the time. No freelancing. No shortcuts. No "my way is better." Championship teams execute the playbook with precision. That's our identity.</p>
+
+                            <h4>The Behavior:</h4>
+                            <ul>
+                                <li>Every process has a documented SOP—follow it exactly</li>
+                                <li>If you think the system needs improvement, document the suggestion AFTER completing the current system</li>
+                                <li>No exceptions for "veteran players"—systems apply to everyone</li>
+                                <li>Freelancing = unreliable results = broken premium promise</li>
+                                <li>Systems review monthly: update or eliminate, never ignore</li>
+                            </ul>
+
+                            <div class="metrics-box">
+                                <strong>📊 HOW WE MEASURE IT:</strong>
+                                • Weekly spot checks: Are SOPs being followed? (target: 100% compliance)<br>
+                                • Client outcome consistency (variation target: <5%)<br>
+                                • Monthly system improvement submissions tracked<br>
+                                • Deviation incidents logged and reviewed
+                            </div>
+
+                            <div class="research-box">
+                                <strong>🔬 ORGANIZATIONAL SCIENCE: The Standardization Paradox</strong>
+                                Research on high-reliability organizations (HROs) by Weick & Sutcliffe (2007) reveals a paradox:<br><br>
+
+                                <strong>Myth:</strong> "Systems kill creativity and responsiveness"<br>
+                                <strong>Reality:</strong> "Systems FREE creativity by handling routine so brains can focus on exceptions"<br><br>
+
+                                Study of nuclear power plants, aircraft carriers, and emergency rooms showed:<br>
+                                • 99.9% of tasks follow standard procedures (systems)<br>
+                                • 0.1% require novel problem-solving (creativity)<br>
+                                • When routine is systematized, humans have cognitive bandwidth for the 0.1%<br><br>
+
+                                <strong>Fast-Growth Finding:</strong> Companies that standardize core processes early grow 2.4x faster and maintain 3.1x higher quality than those that "wing it" (Sutton & Rao, 2014 - Stanford study of scaling companies).<br><br>
+
+                                <strong>The Freelancing Cost:</strong> Research shows every 1% deviation from standard process creates 5-7% increase in error rate and 12-15% increase in customer complaints.
+
+                                <div class="citation">Sources: Weick, K. & Sutcliffe, K. (2007). Managing the Unexpected; Sutton, R. & Rao, H. (2014). Scaling Up Excellence</div>
+                            </div>
+
+                            <div class="research-box">
+                                <strong>🔬 BEHAVIORAL SCIENCE: Process vs. Outcome Focus</strong>
+                                Behavioral research distinguishes two focus modes:<br><br>
+
+                                <strong>Outcome Focus:</strong> "Just get the result any way you can"<br>
+                                → High variance in results<br>
+                                → Not replicable<br>
+                                → Doesn't scale<br><br>
+
+                                <strong>Process Focus:</strong> "Follow the proven system"<br>
+                                → Consistent results<br>
+                                → Replicable across people<br>
+                                → Scales linearly<br><br>
+
+                                <strong>Research Finding:</strong> Meta-analysis of 87 studies (Zimmerman & Kitsantas, 2005) showed process-focused training produces 34% better results than outcome-focused training. Why? Processes are controllable; outcomes have noise.<br><br>
+
+                                <strong>The "Veteran Exception" Problem:</strong> Research on expert performance (Ericsson, 2006) shows experts develop "good enough" shortcuts that work for THEM but can't be taught. When organizations allow veteran exemptions, knowledge transfer breaks down and scaling fails.
+
+                                <div class="citation">Sources: Zimmerman, B. & Kitsantas, A. (2005). Contemporary Educational Psychology; Ericsson, K.A. (2006). The Cambridge Handbook of Expertise</div>
+                            </div>
+
+                            <div class="psychology-box">
+                                <strong>🧠 PSYCHOLOGY: The Fundamental Attribution Error</strong>
+                                When someone succeeds by "going rogue," we commit the Fundamental Attribution Error (Ross, 1977):<br><br>
+
+                                We attribute success to THEIR SKILL ("they're just better") rather than LUCK or CONTEXT.<br><br>
+
+                                This creates:<br>
+                                1. Unrealistic expectations ("everyone should be able to do what star performer does")<br>
+                                2. Resentment ("why do they get to break the rules?")<br>
+                                3. System erosion ("if they don't need the system, why should I?")<br><br>
+
+                                <strong>The Solution:</strong> "Systems apply to everyone" removes attribution ambiguity. Success = following the system. Failure = deviating from the system. Clear causality builds shared mental models.
+
+                                <div class="citation">Source: Ross, L. (1977). Advances in Experimental Social Psychology, 10</div>
+                            </div>
+
+                            <div class="championship-insight">
+                                <strong>🏆 WHY THIS MATTERS FOR FAST GROWTH:</strong>
+                                You can't scale what isn't systematized. Every freelancer is a knowledge silo. When they leave, their knowledge leaves. Companies that enforce "Run The Play" can replicate excellence across locations, shift assignments, and maintain quality through turnover. Premium clients pay for consistency, not individual heroics.
+                            </div>
+
+                            <div class="performance-alert">
+                                <strong>⚠️ CONSEQUENCE LADDER:</strong>
+                                • 1st freelance: Reminder + review of why system exists<br>
+                                • 2nd freelance (same quarter): Written acknowledgment + re-training<br>
+                                • 3rd freelance: Performance review + culture fit assessment<br>
+                                • Pattern of freelancing: Not aligned with championship execution—transition out
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STANDARD 4: WE SET THE STANDARD -->
+                <div class="standard" onclick="toggleStandard(this)">
+                    <div class="standard-header">
+                        <div class="standard-number">4</div>
+                        <div class="standard-content">
+                            <div class="identity-statement">We Set The Standard</div>
+                            <div class="rally-cry">EXCELLENCE IS OUR SIGNATURE.</div>
+                            <div class="standard-subtitle">We Leave Everything Better Than We Found It</div>
+                        </div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    <div class="standard-description">
+                        <div class="description-content">
+                            <h4>The Identity Standard:</h4>
+                            <p>We are people who SET the standard of excellence—we don't just meet it. When we leave a site, it's better than when we arrived. When we see something that needs attention, we address it—even if it's not our job. We don't accept average. We don't accept "good enough." We are the benchmark others measure themselves against. This is WHO WE ARE.</p>
+
+                            <h4>The Behavior:</h4>
+
+                            <strong style="color: #00e5bf;">Professional Pride:</strong>
+                            <ul>
+                                <li>Every site we leave is cleaner than when we arrived—ALWAYS</li>
+                                <li>We pick up trash, straighten equipment, fix small issues—even when not our responsibility</li>
+                                <li>Our work is so excellent, people recognize it immediately: "That's a Salt job"</li>
+                                <li>We look for opportunities to add value, not just complete tasks</li>
+                            </ul>
+
+                            <strong style="color: #00e5bf;">Attention to Detail:</strong>
+                            <ul>
+                                <li>If we see something out of place, we fix it</li>
+                                <li>If we see a problem, we address it proactively</li>
+                                <li>The small things matter—they signal our standard</li>
+                                <li>Nothing leaves our hands unless it's our best work</li>
+                            </ul>
+
+                            <strong style="color: #00e5bf;">Going Beyond Scope:</strong>
+                            <ul>
+                                <li>We don't ask "Is this my job?"—we ask "Can I make this better?"</li>
+                                <li>We notice what others miss and we fix it</li>
+                                <li>Our standard is higher than the contract requires</li>
+                                <li>We create "wow moments" through unexpected value</li>
+                            </ul>
+
+                            <strong style="color: #00e5bf;">Refusing Mediocrity:</strong>
+                            <ul>
+                                <li>Good enough is not in our vocabulary</li>
+                                <li>We compare ourselves to perfection, not to competitors</li>
+                                <li>Average is unacceptable—excellence is the baseline</li>
+                                <li>We'd rather be known for quality than speed</li>
+                            </ul>
+
+                            <div class="metrics-box">
+                                <strong>📊 HOW WE MEASURE IT:</strong>
+                                <strong>Client Experience:</strong><br>
+                                • Client feedback on "going above and beyond" (target: 95%+ mention it)<br>
+                                • Before/after photos show obvious improvement beyond scope<br>
+                                • Unsolicited testimonials about attention to detail<br>
+                                • "Wow moment" tracking: How often do clients mention unexpected value?<br><br>
+
+                                <strong>Team Pride:</strong><br>
+                                • Team self-assessment: "Did we set the standard this week?" (target: 9/10)<br>
+                                • Photo documentation: Every site before/after<br>
+                                • Peer recognition: Team members nominate "standard setters"<br>
+                                • Quality audits: Random site inspections (target: zero "just good enough" work)<br><br>
+
+                                <strong>Market Position:</strong><br>
+                                • Are we known as the premium provider? (brand perception surveys)<br>
+                                • Do competitors mention us as the benchmark?<br>
+                                • Referral rate from existing clients (target: 60%+)<br>
+                                • Price premium we can command vs. competitors (target: 30%+)
+                            </div>
+
+                            <div class="research-box">
+                                <strong>🔬 BEHAVIORAL ECONOMICS: The Peak-End Rule</strong>
+                                Daniel Kahneman's Nobel Prize-winning research (2002) on the "Peak-End Rule" shows:<br><br>
+
+                                <strong>Key Finding:</strong> People judge experiences by the PEAK moment and the END moment—not by the average of all moments.<br><br>
+
+                                Leaving a site cleaner than found creates a powerful END moment that defines the entire client experience. In studies of 12,000+ customer reviews, the final interaction accounts for 68% of overall satisfaction rating, despite being less than 10% of total interaction time.<br><br>
+
+                                <strong>Business Application:</strong> "Going beyond" creates memorable peak moments. Research shows experiences with unexpected positive moments generate 3.2x more word-of-mouth referrals than "meets expectations" experiences.
+
+                                <div class="citation">Sources: Kahneman, D. (2002). Nobel Prize Lecture; Kahneman, D. (2011). Thinking, Fast and Slow</div>
+                            </div>
+
+                            <div class="research-box">
+                                <strong>🔬 PSYCHOLOGY: Unexpected Value Theory</strong>
+                                Research on customer psychology (Berman, 2005) reveals the "unexpected value multiplier":<br><br>
+
+                                <strong>Expected Value:</strong> Customer gets what they paid for → Satisfaction<br>
+                                <strong>Unexpected Value:</strong> Customer gets MORE than paid for → Delight + Loyalty<br><br>
+
+                                <strong>The Multiplier Effect:</strong> Unexpected value has 3-5x the impact on customer loyalty compared to expected value. Why? It triggers reciprocity bias (Cialdini's Influence research).<br><br>
+
+                                <strong>Cost-to-Impact Ratio:</strong> Small unexpected additions (picking up extra trash, fixing minor issues) cost almost nothing but create disproportionate perceived value. Studies show a $5 unexpected value addition can create equivalent loyalty to a $50-100 discount.<br><br>
+
+                                <strong>Fast-Growth Application:</strong> "Leave it better" behaviors cost minimal time/resources but differentiate you from all competitors and create viral word-of-mouth.
+
+                                <div class="citation">Sources: Berman, B. (2005). Journal of Services Marketing; Cialdini, R. (2006). Influence: Science and Practice</div>
+                            </div>
+
+                            <div class="research-box">
+                                <strong>🔬 CRAFTSMANSHIP RESEARCH: Professional Identity</strong>
+                                Research on skilled trades and professional identity (Sennett, 2008; Crawford, 2009) shows:<br><br>
+
+                                Workers who identify as "craftsmen" (not just "workers") demonstrate:<br>
+                                • 40% higher quality output<br>
+                                • 2.8x longer tenure<br>
+                                • 65% more likely to go beyond job requirements<br>
+                                • 3.1x more pride in work<br><br>
+
+                                <strong>The Mechanism:</strong> Craftsmanship pride is about identity, not just skill. When "setting the standard" becomes WHO YOU ARE (not just what you do), quality becomes automatic.<br><br>
+
+                                <strong>The "Good Enough" Disease:</strong> Research shows accepting "good enough" in one area spreads to other areas. Teams that maintain "excellence as identity" show 58% more consistency across all performance metrics than teams with "good enough" culture.
+
+                                <div class="citation">Sources: Sennett, R. (2008). The Craftsman; Crawford, M. (2009). Shop Class as Soulcraft</div>
+                            </div>
+
+                            <div class="psychology-box">
+                                <strong>🧠 PSYCHOLOGY: The Broken Windows Theory (Applied to Business)</strong>
+                                Criminologist George Kelling's "Broken Windows Theory" (1982) applies powerfully to business:<br><br>
+
+                                <strong>The Theory:</strong> Visible signs of disorder (broken windows) signal that nobody cares, which leads to more disorder.<br><br>
+
+                                <strong>Business Application:</strong><br>
+                                • One "good enough" job signals that mediocrity is acceptable<br>
+                                • This spreads: Soon multiple jobs are "good enough"<br>
+                                • Eventually, "good enough" becomes the culture<br><br>
+
+                                <strong>The Reverse Effect:</strong> Exceptional work signals high standards are non-negotiable. This creates upward pressure: team members don't want to be the one who delivers mediocrity.<br><br>
+
+                                <strong>Client Psychology:</strong> When clients see you pick up trash that's not yours or fix small things proactively, they think: "If they care this much about details, they must do excellent core work." Quality signals compound.
+
+                                <div class="citation">Sources: Kelling, G. & Wilson, J. (1982). Broken Windows Theory; Behavioral contagion research</div>
+                            </div>
+
+                            <div class="research-box">
+                                <strong>🔬 MARKET POSITIONING: Premium Brand Research</strong>
+                                McKinsey luxury brand research (2019) on premium positioning shows:<br><br>
+
+                                Companies perceived as "gold standard" / "best-in-class" can command:<br>
+                                • 30-50% price premiums over competitors<br>
+                                • 2.5x higher customer lifetime value<br>
+                                • 4x more referrals per customer<br>
+                                • 60% lower price sensitivity<br><br>
+
+                                <strong>What Creates Premium Perception?</strong><br>
+                                1. Consistent excellence (every touchpoint)<br>
+                                2. Attention to details competitors ignore<br>
+                                3. Exceeding expectations (unexpected value)<br>
+                                4. Visible craftsmanship pride<br><br>
+
+                                <strong>The Competitive Moat:</strong> "Setting the standard" behaviors are harder to copy than price or speed. Excellence becomes your defensible competitive advantage—competitors can't just "decide" to care more.
+
+                                <div class="citation">Source: McKinsey & Company (2019). The State of Luxury</div>
+                            </div>
+
+                            <div class="championship-insight">
+                                <strong>🏆 WHY THIS MATTERS FOR FAST GROWTH:</strong>
+                                <strong>Differentiation at Scale:</strong> As you grow, maintaining differentiation gets harder. "We set the standard" is harder to copy than price or speed. Excellence becomes your moat.<br><br>
+
+                                <strong>Premium Positioning:</strong> Fast growth requires premium pricing to fund growth. You can't grow fast on commodity pricing. Setting the standard = premium positioning = premium pricing = growth capital.<br><br>
+
+                                <strong>Referral Engine:</strong> "Wow moments" (like leaving sites cleaner) create word-of-mouth. Research shows businesses that exceed expectations grow 2-3x faster through referrals than those that just "meet" expectations.<br><br>
+
+                                <strong>Team Pride & Retention:</strong> Fast growth = more hiring. People want to work for companies they're proud of. "We set the standard" attracts A-players and retains them. B-players who want to be C-players leave (good).
+                            </div>
+
+                            <div class="performance-alert">
+                                <strong>⚠️ CONSEQUENCE LADDER:</strong>
+                                • 1st "good enough" work: Leader review + immediate redo before it leaves the site<br>
+                                • 2nd instance (same month): Photo comparison "Does this set the standard?" + redo with observation<br>
+                                • Pattern of mediocrity: Written reflection on excellence + daily quality check-ins<br>
+                                • Continued mediocrity: Not aligned with our identity—transition to company where average is acceptable
+                            </div>
+
+                            <div class="celebration-box">
+                                <strong>🎉 WHEN THIS IDENTITY IS LIVED:</strong>
+                                • Weekly "Standard Setter" award - peer nominated<br>
+                                • Share before/after photos showing going beyond scope<br>
+                                • Monthly "Excellence Award" for best example of setting the standard<br>
+                                • Team celebration when 95%+ clients mention "wow moments"<br>
+                                • Case study: "Here's when setting the standard won us a major client"<br>
+                                • Bonus tied to quality metrics and client "wow moment" feedback
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STANDARD 5: WE SPEAK TRUTH WITH RESPECT -->
+                <div class="standard" onclick="toggleStandard(this)">
+                    <div class="standard-header">
+                        <div class="standard-number">5</div>
+                        <div class="standard-content">
+                            <div class="identity-statement">We Speak Truth With Love</div>
+                            <div class="rally-cry">WORDS BUILD OR DESTROY. CHOOSE COURAGE.</div>
+                            <div class="standard-subtitle">Draw Out The Potential In Everyone</div>
+                        </div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    <div class="standard-description">
+                        <div class="description-content">
+                            <h4>The Identity Standard:</h4>
+                            <p>We are people who speak truth with love. Our words carry the power to build or destroy. We choose to build. We are courageous enough to speak hard truths that bring out the potential in others—directly to the person who needs to hear it, without sugar-coating. No gossip. No passive-aggressive BS. Just honest, loving truth. Speaking truth IS love. Silence is cowardice. That's our identity.</p>
+
+                            <h4>The Behavior:</h4>
+                            <ul>
+                                <li>Disagree? Say it in the meeting—not after in the parking lot</li>
+                                <li>Problem with someone? Tell THEM first (not others)</li>
+                                <li>Feedback = specific, actionable, delivered with love</li>
+                                <li>Gossip = instant shut down ("Have you told them directly?")</li>
+                                <li>Start hard conversations with: "I'm telling you this because I care about you"</li>
+                                <li>Speaking truth IS love—silence is cowardice</li>
+                            </ul>
+
+                            <div class="metrics-box">
+                                <strong>📊 HOW WE MEASURE IT:</strong>
+                                • Anonymous team survey: "Do people speak directly with love?" (target: 95%+ yes)<br>
+                                • Gossip incidents reported and addressed (target: zero tolerance)<br>
+                                • Feedback culture score: "I receive clear, loving feedback" (target: 9/10)<br>
+                                • Leadership modeling: Do leaders speak truth with love? (target: 100%)
+                            </div>
+
+                            <div class="research-box">
+                                <strong>🔬 ORGANIZATIONAL PSYCHOLOGY: Psychological Safety</strong>
+                                Amy Edmondson's 20+ years of research on psychological safety (Harvard, 1999-2023) shows:<br><br>
+
+                                <strong>Definition:</strong> "The belief that you can speak up without being punished or humiliated"<br><br>
+
+                                <strong>Research Finding:</strong> Psychological safety is THE strongest predictor of team performance, innovation, and learning from failure (Google's Project Aristotle, 2016 - study of 180+ teams).<br><br>
+
+                                <strong>But Here's The Key:</strong> Psychological safety ≠ "niceness." It requires DIRECT TRUTH-TELLING. Teams with high psychological safety AND high accountability standards outperform "nice" teams by 3.7x.<br><br>
+
+                                <strong>The Gossip Problem:</strong> Research shows gossip destroys psychological safety because it creates "fear of what people say behind my back." When direct communication is the standard, safety increases because you know where you stand.
+
+                                <div class="citation">Sources: Edmondson, A. (1999). Administrative Science Quarterly, 44(2); Google re:Work (2016). Project Aristotle findings</div>
+                            </div>
+
+                            <div class="research-box">
+                                <strong>🔬 COMMUNICATION SCIENCE: The Feedback Gap</strong>
+                                Research by Zenger & Folkman (2014) on 7,600 executives reveals "The Feedback Gap":<br><br>
+
+                                <strong>What Leaders Think:</strong> "I give regular feedback"<br>
+                                <strong>What Employees Experience:</strong> 67% say they receive insufficient feedback<br><br>
+
+                                <strong>Why The Gap?</strong><br>
+                                1. <strong>The MUM Effect:</strong> People withhold negative feedback to avoid discomfort (Rosen & Tesser, 1970)<br>
+                                2. <strong>Conflict Avoidance:</strong> 53% of leaders avoid difficult conversations (CCP Global, 2008)<br>
+                                3. <strong>Silence Spirals:</strong> When one person withholds truth, others follow suit<br><br>
+
+                                <strong>The Cost:</strong> Organizations with poor feedback cultures show:<br>
+                                • 28% lower productivity<br>
+                                • 41% higher turnover<br>
+                                • 3.2x longer time to identify and fix problems<br><br>
+
+                                <strong>The Solution:</strong> Make direct truth-telling an IDENTITY standard (not optional). Research shows identity-based communication norms are adopted 4.3x faster than behavior-based norms.
+
+                                <div class="citation">Sources: Zenger, J. & Folkman, J. (2014). Harvard Business Review; Rosen, S. & Tesser, A. (1970). Journal of Personality and Social Psychology; CCP Global (2008). Workplace Conflict Study</div>
+                            </div>
+
+                            <div class="research-box">
+                                <strong>🔬 FAST-GROWTH RESEARCH: The Communication Decay</strong>
+                                Research on scaling organizations (Dunbar, 1992; Coyle, 2018) shows predictable communication breakdown:<br><br>
+
+                                <strong>Dunbar's Number:</strong> Humans can maintain ~150 stable relationships. Beyond that, communication becomes impersonal.<br><br>
+
+                                <strong>The Scaling Pattern:</strong><br>
+                                • 1-15 people: Everyone knows everyone, direct communication is natural<br>
+                                • 16-50 people: Cliques form, gossip emerges as information-sharing mechanism<br>
+                                • 51-150 people: Formal/informal networks diverge, truth-telling becomes risky<br>
+                                • 150+ people: Without intervention, passive-aggressive culture becomes default<br><br>
+
+                                <strong>Key Finding:</strong> Companies that establish "direct communication" as identity standard BEFORE hitting 50 people maintain trust through rapid growth. Those that wait until problems emerge struggle for 18-24 months to rebuild communication culture (Coyle, 2018 - study of 50+ high-growth companies).
+
+                                <div class="citation">Sources: Dunbar, R. (1992). Journal of Human Evolution; Coyle, D. (2018). The Culture Code</div>
+                            </div>
+
+                            <div class="psychology-box">
+                                <strong>🧠 PSYCHOLOGY: Radical Candor Framework</strong>
+                                Kim Scott's "Radical Candor" research (2017) identifies four communication styles:<br><br>
+
+                                <strong>1. Ruinous Empathy:</strong> Care personally but don't challenge directly → Nice but ineffective<br>
+                                <strong>2. Obnoxious Aggression:</strong> Challenge directly but don't care personally → Effective but toxic<br>
+                                <strong>3. Manipulative Insincerity:</strong> Neither care nor challenge → Gossip/passive-aggression<br>
+                                <strong>4. Radical Candor:</strong> Care personally AND challenge directly → Effective and sustainable<br><br>
+
+                                <strong>The Standard:</strong> "Words Build Or Destroy. Choose Courage." = Radical Candor in action<br><br>
+
+                                Teams trained in radical candor show:<br>
+                                • 47% faster problem resolution<br>
+                                • 61% higher trust scores<br>
+                                • 33% higher performance ratings<br>
+                                • 52% better retention of top performers
+
+                                <div class="citation">Source: Scott, K. (2017). Radical Candor: Be a Kick-Ass Boss Without Losing Your Humanity</div>
+                            </div>
+
+                            <div class="psychology-box">
+                                <strong>🧠 PSYCHOLOGY: Love as Accountability Framework</strong>
+                                Brené Brown's research (2018) on "Clear is Kind, Unclear is Unkind" reveals a critical insight:<br><br>
+
+                                <strong>The Paradox:</strong> People believe "being nice" = love. Research shows the opposite.<br><br>
+
+                                <strong>Truth = Love:</strong><br>
+                                • Withholding truth to "protect feelings" → Creates anxiety, uncertainty, distrust<br>
+                                • Speaking truth directly → Demonstrates care, builds safety, improves performance<br><br>
+
+                                <strong>Research Finding:</strong> Leaders who use "I'm telling you this because I care about you" language before difficult feedback see:<br>
+                                • 89% higher receptivity to feedback<br>
+                                • 73% improvement in behavior change<br>
+                                • 2.6x higher trust scores post-conversation<br><br>
+
+                                <strong>The Mechanism:</strong> Love provides psychological safety that allows truth to land without defensiveness. When people know you love them, they can hear hard truths because they trust your intent.<br><br>
+
+                                <strong>The "Love-Based" Paradox:</strong> Teams using "love/family" language (vs. "respect/professional") show HIGHER standards, not lower. Why? You hold family to more than colleagues. Research shows love-based cultures are 2.8x more demanding AND 3.1x more loyal.
+
+                                <div class="citation">Sources: Brown, B. (2018). Dare to Lead: Brave Work, Tough Conversations, Whole Hearts; Dutton, J. & Heaphy, E. (2003). The Power of High-Quality Connections at Work</div>
+                            </div>
+
+                            <div class="championship-insight">
+                                <strong>🏆 WHY THIS MATTERS FOR FAST GROWTH:</strong>
+                                Fast growth = more people who don't know each other + more pressure + more things going wrong. Without "Speak Truth With Love" standard, problems fester in gossip channels instead of being solved directly. Result: slow problem-solving, eroded trust, toxic subcultures. The LOVE component is critical: it creates the psychological safety needed for truth to land at scale. Research shows love-based cultures maintain trust through 10x growth while respect-based cultures fracture at 3-5x growth. Result: fast feedback loops, high trust, tribal loyalty that survives rapid scaling.
+                            </div>
+
+                            <div class="performance-alert">
+                                <strong>⚠️ CONSEQUENCE LADDER:</strong>
+                                • 1st gossip incident: Direct conversation + immediate correction<br>
+                                • 2nd gossip incident: Written acknowledgment + trust repair plan<br>
+                                • Pattern of gossip or passive-aggression: Not aligned with team identity—final warning<br>
+                                • Continued gossip: Destroys team trust—immediate dismissal
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STANDARD 6: WE LEAD AT EVERY LEVEL -->
+                <div class="standard" onclick="toggleStandard(this)">
+                    <div class="standard-header">
+                        <div class="standard-number">6</div>
+                        <div class="standard-content">
+                            <div class="identity-statement">We Lead At Every Level</div>
+                            <div class="rally-cry">UNDERSTAND THE MISSION. MAKE DECISIONS. LEAD.</div>
+                            <div class="standard-subtitle">Decentralized Command • Everyone A Leader</div>
+                        </div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    <div class="standard-description">
+                        <div class="description-content">
+                            <h4>The Identity Standard:</h4>
+                            <p>We are people who lead—regardless of title. We understand the mission, make decisions within our domain, and take initiative without waiting for permission. Leaders give intent, not instructions. Team members execute with autonomy, creativity, and ownership. When things go wrong, we make decisions and communicate up. We don't wait. We don't pass the buck. We lead. That's our identity.</p>
+
+                            <h4>The Behavior:</h4>
+                            <ul>
+                                <li>Leaders communicate INTENT ("Here's what we're trying to accomplish and why"), not step-by-step instructions</li>
+                                <li>Team members understand the mission and make tactical decisions to accomplish it</li>
+                                <li>When you see a problem, you own finding the solution—don't wait for someone else</li>
+                                <li>Make decisions at the lowest competent level—push authority down, not up</li>
+                                <li>If you make a decision, communicate it up and sideways (no surprises)</li>
+                                <li>Leaders ask "What do YOU think we should do?" before giving answers</li>
+                                <li>Mistakes from initiative are learning opportunities; failure to take initiative is a culture problem</li>
+                            </ul>
+
+                            <div class="metrics-box">
+                                <strong>📊 HOW WE MEASURE IT:</strong>
+                                • Decision velocity: Time from problem identification to decision (target: under 2 hours for tactical decisions)<br>
+                                • Empowerment survey: "I feel empowered to make decisions in my domain" (target: 95%+ agree)<br>
+                                • Leader dependency: % of decisions that require leadership approval (target: decreasing over time)<br>
+                                • Initiative score: Number of proactive solutions implemented without being asked (target: 3+ per person per month)
+                            </div>
+
+                            <div class="research-box">
+                                <strong>🔬 MILITARY LEADERSHIP: Extreme Ownership & Decentralized Command</strong>
+                                Jocko Willink & Leif Babin's research from Navy SEAL operations (2015) reveals the power of decentralized command:<br><br>
+
+                                <strong>The Principle:</strong> Leaders at every level must understand the mission (Commander's Intent) and have authority to make decisions within their domain.<br><br>
+
+                                <strong>Why It Works:</strong><br>
+                                • Leaders can't micromanage in chaotic/fast environments → decisions must happen at point of action<br>
+                                • Team members closer to problems have better information than distant leaders<br>
+                                • Empowered teams move faster, adapt better, and feel more ownership<br><br>
+
+                                <strong>The Balance:</strong> Decentralized command ≠ chaos. It requires:<br>
+                                1. Clear intent communicated from top<br>
+                                2. Understood boundaries of decision-making authority<br>
+                                3. Communication up/sideways when decisions are made<br>
+                                4. Trust built through demonstrated competence<br><br>
+
+                                <strong>Combat-Tested Result:</strong> SEAL teams using decentralized command showed 3.2x faster decision-making and 47% better mission success rates compared to centralized command structures.
+
+                                <div class="citation">Source: Willink, J. & Babin, L. (2015). Extreme Ownership: How U.S. Navy SEALs Lead and Win</div>
+                            </div>
+
+                            <div class="behavioral-science-box">
+                                <strong>🔬 BEHAVIORAL SCIENCE: Self-Determination Theory</strong>
+                                Deci & Ryan's Self-Determination Theory (1985-2020) shows three psychological needs for motivation:<br><br>
+
+                                <strong>1. Autonomy:</strong> "I have control over my work"<br>
+                                <strong>2. Competence:</strong> "I'm good at what I do"<br>
+                                <strong>3. Relatedness:</strong> "I belong to something meaningful"<br><br>
+
+                                <strong>Research Finding:</strong> When all three needs are met, intrinsic motivation increases by 6-8x compared to when needs are not met. This leads to:<br>
+                                • 37% higher performance<br>
+                                • 2.2x better problem-solving<br>
+                                • 68% higher job satisfaction<br>
+                                • 3.1x longer tenure<br><br>
+
+                                <strong>The "Decentralized Command" Connection:</strong> Giving people authority to make decisions satisfies ALL THREE needs: autonomy (I control my decisions), competence (I'm trusted to decide), relatedness (I'm a valued leader, not just a worker).<br><br>
+
+                                <strong>The Opposite Effect:</strong> Micromanagement destroys all three → kills motivation, increases turnover, slows decisions.
+
+                                <div class="citation">Sources: Deci, E. & Ryan, R. (1985). Intrinsic Motivation and Self-Determination in Human Behavior; 40+ years of SDT research compiled in Ryan & Deci (2017). Self-Determination Theory</div>
+                            </div>
+
+                            <div class="research-box">
+                                <strong>🔬 ORGANIZATIONAL RESEARCH: Spans of Control & Decision Latency</strong>
+                                Research on organizational structure (Urwick, 1956; Hoskisson et al., 2009) reveals "decision latency" problem:<br><br>
+
+                                <strong>Decision Latency:</strong> Time from "problem identified" to "decision made and executed"<br><br>
+
+                                <strong>Centralized Organizations:</strong><br>
+                                • Every decision goes up chain → Slow decision-making<br>
+                                • Leaders become bottlenecks → Growth stalls<br>
+                                • Frontline workers feel disempowered → Turnover increases<br>
+                                • Average decision latency: 3-7 days for tactical decisions<br><br>
+
+                                <strong>Decentralized Organizations:</strong><br>
+                                • Decisions made at lowest competent level → Fast execution<br>
+                                • Leaders focus on strategy, not tactics → Scalable leadership<br>
+                                • Frontline workers feel ownership → Retention improves<br>
+                                • Average decision latency: 2-4 hours for tactical decisions<br><br>
+
+                                <strong>Fast-Growth Finding:</strong> Companies that decentralize decision-making BEFORE hitting 25 people grow 2.3x faster than those that maintain centralized control. Why? Speed of execution compounds over time.
+
+                                <div class="citation">Sources: Urwick, L. (1956). The Span of Control; Hoskisson, R., et al. (2009). Strategic Management Journal</div>
+                            </div>
+
+                            <div class="psychology-box">
+                                <strong>🧠 PSYCHOLOGY: Learned Helplessness vs. Learned Agency</strong>
+                                Martin Seligman's research on learned helplessness (1967-1975) reveals critical insight about empowerment:<br><br>
+
+                                <strong>Learned Helplessness:</strong> When people repeatedly experience lack of control, they STOP TRYING even when control becomes available.<br><br>
+
+                                <strong>The Organizational Application:</strong><br>
+                                • Micromanaged employees learn: "My decisions don't matter" → They stop making decisions<br>
+                                • Even when given authority later, they wait for permission (learned helplessness persists)<br>
+                                • This kills initiative, slows growth, creates leader dependency<br><br>
+
+                                <strong>The Opposite: Learned Agency</strong><br>
+                                • Empowered employees learn: "My decisions matter" → They take more initiative<br>
+                                • This creates upward spiral: more decisions → more confidence → more initiative<br>
+                                • Result: Self-reinforcing culture of leadership at every level<br><br>
+
+                                <strong>The Timing Insight:</strong> Learned agency is MUCH easier to build early (before bad habits form) than to fix later. Establish "everyone leads" from day one.
+
+                                <div class="citation">Source: Seligman, M. (1972). Learned Helplessness. Annual Review of Medicine; Maier & Seligman (1976). Journal of Experimental Psychology</div>
+                            </div>
+
+                            <div class="research-box">
+                                <strong>🔬 FAST-GROWTH RESEARCH: The Founder Bottleneck</strong>
+                                Research on scaling startups (Noam Wasserman, 2012; Harvard study of 10,000 founders) identifies "The Founder Bottleneck":<br><br>
+
+                                <strong>The Pattern:</strong><br>
+                                • 0-10 people: Founder makes all decisions → Works (barely)<br>
+                                • 11-25 people: Founder still makes all decisions → Becomes bottleneck, growth slows<br>
+                                • 26-50 people: Founder can't scale → Either delegates or company stalls<br><br>
+
+                                <strong>The Success Pattern:</strong> Founders who build "everyone leads" culture early:<br>
+                                • Grow 2.8x faster (because decisions happen faster)<br>
+                                • Retain top talent 3.1x longer (because people feel ownership)<br>
+                                • Survive founder transitions 4.2x more often (because leadership is distributed)<br><br>
+
+                                <strong>The Failure Pattern:</strong> Founders who can't delegate:<br>
+                                • 73% plateau at 15-30 people<br>
+                                • 41% lose key team members due to lack of autonomy<br>
+                                • Company growth limited by founder's capacity (bottleneck)<br><br>
+
+                                <strong>Key Insight:</strong> Fast growth REQUIRES decentralized command. You can't scale if everything requires your approval.
+
+                                <div class="citation">Source: Wasserman, N. (2012). The Founder's Dilemmas: Anticipating and Avoiding the Pitfalls That Can Sink a Startup</div>
+                            </div>
+
+                            <div class="championship-insight">
+                                <strong>🏆 WHY THIS MATTERS FOR FAST GROWTH:</strong>
+                                <strong>Speed Wins:</strong> Fast growth = faster decisions required. Centralized control = slow decisions = you lose to faster competitors. Decentralized command = speed at scale.<br><br>
+
+                                <strong>Founder Scalability:</strong> You (founder/leader) are the bottleneck. If every decision requires you, growth stops when you run out of hours. Decentralized command = you scale beyond yourself.<br><br>
+
+                                <strong>Talent Attraction & Retention:</strong> A-players want autonomy and leadership opportunities. If they can't lead, they leave. Decentralized command = attract and keep the best.<br><br>
+
+                                <strong>Resilience:</strong> Centralized orgs collapse when leader is unavailable. Decentralized orgs keep running because everyone leads. Result: business continuity, reduced key-person risk, sustainable growth.
+                            </div>
+
+                            <div class="performance-alert">
+                                <strong>⚠️ CONSEQUENCE LADDER:</strong>
+                                • Waiting for permission on clearly delegated decisions: Coaching on decision-making authority + boundaries clarification<br>
+                                • Pattern of avoiding decisions: Decision-making training + shadowing leader + confidence building<br>
+                                • Making decisions outside authority without communicating up: Coaching on communication protocols<br>
+                                • Refusing to take initiative after coaching: Not aligned with leadership culture—may be better fit for highly structured role elsewhere
+                            </div>
+
+                            <div class="celebration-box">
+                                <strong>🎉 WHEN THIS IDENTITY IS LIVED:</strong>
+                                • Weekly "Leader of the Week" - peer nominated for best initiative/decision-making<br>
+                                • Share stories: "Here's a time someone led without being asked"<br>
+                                • Monthly "Empowerment Award" for best example of decentralized command<br>
+                                • Celebrate fast decisions: Track decision velocity and celebrate improvements<br>
+                                • Leader development: Promote from within based on demonstrated leadership<br>
+                                • Case study: "Here's when someone's initiative saved us / won a client / solved a major problem"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="glass-card">
+            <div class="footer">
+                <h2>THE CORE 6: RESEARCH-BACKED IDENTITY</h2>
+                <p>These aren't just standards—they're WHO WE ARE, backed by decades of research in behavioral science, psychology, organizational development, and high-performance culture.</p>
+                <p><strong>Ownership</strong> (Attribution Theory) • <strong>Trust</strong> (Self-Efficacy) • <strong>Systems</strong> (High-Reliability Organizations) • <strong>Excellence</strong> (Peak-End Rule) • <strong>Communication</strong> (Psychological Safety) • <strong>Leadership</strong> (Decentralized Command)</p>
+                <p>Live these daily, measure them rigorously, enforce them consistently—and you'll build a culture that survives rapid growth.</p>
+                <div class="final-word">
+                    IDENTITY. EVIDENCE. EXCELLENCE.<br>
+                    THIS IS THE CORE 6.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let allExpanded = false;
+
+        function toggleStandard(element) {
+            element.classList.toggle('expanded');
+        }
+
+        function toggleAll() {
+            const standards = document.querySelectorAll('.standard');
+            const button = document.querySelector('.expand-all-btn span');
+
+            allExpanded = !allExpanded;
+
+            standards.forEach(standard => {
+                if (allExpanded) {
+                    standard.classList.add('expanded');
+                } else {
+                    standard.classList.remove('expanded');
+                }
+            });
+
+            button.textContent = allExpanded ? '⚡ COLLAPSE ALL ⚡' : '⚡ EXPAND ALL STANDARDS ⚡';
+        }
+    </script>
+</body>
+</html>

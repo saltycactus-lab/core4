@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Core 5 - Quick Reference</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0a1a1a 0%, #0d2020 50%, #0f2525 100%);
+            color: #fff;
+            padding: 40px 20px;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(0,229,191,0.3);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #00e5bf 0%, #00d4aa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 900;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.1em;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+
+        .standard {
+            background: linear-gradient(135deg,
+                        rgba(255,255,255,0.08) 0%,
+                        rgba(255,255,255,0.04) 100%);
+            border-left: 5px solid #00e5bf;
+            padding: 25px 30px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .standard:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0,229,191,0.3);
+            border-left-color: #00f5d4;
+        }
+
+        .standard-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #00e5bf 0%, #00a896 100%);
+            color: #000;
+            font-size: 1.5em;
+            font-weight: 900;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            border-radius: 50%;
+            margin-right: 20px;
+            float: left;
+        }
+
+        .standard-content {
+            overflow: hidden;
+        }
+
+        .identity {
+            font-size: 0.75em;
+            color: rgba(0,229,191,0.8);
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .rally-cry {
+            font-size: 1.4em;
+            color: #00e5bf;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .description {
+            font-size: 0.95em;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.6;
+            font-weight: 600;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid rgba(0,229,191,0.3);
+        }
+
+        .footer p {
+            font-size: 1em;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .footer strong {
+            color: #00e5bf;
+        }
+
+        @media print {
+            body {
+                background: #0d2020;
+            }
+            .container {
+                box-shadow: none;
+            }
+            .standard:hover {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>THE CORE 6</h1>
+        <div class="subtitle">Quick Reference • Post This Everywhere</div>
+
+        <div class="standard">
+            <div class="standard-number">1</div>
+            <div class="standard-content">
+                <div class="identity">We Take Ownership</div>
+                <div class="rally-cry">EXCUSES ARE FOR LOSERS.</div>
+                <div class="description">
+                    "I screwed up" first. Fix in 30 minutes. No blame-shifting. Ever.
+                </div>
+            </div>
+        </div>
+
+        <div class="standard">
+            <div class="standard-number">2</div>
+            <div class="standard-content">
+                <div class="identity">We Keep Our Word</div>
+                <div class="rally-cry">SAY IT. DO IT. NO EXCUSES.</div>
+                <div class="description">
+                    Every commitment tracked. Every deadline met. Monday: state 3 promises. Friday: report results.
+                </div>
+            </div>
+        </div>
+
+        <div class="standard">
+            <div class="standard-number">3</div>
+            <div class="standard-content">
+                <div class="identity">We Run The Play</div>
+                <div class="rally-cry">NO ONE IS ABOVE THE SYSTEMS.</div>
+                <div class="description">
+                    Follow the SOP—every time. Want to improve it? Great. After you complete it.
+                </div>
+            </div>
+        </div>
+
+        <div class="standard">
+            <div class="standard-number">4</div>
+            <div class="standard-content">
+                <div class="identity">We Set The Standard</div>
+                <div class="rally-cry">EXCELLENCE IS OUR SIGNATURE.</div>
+                <div class="description">
+                    Leave every site cleaner than we found it. Fix what needs fixing. Good enough isn't in our vocabulary.
+                </div>
+            </div>
+        </div>
+
+        <div class="standard">
+            <div class="standard-number">5</div>
+            <div class="standard-content">
+                <div class="identity">We Speak Truth With Love</div>
+                <div class="rally-cry">WORDS BUILD OR DESTROY. CHOOSE COURAGE.</div>
+                <div class="description">
+                    Draw out the potential in everyone. Say it to their face, not behind their back. Truth = love.
+                </div>
+            </div>
+        </div>
+
+        <div class="standard">
+            <div class="standard-number">6</div>
+            <div class="standard-content">
+                <div class="identity">We Lead At Every Level</div>
+                <div class="rally-cry">UNDERSTAND THE MISSION. MAKE DECISIONS. LEAD.</div>
+                <div class="description">
+                    Leaders give intent. Team executes with autonomy. Make decisions. Communicate up. Lead.
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>THIS IS WHO WE ARE.</strong></p>
+            <p>Not rules. Not suggestions. Identity.</p>
+            <p>Live them. Measure them. Enforce them.</p>
+            <p style="margin-top: 15px; color: #00e5bf; font-weight: 900;">THE CORE 6</p>
+        </div>
+    </div>
+</body>
+</html>
