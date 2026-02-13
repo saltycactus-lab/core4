@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Standards Comparison & Synthesis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0a1a1a 0%, #0d2020 50%, #0f2525 100%);
+            color: #fff;
+            padding: 40px 20px;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 60px 40px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(0,229,191,0.3);
+            border-radius: 30px;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            font-size: 3em;
+            background: linear-gradient(135deg, #00e5bf 0%, #00d4aa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3em;
+            color: rgba(255,255,255,0.7);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .hero-description {
+            font-size: 1.1em;
+            color: rgba(255,255,255,0.6);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(0,229,191,0.3);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(0,229,191,0.5);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+        }
+
+        h2 {
+            font-size: 2em;
+            color: #00e5bf;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 900;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            color: #00d4aa;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .standards-column {
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px solid rgba(0,229,191,0.2);
+            border-radius: 15px;
+            padding: 30px;
+        }
+
+        .standards-column h3 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+        }
+
+        .standard-item {
+            background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.04) 100%);
+            border-left: 4px solid #00e5bf;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .standard-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 30px rgba(0,229,191,0.2);
+        }
+
+        .standard-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #00e5bf 0%, #00a896 100%);
+            color: #000;
+            font-size: 1.2em;
+            font-weight: 900;
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .standard-title {
+            font-size: 1.1em;
+            font-weight: 800;
+            color: #00e5bf;
+            margin-bottom: 5px;
+        }
+
+        .standard-tagline {
+            font-size: 0.9em;
+            color: rgba(255,255,255,0.6);
+            font-style: italic;
+        }
+
+        .overlap-section {
+            margin-bottom: 30px;
+        }
+
+        .overlap-item {
+            background: linear-gradient(135deg, rgba(0,229,191,0.15) 0%, rgba(0,229,191,0.05) 100%);
+            border: 2px solid rgba(0,229,191,0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .overlap-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #00e5bf 0%, #00a896 100%);
+        }
+
+        .overlap-percentage {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #00e5bf 0%, #00a896 100%);
+            color: #000;
+            font-size: 1.5em;
+            font-weight: 900;
+            padding: 10px 20px;
+            border-radius: 50px;
+            box-shadow: 0 5px 20px rgba(0,229,191,0.4);
+        }
+
+        .overlap-title {
+            font-size: 1.6em;
+            color: #00f5d4;
+            font-weight: 900;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .overlap-standards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .overlap-standard {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 3px solid #00e5bf;
+        }
+
+        .overlap-label {
+            font-size: 0.85em;
+            color: rgba(0,229,191,0.8);
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .overlap-detail {
+            font-size: 1em;
+            color: rgba(255,255,255,0.9);
+            font-weight: 600;
+        }
+
+        .overlap-description {
+            background: rgba(255,255,255,0.03);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .overlap-description ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .overlap-description li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: rgba(255,255,255,0.85);
+        }
+
+        .overlap-description li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00e5bf;
+            font-weight: 900;
+            font-size: 1.2em;
+        }
+
+        .unique-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .unique-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%);
+            border: 2px solid rgba(0,229,191,0.2);
+            border-radius: 15px;
+            padding: 25px;
+        }
+
+        .unique-card h4 {
+            color: #00e5bf;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .unique-item {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 3px solid #00d4aa;
+        }
+
+        .unique-item-title {
+            font-weight: 800;
+            color: #00e5bf;
+            margin-bottom: 5px;
+        }
+
+        .unique-item-desc {
+            font-size: 0.95em;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .recommendation-section {
+            background: linear-gradient(135deg, rgba(0,229,191,0.2) 0%, rgba(0,229,191,0.1) 100%);
+            border: 3px solid rgba(0,229,191,0.4);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .recommendation-section h3 {
+            text-align: center;
+            font-size: 2em;
+            color: #00f5d4;
+            margin-bottom: 30px;
+        }
+
+        .recommendation-option {
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(0,229,191,0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .recommendation-option:hover {
+            border-color: rgba(0,229,191,0.6);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,229,191,0.3);
+        }
+
+        .recommendation-option h4 {
+            font-size: 1.8em;
+            color: #00e5bf;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .recommendation-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .recommendation-list li {
+            padding: 12px 0;
+            padding-left: 40px;
+            position: relative;
+            font-size: 1.1em;
+            color: rgba(255,255,255,0.9);
+            font-weight: 600;
+        }
+
+        .recommendation-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 25px;
+            height: 25px;
+            background: linear-gradient(135deg, #00e5bf 0%, #00a896 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .summary-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(0,229,191,0.15) 0%, rgba(0,229,191,0.05) 100%);
+            border: 2px solid rgba(0,229,191,0.3);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,229,191,0.3);
+        }
+
+        .stat-number {
+            font-size: 3.5em;
+            font-weight: 900;
+            background: linear-gradient(135deg, #00e5bf 0%, #00d4aa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1em;
+            color: rgba(255,255,255,0.8);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 5px;
+        }
+
+        .badge-strong {
+            background: linear-gradient(135deg, #00e5bf 0%, #00a896 100%);
+            color: #000;
+        }
+
+        .badge-moderate {
+            background: linear-gradient(135deg, rgba(0,229,191,0.4) 0%, rgba(0,229,191,0.2) 100%);
+            color: #00e5bf;
+            border: 2px solid #00e5bf;
+        }
+
+        @media (max-width: 968px) {
+            .comparison-grid,
+            .overlap-standards,
+            .unique-section,
+            .summary-stats {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .overlap-percentage {
+                position: static;
+                display: inline-block;
+                margin-bottom: 15px;
+            }
+        }
+
+        @media print {
+            body {
+                background: #0d2020;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>Standards Comparison & Synthesis</h1>
+            <div class="hero-subtitle">Travis's Core 6 vs Tim's Cultural Operating System</div>
+            <div class="hero-description">
+                A detailed analysis identifying overlaps, unique elements, and recommended synthesis for presentation to your third business partner.
+            </div>
+        </div>
+
+        <!-- SUMMARY STATS -->
+        <div class="glass-card">
+            <h2>📊 Quick Summary</h2>
+            <div class="summary-stats">
+                <div class="stat-card">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Strong Alignments</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">85%</div>
+                    <div class="stat-label">Average Overlap</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Unique Elements</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SIDE BY SIDE COMPARISON -->
+        <div class="glass-card">
+            <h2>📋 Side-by-Side Comparison</h2>
+            <div class="comparison-grid">
+                <div class="standards-column">
+                    <h3>Travis's Core 6</h3>
+
+                    <div class="standard-item">
+                        <span class="standard-number">1</span>
+                        <div class="standard-title">We Take Ownership</div>
+                        <div class="standard-tagline">"Excuses Are For Losers"</div>
+                    </div>
+
+                    <div class="standard-item">
+                        <span class="standard-number">2</span>
+                        <div class="standard-title">We Keep Our Word</div>
+                        <div class="standard-tagline">"Say It. Do It. No Excuses"</div>
+                    </div>
+
+                    <div class="standard-item">
+                        <span class="standard-number">3</span>
+                        <div class="standard-title">We Run The Play</div>
+                        <div class="standard-tagline">"No One Is Above The Systems"</div>
+                    </div>
+
+                    <div class="standard-item">
+                        <span class="standard-number">4</span>
+                        <div class="standard-title">We Set The Standard</div>
+                        <div class="standard-tagline">"Excellence Is Our Signature"</div>
+                    </div>
+
+                    <div class="standard-item">
+                        <span class="standard-number">5</span>
+                        <div class="standard-title">We Speak Truth With Love</div>
+                        <div class="standard-tagline">"Words Build Or Destroy. Choose Courage"</div>
+                    </div>
+
+                    <div class="standard-item">
+                        <span class="standard-number">6</span>
+                        <div class="standard-title">We Lead At Every Level</div>
+                        <div class="standard-tagline">"Understand The Mission. Make Decisions. Lead"</div>
+                    </div>
+                </div>
+
+                <div class="standards-column">
+                    <h3>Tim's Cultural OS v2.1</h3>
+
+                    <div class="standard-item">
+                        <span class="standard-number">1</span>
+                        <div class="standard-title">Truth Over Tenure</div>
+                        <div class="standard-tagline">"Weight the Argument, Not the Title"</div>
+                    </div>
+
+                    <div class="standard-item">
+                        <span class="standard-number">2</span>
+                        <div class="standard-title">Disagree and Commit</div>
+                        <div class="standard-tagline">"Debate in the Studio, Unity on Site"</div>
+                    </div>
+
+                    <div class="standard-item">
+                        <span class="standard-number">3</span>
+                        <div class="standard-title">Lead with Questions</div>
+                        <div class="standard-tagline">"Coach > Command"</div>
+                    </div>
+
+                    <div class="standard-item">
+                        <span class="standard-number">4</span>
+                        <div class="standard-title">No Excuses</div>
+                        <div class="standard-tagline">"The Standard You Walk Past"</div>
+                    </div>
+
+                    <div class="standard-item">
+                        <span class="standard-number">5</span>
+                        <div class="standard-title">Delight the Client</div>
+                        <div class="standard-tagline">"The Swan Effect"</div>
+                    </div>
+
+                    <div class="standard-item">
+                        <span class="standard-number">6</span>
+                        <div class="standard-title">Relentless Craftsmanship</div>
+                        <div class="standard-tagline">"The Homeowner Test"</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STRONG OVERLAPS -->
+        <div class="glass-card">
+            <h2>🎯 Strong Alignments</h2>
+            <div class="overlap-badges" style="text-align: center; margin-bottom: 30px;">
+                <span class="badge badge-strong">4 Core Overlaps</span>
+                <span class="badge badge-strong">80-95% Alignment</span>
+            </div>
+
+            <div class="overlap-section">
+                <div class="overlap-item">
+                    <div class="overlap-percentage">95%</div>
+                    <div class="overlap-title">1. Ownership & Accountability</div>
+
+                    <div class="overlap-standards">
+                        <div class="overlap-standard">
+                            <div class="overlap-label">Travis's Standard</div>
+                            <div class="overlap-detail">#1 We Take Ownership</div>
+                        </div>
+                        <div class="overlap-standard">
+                            <div class="overlap-label">Tim's Standard</div>
+                            <div class="overlap-detail">#4 No Excuses</div>
+                        </div>
+                    </div>
+
+                    <div class="overlap-description">
+                        <strong style="color: #00e5bf;">Why This Aligns:</strong>
+                        <ul>
+                            <li>Both demand immediate responsibility without blame-shifting</li>
+                            <li>Both reject excuses entirely</li>
+                            <li>Both focus on "fix it first, explain never"</li>
+                            <li>Key phrase match: Both literally say "No Excuses"</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="overlap-item">
+                    <div class="overlap-percentage">90%</div>
+                    <div class="overlap-title">2. Excellence & Craftsmanship</div>
+
+                    <div class="overlap-standards">
+                        <div class="overlap-standard">
+                            <div class="overlap-label">Travis's Standard</div>
+                            <div class="overlap-detail">#4 We Set The Standard</div>
+                        </div>
+                        <div class="overlap-standard">
+                            <div class="overlap-label">Tim's Standard</div>
+                            <div class="overlap-detail">#6 Relentless Craftsmanship</div>
+                        </div>
+                    </div>
+
+                    <div class="overlap-description">
+                        <strong style="color: #00e5bf;">Why This Aligns:</strong>
+                        <ul>
+                            <li>Both reject mediocrity and "good enough" work</li>
+                            <li>Both emphasize professional pride and identity</li>
+                            <li>Travis: "Leave sites cleaner" / Tim: "Homeowner Test"</li>
+                            <li>Both about quality as WHO YOU ARE, not just what you do</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="overlap-item">
+                    <div class="overlap-percentage">85%</div>
+                    <div class="overlap-title">3. Leadership & Empowerment</div>
+
+                    <div class="overlap-standards">
+                        <div class="overlap-standard">
+                            <div class="overlap-label">Travis's Standard</div>
+                            <div class="overlap-detail">#6 We Lead At Every Level</div>
+                        </div>
+                        <div class="overlap-standard">
+                            <div class="overlap-label">Tim's Standards</div>
+                            <div class="overlap-detail">#3 Lead with Questions + #1 Truth Over Tenure</div>
+                        </div>
+                    </div>
+
+                    <div class="overlap-description">
+                        <strong style="color: #00e5bf;">Why This Aligns:</strong>
+                        <ul>
+                            <li>Both empower people regardless of title or tenure</li>
+                            <li>Travis: Decentralized command / Tim: Coach > Command</li>
+                            <li>Both develop leaders, not followers</li>
+                            <li>Tim adds: "Junior ideas can beat senior ideas"</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="overlap-item">
+                    <div class="overlap-percentage">80%</div>
+                    <div class="overlap-title">4. Direct Truth-Telling</div>
+
+                    <div class="overlap-standards">
+                        <div class="overlap-standard">
+                            <div class="overlap-label">Travis's Standard</div>
+                            <div class="overlap-detail">#5 We Speak Truth With Love</div>
+                        </div>
+                        <div class="overlap-standard">
+                            <div class="overlap-label">Tim's Standards</div>
+                            <div class="overlap-detail">#1 Truth Over Tenure + #2 Disagree and Commit</div>
+                        </div>
+                    </div>
+
+                    <div class="overlap-description">
+                        <strong style="color: #00e5bf;">Why This Aligns:</strong>
+                        <ul>
+                            <li>Both value honest, direct communication</li>
+                            <li>Travis: "Speak truth with love" / Tim: "Debate vigorously, then commit"</li>
+                            <li>Both require speaking up when you disagree</li>
+                            <li>Travis adds: Love/courage component for psychological safety</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODERATE OVERLAPS -->
+        <div class="glass-card">
+            <h2>🔄 Moderate Alignments</h2>
+            <div class="overlap-badges" style="text-align: center; margin-bottom: 30px;">
+                <span class="badge badge-moderate">2 Partial Overlaps</span>
+                <span class="badge badge-moderate">50-70% Alignment</span>
+            </div>
+
+            <div class="overlap-section">
+                <div class="overlap-item">
+                    <div class="overlap-percentage">70%</div>
+                    <div class="overlap-title">5. Systems & Commitment to Decisions</div>
+
+                    <div class="overlap-standards">
+                        <div class="overlap-standard">
+                            <div class="overlap-label">Travis's Standard</div>
+                            <div class="overlap-detail">#3 We Run The Play</div>
+                        </div>
+                        <div class="overlap-standard">
+                            <div class="overlap-label">Tim's Standard</div>
+                            <div class="overlap-detail">#2 Disagree and Commit</div>
+                        </div>
+                    </div>
+
+                    <div class="overlap-description">
+                        <strong style="color: #00e5bf;">Why This Partially Aligns:</strong>
+                        <ul>
+                            <li>Travis: Follow SOPs/systems consistently</li>
+                            <li>Tim: Commit to team decisions after debate</li>
+                            <li>Both emphasize unified execution</li>
+                            <li>Tim adds the "debate first" element before commitment</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="overlap-item">
+                    <div class="overlap-percentage">50%</div>
+                    <div class="overlap-title">6. Keeping Promises & Decisions</div>
+
+                    <div class="overlap-standards">
+                        <div class="overlap-standard">
+                            <div class="overlap-label">Travis's Standard</div>
+                            <div class="overlap-detail">#2 We Keep Our Word</div>
+                        </div>
+                        <div class="overlap-standard">
+                            <div class="overlap-label">Tim's Standard</div>
+                            <div class="overlap-detail">#2 Disagree and Commit (partial)</div>
+                        </div>
+                    </div>
+
+                    <div class="overlap-description">
+                        <strong style="color: #00e5bf;">Why This Partially Aligns:</strong>
+                        <ul>
+                            <li>Travis: Explicit promise-tracking (Monday: 3 promises, Friday: report)</li>
+                            <li>Tim: Commitment to team decisions once made</li>
+                            <li>Related concepts but different focus areas</li>
+                            <li>Both about following through on commitments</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- UNIQUE ELEMENTS -->
+        <div class="glass-card">
+            <h2>✨ Unique Elements</h2>
+            <div class="unique-section">
+                <div class="unique-card">
+                    <h4>Unique to Tim's Standards</h4>
+                    <div class="unique-item">
+                        <div class="unique-item-title">#5 Delight the Client - "The Swan Effect"</div>
+                        <div class="unique-item-desc">
+                            Explicit client focus with the "plus-one" mindset. Going beyond contractual obligations. Calm exterior while solving problems invisibly.
+                        </div>
+                    </div>
+                    <div style="margin-top: 15px; padding: 15px; background: rgba(255,255,255,0.03); border-radius: 10px;">
+                        <strong style="color: #00e5bf;">Note:</strong> This is IMPLIED in Travis's #4 "We Set The Standard" (leaving sites cleaner than found) but Tim makes client delight an explicit, standalone standard.
+                    </div>
+                </div>
+
+                <div class="unique-card">
+                    <h4>Unique to Travis's Standards</h4>
+                    <div class="unique-item">
+                        <div class="unique-item-title">#2 We Keep Our Word - Promise-Tracking System</div>
+                        <div class="unique-item-desc">
+                            Structured accountability for commitments. Monday: state 3 promises. Friday: report results. Explicit tracking mechanism.
+                        </div>
+                    </div>
+                    <div style="margin-top: 15px; padding: 15px; background: rgba(255,255,255,0.03); border-radius: 10px;">
+                        <strong style="color: #00e5bf;">Note:</strong> Tim's standards focus on commitment to team decisions, but don't have Travis's explicit promise-tracking framework.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RECOMMENDATIONS -->
+        <div class="glass-card">
+            <div class="recommendation-section">
+                <h3>🎯 Recommended Synthesis Options</h3>
+
+                <div class="recommendation-option">
+                    <h4>Option A: The 5 Core Overlaps (Highest Agreement)</h4>
+                    <p style="color: rgba(255,255,255,0.7); margin-bottom: 20px; font-size: 1.05em;">
+                        Focus on the standards where you and Tim are most strongly aligned. These represent your shared core values.
+                    </p>
+                    <ol class="recommendation-list">
+                        <li>We Take Ownership (No Excuses)</li>
+                        <li>We Set The Standard (Excellence/Craftsmanship)</li>
+                        <li>We Lead At Every Level (Empowerment)</li>
+                        <li>We Speak Truth Directly (Honest Communication)</li>
+                        <li>We Delight Our Clients (Going Beyond Expectations)</li>
+                    </ol>
+                </div>
+
+                <div class="recommendation-option">
+                    <h4>Option B: The 6 Unified Standards (Balanced Synthesis)</h4>
+                    <p style="color: rgba(255,255,255,0.7); margin-bottom: 20px; font-size: 1.05em;">
+                        Integrate the best elements from both frameworks into a complete, balanced set of 6 standards.
+                    </p>
+                    <ol class="recommendation-list">
+                        <li>We Take Ownership - No excuses, fix it now</li>
+                        <li>We Keep Our Commitments - To promises AND team decisions</li>
+                        <li>We Set The Standard - Relentless craftsmanship & client delight</li>
+                        <li>We Speak Truth With Courage - Debate vigorously, then commit unified</li>
+                        <li>We Lead At Every Level - Coach > Command, Truth > Tenure</li>
+                        <li>We Run The Play - Follow systems, improve after completion</li>
+                    </ol>
+                </div>
+
+                <div style="margin-top: 40px; padding: 30px; background: rgba(0,229,191,0.1); border-radius: 15px; border: 2px solid rgba(0,229,191,0.3);">
+                    <h4 style="color: #00e5bf; font-size: 1.4em; margin-bottom: 15px;">💡 Key Insight for Your Third Partner</h4>
+                    <p style="color: rgba(255,255,255,0.9); font-size: 1.1em; line-height: 1.8;">
+                        You and Tim are <strong style="color: #00e5bf;">85% aligned</strong> on core values. The differences are complementary, not contradictory. Tim's explicit client focus + your structured promise-tracking = more complete culture framework. Either synthesis option creates a powerful foundation that honors both perspectives.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEXT STEPS -->
+        <div class="glass-card" style="text-align: center;">
+            <h2>📍 Next Steps</h2>
+            <div style="max-width: 800px; margin: 0 auto; font-size: 1.1em; color: rgba(255,255,255,0.8); line-height: 1.8;">
+                <p style="margin-bottom: 20px;">
+                    This analysis shows strong foundational alignment between both frameworks. Choose either synthesis option, discuss the unique elements with your third partner, and decide which combination best represents your shared vision.
+                </p>
+                <p style="color: #00e5bf; font-weight: 800; font-size: 1.2em;">
+                    The overlap is the foundation. The differences are opportunities.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
