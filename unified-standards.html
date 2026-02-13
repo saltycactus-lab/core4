@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Championship 6 - Unified Team Standards</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0a1a1a 0%, #0d2020 50%, #0f2525 100%);
+            color: #fff;
+            padding: 40px 20px;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 80px 40px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 3px solid rgba(0,229,191,0.4);
+            border-radius: 30px;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #00e5bf 0%, #00a896 50%, #00e5bf 100%);
+        }
+
+        h1 {
+            font-size: 3.5em;
+            background: linear-gradient(135deg, #00e5bf 0%, #00d4aa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .hero-tagline {
+            font-size: 1.8em;
+            color: #00e5bf;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+        }
+
+        .hero-description {
+            font-size: 1.2em;
+            color: rgba(255,255,255,0.8);
+            max-width: 900px;
+            margin: 0 auto 30px auto;
+            line-height: 1.9;
+            font-weight: 600;
+        }
+
+        .team-manifesto {
+            background: linear-gradient(135deg, rgba(0,229,191,0.2) 0%, rgba(0,229,191,0.1) 100%);
+            border: 2px solid rgba(0,229,191,0.4);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        .manifesto-title {
+            font-size: 2em;
+            color: #00f5d4;
+            text-align: center;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+        }
+
+        .manifesto-text {
+            font-size: 1.15em;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.9;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .standard {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(0,229,191,0.3);
+            border-radius: 20px;
+            padding: 50px 45px;
+            margin-bottom: 40px;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .standard::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: linear-gradient(180deg, #00e5bf 0%, #00a896 100%);
+        }
+
+        .standard:hover {
+            border-color: rgba(0,229,191,0.6);
+            transform: translateY(-5px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+        }
+
+        .standard-number {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #00e5bf 0%, #00a896 100%);
+            color: #000;
+            font-size: 2.5em;
+            font-weight: 900;
+            width: 70px;
+            height: 70px;
+            line-height: 70px;
+            text-align: center;
+            border-radius: 50%;
+            box-shadow: 0 10px 30px rgba(0,229,191,0.4);
+        }
+
+        .headline {
+            font-size: 2.2em;
+            color: #00f5d4;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .we-statement {
+            font-size: 1.4em;
+            color: #00e5bf;
+            font-weight: 800;
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+
+        .description {
+            font-size: 1.1em;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.8;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .sport-narrative {
+            background: rgba(0,229,191,0.08);
+            border-left: 4px solid #00e5bf;
+            padding: 20px 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+        }
+
+        .sport-narrative-title {
+            font-size: 1.1em;
+            color: #00e5bf;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .sport-narrative-text {
+            font-size: 1.05em;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .behaviors {
+            background: rgba(255,255,255,0.03);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .behaviors h4 {
+            color: #00e5bf;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .behaviors ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .behaviors li {
+            padding: 12px 0 12px 35px;
+            position: relative;
+            font-size: 1.05em;
+            color: rgba(255,255,255,0.9);
+            font-weight: 600;
+        }
+
+        .behaviors li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #00e5bf;
+            font-weight: 900;
+            font-size: 1.3em;
+        }
+
+        .championship-insight {
+            background: linear-gradient(135deg, rgba(0,229,191,0.15) 0%, rgba(0,229,191,0.08) 100%);
+            border: 2px solid rgba(0,229,191,0.4);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 25px;
+        }
+
+        .championship-insight h4 {
+            color: #00f5d4;
+            font-size: 1.3em;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .championship-insight p {
+            font-size: 1.05em;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.7;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 60px 40px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(0,229,191,0.3);
+            border-radius: 30px;
+            margin-top: 60px;
+        }
+
+        .footer h2 {
+            font-size: 2.5em;
+            color: #00e5bf;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 900;
+            margin-bottom: 25px;
+        }
+
+        .footer p {
+            font-size: 1.2em;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.8;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .footer .final-word {
+            font-size: 1.5em;
+            color: #00f5d4;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2em;
+            }
+
+            .hero-tagline {
+                font-size: 1.3em;
+            }
+
+            .headline {
+                font-size: 1.6em;
+            }
+
+            .standard-number {
+                position: static;
+                margin-bottom: 20px;
+                width: 60px;
+                height: 60px;
+                line-height: 60px;
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HERO -->
+        <div class="hero">
+            <h1>THE CHAMPIONSHIP 6</h1>
+            <div class="hero-tagline">Our Unified Team Standards</div>
+            <div class="hero-description">
+                These aren't just company values—they're our team playbook. The standards championship teams live by. The identity that separates winners from everyone else. This is who we are. This is how we win.
+            </div>
+        </div>
+
+        <!-- TEAM MANIFESTO -->
+        <div class="team-manifesto">
+            <div class="manifesto-title">🏆 The Championship Mindset</div>
+            <div class="manifesto-text">
+                Great teams aren't built on talent alone. They're built on standards. Standards that every player—rookie to veteran—lives by. Standards that don't change when the score's close or the pressure's on. Championship teams have championship standards. And championship standards are non-negotiable. This is our playbook. This is our identity. This is how we compete.
+            </div>
+        </div>
+
+        <!-- STANDARD 1: OWNERSHIP -->
+        <div class="standard">
+            <div class="standard-number">1</div>
+            <div class="headline">OWN THE OUTCOME</div>
+            <div class="we-statement">We Take Ownership—No Excuses, No Blame, Just Solutions</div>
+
+            <div class="description">
+                In championship locker rooms, there's no finger-pointing. No blame-shifting. No excuses. When something goes wrong, we say "I screwed up" first—then we fix it. Fast. We own every outcome, every mistake, every failure. That's what separates champions from everyone else.
+            </div>
+
+            <div class="sport-narrative">
+                <div class="sport-narrative-title">🏈 The Locker Room Test</div>
+                <div class="sport-narrative-text">
+                    "Great teams don't blame the refs, the weather, or bad luck. They look in the mirror and ask: What could I have done better? Championship teams take ownership. Always."
+                </div>
+            </div>
+
+            <div class="behaviors">
+                <h4>What This Looks Like On The Field:</h4>
+                <ul>
+                    <li>Problem identified? Own it immediately—"I'll handle this"</li>
+                    <li>Mistake made? Say "I screwed up" first, then fix it in 30 minutes</li>
+                    <li>No blame-shifting to teammates, systems, or circumstances</li>
+                    <li>Focus on solutions, not excuses—"Here's how I'm fixing it"</li>
+                    <li>If you see it, you own it—no walking past problems</li>
+                </ul>
+            </div>
+
+            <div class="championship-insight">
+                <h4>🏆 Why Champions Do This:</h4>
+                <p>
+                    Ownership creates trust. When every player takes responsibility, the team moves faster, fixes problems quicker, and builds the kind of accountability that wins championships. Teams that make excuses lose. Teams that take ownership win.
+                </p>
+            </div>
+        </div>
+
+        <!-- STANDARD 2: COMMITMENTS -->
+        <div class="standard">
+            <div class="standard-number">2</div>
+            <div class="headline">YOUR WORD IS YOUR BOND</div>
+            <div class="we-statement">We Keep Our Commitments—To Promises AND Team Decisions</div>
+
+            <div class="description">
+                Championship teams are built on trust. And trust is built on keeping your word. When you make a promise, you deliver. When the team makes a decision, you commit—even if you argued for a different play. Your word matters. Your commitments matter. That's how we build unbreakable teams.
+            </div>
+
+            <div class="sport-narrative">
+                <div class="sport-narrative-title">⚡ The Trust Factor</div>
+                <div class="sport-narrative-text">
+                    "If I can't trust you to do what you said, I can't trust you in the fourth quarter. Championship teams keep promises. Every time. No exceptions."
+                </div>
+            </div>
+
+            <div class="behaviors">
+                <h4>What This Looks Like On The Field:</h4>
+                <ul>
+                    <li>Monday: State 3 commitments publicly to your team</li>
+                    <li>Friday: Report results—did you deliver or not?</li>
+                    <li>When the team decides on a play, you commit 100%—even if you argued against it</li>
+                    <li>Under-promise, over-deliver—never the reverse</li>
+                    <li>If you can't deliver, communicate early and renegotiate—don't ghost</li>
+                </ul>
+            </div>
+
+            <div class="championship-insight">
+                <h4>🏆 Why Champions Do This:</h4>
+                <p>
+                    Teams that keep commitments move with speed and confidence. No one's second-guessing if someone will follow through. No one's wondering if promises are real. When every player keeps their word, the whole team gets faster, stronger, and more dangerous.
+                </p>
+            </div>
+        </div>
+
+        <!-- STANDARD 3: EXCELLENCE -->
+        <div class="standard">
+            <div class="standard-number">3</div>
+            <div class="headline">CHAMPIONSHIP STANDARD, EVERY PLAY</div>
+            <div class="we-statement">We Set The Standard—Relentless Craftsmanship Meets Client Delight</div>
+
+            <div class="description">
+                Good isn't good enough here. Average doesn't make the roster. We set the standard of excellence—in every detail, every site, every interaction. We leave places better than we found them. We fix things even when it's not our job. We ask: "Would this be acceptable if I were paying for it?" That's the homeowner test. That's the championship standard.
+            </div>
+
+            <div class="sport-narrative">
+                <div class="sport-narrative-title">🎯 The Film Room Test</div>
+                <div class="sport-narrative-text">
+                    "Champions know: The tape doesn't lie. When you watch the film, does your work look championship-level or average? We compete at a different standard. We're building a legacy, not just completing jobs."
+                </div>
+            </div>
+
+            <div class="behaviors">
+                <h4>What This Looks Like On The Field:</h4>
+                <ul>
+                    <li>Leave every site cleaner than you found it—pick up trash that's not even yours</li>
+                    <li>See something that needs fixing? Fix it proactively</li>
+                    <li>"Good enough" is not in our vocabulary—we do it right or not at all</li>
+                    <li>The Homeowner Test: Would this be acceptable in your own yard?</li>
+                    <li>The Plus-One Mindset: What's one extra thing we can do to delight this client?</li>
+                    <li>Craftsmanship is your signature—take pride in your work</li>
+                </ul>
+            </div>
+
+            <div class="championship-insight">
+                <h4>🏆 Why Champions Do This:</h4>
+                <p>
+                    Excellence is your competitive moat. Anyone can do average work. Only championship teams consistently deliver work that makes clients say "Wow." That's what creates word-of-mouth. That's what builds premium brands. That's what separates champions from everyone else.
+                </p>
+            </div>
+        </div>
+
+        <!-- STANDARD 4: TRUTH WITH COURAGE -->
+        <div class="standard">
+            <div class="standard-number">4</div>
+            <div class="headline">LOCKER ROOM DEBATE, GAME DAY UNITY</div>
+            <div class="we-statement">We Speak Truth With Courage—Debate Vigorously, Then Commit Fully</div>
+
+            <div class="description">
+                Championship teams debate hard in the locker room and the film room—challenging ideas, speaking truth, bringing better plays. But once we hit the field? Unified execution. No second-guessing. No passive-aggressive BS. We disagree and commit. We speak truth with courage because that's how the best ideas win. Then we execute like our lives depend on it.
+            </div>
+
+            <div class="sport-narrative">
+                <div class="sport-narrative-title">💬 The Championship Huddle</div>
+                <div class="sport-narrative-text">
+                    "Great teams don't silence dissent—they demand it. In practice, challenge every play. On game day, run the play called. The locker room is for debate. The field is for trust and execution."
+                </div>
+            </div>
+
+            <div class="behaviors">
+                <h4>What This Looks Like On The Field:</h4>
+                <ul>
+                    <li>In planning meetings: Challenge ideas directly, speak up when you disagree</li>
+                    <li>Best idea wins—not biggest title, not loudest voice</li>
+                    <li>Speak truth with love: "I care about you, here's what I see..."</li>
+                    <li>Once the decision is made: 100% commitment, zero undermining</li>
+                    <li>No gossip, no passive aggression—say it to their face or don't say it</li>
+                    <li>Draw out potential in others—your words build up, not tear down</li>
+                </ul>
+            </div>
+
+            <div class="championship-insight">
+                <h4>🏆 Why Champions Do This:</h4>
+                <p>
+                    Teams that can't handle truth stay mediocre. Teams that debate ideas get better. When you combine fierce debate (locker room) with unified execution (game day), you get championship-level decision-making AND championship-level speed. That's the winning formula.
+                </p>
+            </div>
+        </div>
+
+        <!-- STANDARD 5: LEADERSHIP -->
+        <div class="standard">
+            <div class="standard-number">5</div>
+            <div class="headline">EVERYBODY LEADS, ROOKIE TO CAPTAIN</div>
+            <div class="we-statement">We Lead At Every Level—Coach > Command, Truth > Tenure</div>
+
+            <div class="description">
+                On championship teams, everyone leads. You don't need a title. You don't need tenure. You need to see what needs to be done and do it. Leaders coach, they don't command. They ask "How would you approach this?" not "Do it this way." The best idea wins—whether it comes from a 20-year veteran or the newest rookie. We're all leaders here.
+            </div>
+
+            <div class="sport-narrative">
+                <div class="sport-narrative-title">👥 The Captain's Mindset</div>
+                <div class="sport-narrative-text">
+                    "Championship teams have 53 captains, not one. Everyone takes ownership. Everyone makes decisions. Everyone leads. The rookie who speaks up with a better play is more valuable than the veteran who stays silent."
+                </div>
+            </div>
+
+            <div class="behaviors">
+                <h4>What This Looks Like On The Field:</h4>
+                <ul>
+                    <li>See a problem? Don't wait for permission—take initiative and communicate</li>
+                    <li>Leaders coach teammates: Ask questions, develop others, build leaders</li>
+                    <li>Make decisions at the lowest competent level—push authority down</li>
+                    <li>Best argument wins, not biggest title (Truth > Tenure)</li>
+                    <li>Speak last if you're senior—let newer teammates share ideas first</li>
+                    <li>When you make a decision, communicate up and sideways—no surprises</li>
+                </ul>
+            </div>
+
+            <div class="championship-insight">
+                <h4>🏆 Why Champions Do This:</h4>
+                <p>
+                    Leadership at every level creates speed, ownership, and resilience. When everyone leads, decisions happen faster, problems get solved quicker, and the team doesn't collapse when one person is unavailable. Championship teams develop leaders, not followers.
+                </p>
+            </div>
+        </div>
+
+        <!-- STANDARD 6: RUN THE PLAY -->
+        <div class="standard">
+            <div class="standard-number">6</div>
+            <div class="headline">RUN THE PLAY, TRUST YOUR TEAMMATES</div>
+            <div class="we-statement">We Run The Play—Follow The System, Then Make It Better</div>
+
+            <div class="description">
+                Championship teams have a playbook. And everyone runs the same play. No freelancing. No "I've got a better way." Not during game time. You run the play, you trust your teammates, you execute with precision. Want to improve the system? Great. Do it in practice, after you've mastered it. On game day, we're unified. We're synchronized. We're unstoppable.
+            </div>
+
+            <div class="sport-narrative">
+                <div class="sport-narrative-title">📋 The Playbook Principle</div>
+                <div class="sport-narrative-text">
+                    "Great teams run great plays. Not because they're perfect. Because everyone runs the SAME play. Synchronized execution beats individual brilliance every time. Master the system. Then help us make it better."
+                </div>
+            </div>
+
+            <div class="behaviors">
+                <h4>What This Looks Like On The Field:</h4>
+                <ul>
+                    <li>Follow the SOP/system every single time—no shortcuts</li>
+                    <li>Want to improve the system? Master it first, then suggest improvements</li>
+                    <li>Trust your teammates are running their part of the play</li>
+                    <li>No one is above the systems—from rookies to veterans</li>
+                    <li>When the team commits to a decision, execute with 100% effort</li>
+                    <li>Systems create freedom—master the fundamentals to unlock creativity</li>
+                </ul>
+            </div>
+
+            <div class="championship-insight">
+                <h4>🏆 Why Champions Do This:</h4>
+                <p>
+                    Systems don't limit creativity—they enable it. When everyone runs the same play, we move faster, trust deeper, and execute flawlessly. That synchronized execution is what creates the space for individual brilliance. Championship teams master the system before they change it.
+                </p>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <h2>THIS IS OUR PLAYBOOK</h2>
+            <p>These aren't rules. They're not suggestions. They're our identity.</p>
+            <p>They're who we are when the score is close and the pressure is on.</p>
+            <p>They're what separates us from everyone else.</p>
+            <div class="final-word">
+                CHAMPIONSHIP STANDARDS.<br>
+                CHAMPIONSHIP TEAM.<br>
+                CHAMPIONSHIP RESULTS.
+            </div>
+        </div>
+    </div>
+</body>
+</html>
