@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natural Selection Standards - Excellence or Extinction</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0a1a0a 0%, #0d2515 50%, #0f2a1a 100%);
+            color: #fff;
+            padding: 40px 20px;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 80px 40px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 3px solid rgba(52,211,153,0.4);
+            border-radius: 30px;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #10b981 0%, #34d399 50%, #10b981 100%);
+        }
+
+        h1 {
+            font-size: 3.5em;
+            background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .hero-tagline {
+            font-size: 2em;
+            color: #34d399;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+        }
+
+        .hero-description {
+            font-size: 1.3em;
+            color: rgba(255,255,255,0.9);
+            max-width: 900px;
+            margin: 0 auto 30px auto;
+            line-height: 1.9;
+            font-weight: 600;
+        }
+
+        .nature-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .manifesto {
+            background: linear-gradient(135deg, rgba(16,185,129,0.2) 0%, rgba(16,185,129,0.1) 100%);
+            border: 3px solid rgba(52,211,153,0.4);
+            border-radius: 25px;
+            padding: 50px;
+            margin: 50px 0;
+            position: relative;
+        }
+
+        .manifesto::before {
+            content: '🌿';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3em;
+            background: #0d2515;
+            padding: 10px 20px;
+            border-radius: 50%;
+            border: 3px solid #34d399;
+        }
+
+        .manifesto-title {
+            font-size: 2.5em;
+            color: #34d399;
+            text-align: center;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            margin-top: 20px;
+        }
+
+        .manifesto-text {
+            font-size: 1.25em;
+            color: rgba(255,255,255,0.95);
+            line-height: 2;
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .manifesto-highlight {
+            font-size: 1.5em;
+            color: #10b981;
+            font-weight: 900;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 30px;
+        }
+
+        .standard {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(52,211,153,0.3);
+            border-radius: 25px;
+            padding: 50px 45px;
+            margin-bottom: 40px;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .standard::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: linear-gradient(180deg, #10b981 0%, #059669 100%);
+        }
+
+        .standard:hover {
+            border-color: rgba(52,211,153,0.6);
+            transform: translateY(-5px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+        }
+
+        .standard-number {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: #fff;
+            font-size: 2.5em;
+            font-weight: 900;
+            width: 70px;
+            height: 70px;
+            line-height: 70px;
+            text-align: center;
+            border-radius: 50%;
+            box-shadow: 0 10px 30px rgba(16,185,129,0.4);
+        }
+
+        .standard-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .headline {
+            font-size: 2.3em;
+            color: #34d399;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .we-statement {
+            font-size: 1.5em;
+            color: #10b981;
+            font-weight: 800;
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+
+        .description {
+            font-size: 1.15em;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .nature-truth {
+            background: linear-gradient(135deg, rgba(16,185,129,0.15) 0%, rgba(16,185,129,0.08) 100%);
+            border-left: 5px solid #10b981;
+            padding: 25px 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .nature-truth-title {
+            font-size: 1.2em;
+            color: #34d399;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .nature-truth-text {
+            font-size: 1.1em;
+            color: rgba(255,255,255,0.95);
+            line-height: 1.8;
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        .behaviors {
+            background: rgba(255,255,255,0.04);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 1px solid rgba(52,211,153,0.2);
+        }
+
+        .behaviors h4 {
+            color: #34d399;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .behaviors ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .behaviors li {
+            padding: 14px 0 14px 40px;
+            position: relative;
+            font-size: 1.1em;
+            color: rgba(255,255,255,0.9);
+            font-weight: 600;
+            border-bottom: 1px solid rgba(52,211,153,0.1);
+        }
+
+        .behaviors li:last-child {
+            border-bottom: none;
+        }
+
+        .behaviors li::before {
+            content: '🌱';
+            position: absolute;
+            left: 0;
+            font-size: 1.3em;
+        }
+
+        .survival-insight {
+            background: linear-gradient(135deg, rgba(16,185,129,0.2) 0%, rgba(16,185,129,0.1) 100%);
+            border: 2px solid rgba(52,211,153,0.4);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+
+        .survival-insight h4 {
+            color: #34d399;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .survival-insight p {
+            font-size: 1.1em;
+            color: rgba(255,255,255,0.95);
+            line-height: 1.8;
+            font-weight: 600;
+        }
+
+        .law-of-nature {
+            background: rgba(16,185,129,0.08);
+            border: 2px dashed rgba(52,211,153,0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .law-of-nature-title {
+            font-size: 1em;
+            color: #34d399;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .law-of-nature-text {
+            font-size: 1.3em;
+            color: #10b981;
+            font-weight: 900;
+            font-style: italic;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 70px 40px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 3px solid rgba(52,211,153,0.3);
+            border-radius: 30px;
+            margin-top: 60px;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '🌳';
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 4em;
+            background: #0d2515;
+            padding: 15px;
+            border-radius: 50%;
+            border: 3px solid #34d399;
+        }
+
+        .footer h2 {
+            font-size: 2.8em;
+            color: #34d399;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 900;
+            margin-bottom: 30px;
+            margin-top: 20px;
+        }
+
+        .footer p {
+            font-size: 1.3em;
+            color: rgba(255,255,255,0.9);
+            line-height: 2;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .footer .final-word {
+            font-size: 1.8em;
+            color: #10b981;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2em;
+            }
+
+            .hero-tagline {
+                font-size: 1.4em;
+            }
+
+            .headline {
+                font-size: 1.7em;
+            }
+
+            .standard-number {
+                position: static;
+                margin-bottom: 20px;
+                width: 60px;
+                height: 60px;
+                line-height: 60px;
+                font-size: 2em;
+            }
+
+            .manifesto {
+                padding: 30px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HERO -->
+        <div class="hero">
+            <div class="nature-icon">🌿</div>
+            <h1>NATURAL SELECTION STANDARDS</h1>
+            <div class="hero-tagline">Excellence or Extinction</div>
+            <div class="hero-description">
+                Nature is the ultimate high-performance arena. No excuses. No mercy. No participation trophies. Only the strongest roots survive the storm. Only the best-tended gardens dominate. Only excellence survives the season. <strong style="color: #34d399;">This is our standard. This is natural law.</strong>
+            </div>
+        </div>
+
+        <!-- MANIFESTO -->
+        <div class="manifesto">
+            <div class="manifesto-title">⚡ The Ruthless Truth About Nature</div>
+            <div class="manifesto-text">
+                Nature doesn't negotiate. It doesn't give second chances. It doesn't care about your intentions or your effort. Nature only cares about results. Weak plants get overtaken by strong ones. Shallow roots fall in storms. Unprepared organisms don't survive winter. This isn't cruel—it's natural law.
+            </div>
+            <div class="manifesto-text">
+                For millions of years, nature has tested every species, every tree, every organism with one simple question: <strong style="color: #34d399;">Are you excellent, or are you extinct?</strong>
+            </div>
+            <div class="manifesto-text">
+                We work with nature every day. We see this truth in the soil, in the seasons, in every garden we tend. Nature is our teacher. And nature's lesson is clear: <strong style="color: #34d399;">Excellence is not optional. It's survival.</strong>
+            </div>
+            <div class="manifesto-highlight">
+                🌱 These are our Natural Selection Standards 🌱
+            </div>
+        </div>
+
+        <!-- STANDARD 1: DEEP ROOTS -->
+        <div class="standard">
+            <div class="standard-number">1</div>
+            <div class="standard-icon">🌳</div>
+            <div class="headline">DEEP ROOTS, STRONG FOUNDATION</div>
+            <div class="we-statement">We Take Ownership—No Shallow Roots Survive the Storm</div>
+
+            <div class="description">
+                In nature, trees with shallow roots are the first to fall. Deep roots weather any storm, survive any drought, anchor against any wind. We don't blame the weather when things go wrong—we strengthen our roots. We own every outcome, every mistake, every failure. Because in nature, only the deeply rooted survive.
+            </div>
+
+            <div class="nature-truth">
+                <div class="nature-truth-title">🌲 NATURE'S LAW</div>
+                <div class="nature-truth-text">
+                    "The mighty oak was once a nut that held its ground. Deep roots aren't built in a day—but shallow roots fall in the first storm. When the winds come, only foundation matters."
+                </div>
+            </div>
+
+            <div class="law-of-nature">
+                <div class="law-of-nature-title">Natural Selection Truth:</div>
+                <div class="law-of-nature-text">"Blame the storm, or deepen your roots. Only one survives."</div>
+            </div>
+
+            <div class="behaviors">
+                <h4>🌱 What This Looks Like in the Field:</h4>
+                <ul>
+                    <li>Problem identified? Own it immediately: "I'll handle this, here's my plan"</li>
+                    <li>Mistake made? Say "I screwed up" first, then fix it within 30 minutes</li>
+                    <li>No blaming the weather, the client, the equipment, or circumstances</li>
+                    <li>Focus on solutions, not excuses: "Here's how I'm making this right"</li>
+                    <li>If you see it, you own it—no walking past problems (weeds don't pull themselves)</li>
+                    <li>Build deep foundations in everything: training, preparation, relationships</li>
+                </ul>
+            </div>
+
+            <div class="survival-insight">
+                <h4>🏆 WHY EXCELLENCE DEMANDS THIS:</h4>
+                <p>
+                    Ecosystems thrive when every organism takes responsibility for its role. When trees blame the drought instead of deepening roots, the forest dies. When we take ownership, we build the deep foundations that weather any storm. Nature rewards the deeply rooted. So do we.
+                </p>
+            </div>
+        </div>
+
+        <!-- STANDARD 2: HARVEST -->
+        <div class="standard">
+            <div class="standard-number">2</div>
+            <div class="standard-icon">🌾</div>
+            <div class="headline">YOU REAP WHAT YOU SOW</div>
+            <div class="we-statement">We Keep Our Commitments—Your Word Is Your Seed</div>
+
+            <div class="description">
+                Plant weeds, harvest weeds. Plant excellence, harvest excellence. In nature, you can't skip watering and expect growth. You can't plant in fall and harvest in spring. Every promise is a seed—tend it or watch it die. When we commit to our teammates and our clients, we honor those commitments like farmers honor the seasons. Because nature punishes broken promises with failed harvests.
+            </div>
+
+            <div class="nature-truth">
+                <div class="nature-truth-title">🌾 NATURE'S LAW</div>
+                <div class="nature-truth-text">
+                    "You can't plant corn and harvest tomatoes. You can't skip the tending and expect the harvest. Nature is honest: what you sow, you reap. What you neglect, you lose. Every single time."
+                </div>
+            </div>
+
+            <div class="law-of-nature">
+                <div class="law-of-nature-title">Natural Selection Truth:</div>
+                <div class="law-of-nature-text">"Broken promises are unwatered seeds. They die. Always."</div>
+            </div>
+
+            <div class="behaviors">
+                <h4>🌱 What This Looks Like in the Field:</h4>
+                <ul>
+                    <li>Monday morning: State 3 commitments publicly (plant your seeds)</li>
+                    <li>Throughout the week: Tend your commitments (water, weed, protect)</li>
+                    <li>Friday: Report your harvest—delivered or not (nature doesn't lie)</li>
+                    <li>Team decisions = team commitments—once decided, 100% execution</li>
+                    <li>Under-promise, over-deliver (better to harvest more than expected)</li>
+                    <li>Can't deliver? Communicate early and replant—don't let it die silently</li>
+                </ul>
+            </div>
+
+            <div class="survival-insight">
+                <h4>🏆 WHY EXCELLENCE DEMANDS THIS:</h4>
+                <p>
+                    Trust is the soil everything else grows in. When promises are kept, trust deepens. When promises break, trust erodes—and nothing grows in eroded soil. Farmers who don't tend their crops starve. Teams who don't keep commitments collapse. Nature rewards those who honor the cycle. We honor our word like farmers honor the harvest.
+                </p>
+            </div>
+        </div>
+
+        <!-- STANDARD 3: EXCELLENCE OR EXTINCTION -->
+        <div class="standard">
+            <div class="standard-number">3</div>
+            <div class="standard-icon">🦅</div>
+            <div class="headline">EXCELLENCE OR EXTINCTION</div>
+            <div class="we-statement">We Set The Standard—Nature Doesn't Reward Average</div>
+
+            <div class="description">
+                Weeds grow on their own. Excellence requires cultivation. In every ecosystem, the strong overtake the weak. Always. The best-adapted survive. The mediocre get crowded out. We don't accept "good enough" because nature doesn't either. We leave every site better than we found it—picking up trash that's not ours, fixing details others ignore—because that's what separates thriving gardens from dying ones. Natural selection is ruthless. So is our standard.
+            </div>
+
+            <div class="nature-truth">
+                <div class="nature-truth-title">🦅 NATURE'S LAW</div>
+                <div class="nature-truth-text">
+                    "Evolution doesn't reward average. The fastest predator eats. The slowest starves. The strongest tree reaches sunlight. The weakest lives in shadow. Survival of the fittest isn't cruel—it's nature's only standard."
+                </div>
+            </div>
+
+            <div class="law-of-nature">
+                <div class="law-of-nature-title">Natural Selection Truth:</div>
+                <div class="law-of-nature-text">"Average gets overtaken. Excellence dominates. Pick one."</div>
+            </div>
+
+            <div class="behaviors">
+                <h4>🌱 What This Looks Like in the Field:</h4>
+                <ul>
+                    <li>Leave every site cleaner than you found it (like bees pollinating—leave it better)</li>
+                    <li>Pick up trash even when it's not ours (healthy ecosystems clean themselves)</li>
+                    <li>Fix small issues proactively—don't wait for permission</li>
+                    <li>The Homeowner Test: "Would this be acceptable in my own yard?"</li>
+                    <li>The Plus-One Mindset: "What's one extra thing that will delight this client?"</li>
+                    <li>"Good enough" means eventual extinction—only excellence survives long-term</li>
+                </ul>
+            </div>
+
+            <div class="survival-insight">
+                <h4>🏆 WHY EXCELLENCE DEMANDS THIS:</h4>
+                <p>
+                    In nature, the mediocre don't last. Gardens that are "good enough" get overtaken by weeds. Species that are "average" go extinct. Only the excellent thrive, multiply, and dominate their niche. Our work is our signature in the natural world. We're not just maintaining landscapes—we're competing in nature's arena. And nature only respects excellence.
+                </p>
+            </div>
+        </div>
+
+        <!-- STANDARD 4: ECOSYSTEM FEEDBACK -->
+        <div class="standard">
+            <div class="standard-number">4</div>
+            <div class="standard-icon">🔄</div>
+            <div class="headline">ECOSYSTEM TRUTH</div>
+            <div class="we-statement">We Speak Truth With Courage—Healthy Systems Need Honest Feedback</div>
+
+            <div class="description">
+                In nature, feedback is instant and brutal. Ignore the signals, die. Healthy ecosystems have constant feedback loops: roots communicate with trees, trees communicate with forests, predators communicate with prey. We debate fiercely in planning (the locker room) because that's when the best ideas compete. Then we execute unified (game day) because survival requires coordinated action. We speak truth with courage because ecosystems that suppress signals collapse.
+            </div>
+
+            <div class="nature-truth">
+                <div class="nature-truth-title">🔄 NATURE'S LAW</div>
+                <div class="nature-truth-text">
+                    "Trees warn each other through root networks. Prey animals signal danger. Healthy ecosystems communicate constantly—because silence equals death. Organisms that ignore feedback don't evolve. They go extinct."
+                </div>
+            </div>
+
+            <div class="law-of-nature">
+                <div class="law-of-nature-title">Natural Selection Truth:</div>
+                <div class="law-of-nature-text">"Ecosystems that hide truth collapse. Feedback = survival."</div>
+            </div>
+
+            <div class="behaviors">
+                <h4>🌱 What This Looks Like in the Field:</h4>
+                <ul>
+                    <li>In planning: Challenge ideas directly, speak up when you disagree (forest debate)</li>
+                    <li>Best idea wins—not biggest title, not loudest voice (survival of fittest idea)</li>
+                    <li>Speak truth with love: "I care about your growth, here's what I see..."</li>
+                    <li>Once decided: 100% unified execution, zero undermining (coordinated hunting)</li>
+                    <li>No gossip—say it to their face or stay silent (nature is direct, never passive)</li>
+                    <li>Give feedback that helps teammates adapt and evolve</li>
+                </ul>
+            </div>
+
+            <div class="survival-insight">
+                <h4>🏆 WHY EXCELLENCE DEMANDS THIS:</h4>
+                <p>
+                    Ecosystems thrive on information. When feedback flows, organisms adapt and evolve. When signals are suppressed, the system stagnates and dies. We create feedback-rich environments because that's how natural selection makes everything stronger. Debate makes ideas better. Truth makes people better. Silence kills both.
+                </p>
+            </div>
+        </div>
+
+        <!-- STANDARD 5: EVERY ORGANISM CONTRIBUTES -->
+        <div class="standard">
+            <div class="standard-number">5</div>
+            <div class="standard-icon">🌿</div>
+            <div class="headline">EVERY ORGANISM CONTRIBUTES</div>
+            <div class="we-statement">We Lead At Every Level—From Roots to Canopy, All Matter</div>
+
+            <div class="description">
+                In a thriving forest, everything leads. Roots anchor and communicate. Trunks support and transport. Leaves photosynthesize and feed. Decomposers recycle and renew. No organism waits for permission. No element says "not my job." Young saplings adapt faster than old trees. New ideas often beat established wisdom. Best argument wins—not tenure, not title. Truth over tenure. Coach over command. We're all leaders in this ecosystem.
+            </div>
+
+            <div class="nature-truth">
+                <div class="nature-truth-title">🌿 NATURE'S LAW</div>
+                <div class="nature-truth-text">
+                    "In nature, there's no 'not my job.' Roots don't wait for permission to anchor. Leaves don't wait for approval to photosynthesize. Every organism leads its function. The youngest seedling can teach the oldest tree about adaptation."
+                </div>
+            </div>
+
+            <div class="law-of-nature">
+                <div class="law-of-nature-title">Natural Selection Truth:</div>
+                <div class="law-of-nature-text">"Passive organisms die. Active organisms thrive. Lead or wither."</div>
+            </div>
+
+            <div class="behaviors">
+                <h4>🌱 What This Looks Like in the Field:</h4>
+                <ul>
+                    <li>See a problem? Take initiative—don't wait for permission (be the roots that anchor)</li>
+                    <li>Coach teammates: Ask questions, develop others, help them grow stronger</li>
+                    <li>Make decisions at lowest competent level—push authority down (distributed ecosystem)</li>
+                    <li>Best argument wins, not biggest title (young trees adapt faster than old ones)</li>
+                    <li>Senior leaders speak last—let new growth share ideas first</li>
+                    <li>Communicate decisions up and sideways—healthy ecosystems signal constantly</li>
+                </ul>
+            </div>
+
+            <div class="survival-insight">
+                <h4>🏆 WHY EXCELLENCE DEMANDS THIS:</h4>
+                <p>
+                    Monocultures collapse. Diverse ecosystems thrive. When every organism contributes actively, the system becomes antifragile—it gets stronger under pressure. Leadership at every level creates speed, resilience, and adaptability. Nature doesn't wait for one organism to solve all problems. Neither do we.
+                </p>
+            </div>
+        </div>
+
+        <!-- STANDARD 6: FOLLOW THE SEASONS -->
+        <div class="standard">
+            <div class="standard-number">6</div>
+            <div class="standard-icon">🌓</div>
+            <div class="headline">FOLLOW THE SEASONS</div>
+            <div class="we-statement">We Run The Play—Nature's Rhythms Proven Over Millions of Years</div>
+
+            <div class="description">
+                Plant in spring. Tend in summer. Harvest in fall. Rest in winter. Skip a season, lose the crop. Try to harvest before it's ready? You fail. Rush the process? Nature punishes you. We have systems—proven over millions of years of natural selection—for how work gets done. Follow the rhythm, respect the cycle, execute with precision. Want to improve the system? Master it first, then evolve it. But during execution, we're synchronized. We're unified. We're unstoppable.
+            </div>
+
+            <div class="nature-truth">
+                <div class="nature-truth-title">🌓 NATURE'S LAW</div>
+                <div class="nature-truth-text">
+                    "You can't rush a harvest. You can't skip winter. Trees that try to bloom in December freeze. Farmers who plant in November starve. Nature's cycles are non-negotiable. The organisms that respect the rhythm thrive. Those that don't, die."
+                </div>
+            </div>
+
+            <div class="law-of-nature">
+                <div class="law-of-nature-title">Natural Selection Truth:</div>
+                <div class="law-of-nature-text">"Nature's systems beat your shortcuts. Every. Single. Time."</div>
+            </div>
+
+            <div class="behaviors">
+                <h4>🌱 What This Looks Like in the Field:</h4>
+                <ul>
+                    <li>Follow the SOP/system every single time—no shortcuts (respect the season)</li>
+                    <li>Want to improve the system? Master it first, then propose evolution</li>
+                    <li>Trust your teammates are running their part of the cycle</li>
+                    <li>No one is above the natural order—from rookie to veteran</li>
+                    <li>When the team commits to a decision, execute with 100% unified effort</li>
+                    <li>Systems don't limit—they enable (roots anchor so branches can reach)</li>
+                </ul>
+            </div>
+
+            <div class="survival-insight">
+                <h4>🏆 WHY EXCELLENCE DEMANDS THIS:</h4>
+                <p>
+                    Nature has been optimizing systems for millions of years. Organisms that respect natural rhythms survive. Those that fight them go extinct. When we all follow the same play, we move faster, trust deeper, and execute flawlessly. That synchronized execution—like a murmuration of starlings—is what separates thriving ecosystems from dying ones.
+                </p>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <h2>NATURAL SELECTION</h2>
+            <p>Nature doesn't negotiate. It doesn't give participation trophies.</p>
+            <p>It doesn't care about intentions or effort.</p>
+            <p>Nature only cares about one thing: <strong style="color: #34d399;">Are you excellent, or are you extinct?</strong></p>
+            <p>We work in nature's arena every single day.</p>
+            <p>We see the truth in every garden, every season, every storm.</p>
+            <div class="final-word">
+                EXCELLENCE IS NOT OPTIONAL.<br>
+                IT'S SURVIVAL.<br>
+                🌿 NATURAL SELECTION STANDARDS 🌿
+            </div>
+        </div>
+    </div>
+</body>
+</html>
