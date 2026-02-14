@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Forge of the Future - Where Leaders Are Forged</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a0a0a 0%, #2a1515 50%, #1a0a0a 100%);
+            color: #fff;
+            padding: 40px 20px;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 80px 40px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 3px solid rgba(255,107,0,0.5);
+            border-radius: 30px;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #ff6b00 0%, #ff8c00 50%, #ff6b00 100%);
+        }
+
+        .forge-icon {
+            font-size: 5em;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 20px rgba(255,107,0,0.6));
+        }
+
+        h1 {
+            font-size: 3.8em;
+            background: linear-gradient(135deg, #ff6b00 0%, #ff8c00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .hero-tagline {
+            font-size: 2.2em;
+            color: #ff8c00;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+        }
+
+        .hero-description {
+            font-size: 1.35em;
+            color: rgba(255,255,255,0.95);
+            max-width: 950px;
+            margin: 0 auto 30px auto;
+            line-height: 2;
+            font-weight: 600;
+        }
+
+        .manifesto {
+            background: linear-gradient(135deg, rgba(255,107,0,0.25) 0%, rgba(255,107,0,0.15) 100%);
+            border: 3px solid rgba(255,107,0,0.5);
+            border-radius: 25px;
+            padding: 50px;
+            margin: 50px 0;
+            position: relative;
+        }
+
+        .manifesto::before {
+            content: '🔥';
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3.5em;
+            background: #1a0a0a;
+            padding: 15px 25px;
+            border-radius: 50%;
+            border: 3px solid #ff6b00;
+        }
+
+        .manifesto-title {
+            font-size: 2.8em;
+            color: #ff8c00;
+            text-align: center;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 35px;
+            margin-top: 25px;
+        }
+
+        .manifesto-text {
+            font-size: 1.3em;
+            color: rgba(255,255,255,0.95);
+            line-height: 2.1;
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .manifesto-highlight {
+            font-size: 1.7em;
+            color: #ff6b00;
+            font-weight: 900;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 35px;
+            padding: 25px;
+            background: rgba(255,107,0,0.15);
+            border-radius: 15px;
+            border: 2px solid rgba(255,107,0,0.4);
+        }
+
+        .train-alert {
+            background: linear-gradient(135deg, rgba(255,0,0,0.2) 0%, rgba(255,107,0,0.2) 100%);
+            border: 3px solid #ff6b00;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+            position: relative;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(255,107,0,0.4); }
+            50% { box-shadow: 0 0 40px rgba(255,107,0,0.7); }
+        }
+
+        .train-alert h3 {
+            font-size: 2.5em;
+            color: #ff6b00;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: 900;
+        }
+
+        .train-alert p {
+            font-size: 1.3em;
+            color: rgba(255,255,255,0.95);
+            line-height: 1.9;
+            font-weight: 700;
+        }
+
+        .journey-path {
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,107,0,0.3);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 50px 0;
+        }
+
+        .journey-path h3 {
+            font-size: 2.2em;
+            color: #ff8c00;
+            text-align: center;
+            margin-bottom: 35px;
+            text-transform: uppercase;
+            font-weight: 900;
+        }
+
+        .journey-stages {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .stage {
+            background: linear-gradient(135deg, rgba(255,107,0,0.15) 0%, rgba(255,107,0,0.05) 100%);
+            border: 2px solid rgba(255,107,0,0.4);
+            border-radius: 15px;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .stage:hover {
+            transform: translateY(-5px);
+            border-color: #ff6b00;
+            box-shadow: 0 15px 40px rgba(255,107,0,0.3);
+        }
+
+        .stage::after {
+            content: '→';
+            position: absolute;
+            right: -28px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2em;
+            color: #ff6b00;
+            font-weight: 900;
+        }
+
+        .stage:last-child::after {
+            content: '🏆';
+            right: auto;
+            font-size: 2.5em;
+        }
+
+        .stage-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .stage-title {
+            font-size: 1.4em;
+            color: #ff8c00;
+            font-weight: 900;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .stage-desc {
+            font-size: 1em;
+            color: rgba(255,255,255,0.85);
+            font-weight: 600;
+        }
+
+        .standard {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255,107,0,0.4);
+            border-radius: 25px;
+            padding: 50px 45px;
+            margin-bottom: 40px;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .standard::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: linear-gradient(180deg, #ff6b00 0%, #ff4500 100%);
+        }
+
+        .standard:hover {
+            border-color: #ff6b00;
+            transform: translateY(-5px);
+            box-shadow: 0 30px 80px rgba(255,107,0,0.4);
+        }
+
+        .standard-number {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #ff6b00 0%, #ff4500 100%);
+            color: #fff;
+            font-size: 2.5em;
+            font-weight: 900;
+            width: 70px;
+            height: 70px;
+            line-height: 70px;
+            text-align: center;
+            border-radius: 50%;
+            box-shadow: 0 10px 30px rgba(255,107,0,0.5);
+        }
+
+        .headline {
+            font-size: 2.4em;
+            color: #ff8c00;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .we-statement {
+            font-size: 1.6em;
+            color: #ff6b00;
+            font-weight: 800;
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+
+        .description {
+            font-size: 1.2em;
+            color: rgba(255,255,255,0.95);
+            line-height: 1.9;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .forge-truth {
+            background: linear-gradient(135deg, rgba(255,107,0,0.2) 0%, rgba(255,107,0,0.1) 100%);
+            border-left: 5px solid #ff6b00;
+            padding: 25px 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .forge-truth-title {
+            font-size: 1.3em;
+            color: #ff8c00;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .forge-truth-text {
+            font-size: 1.15em;
+            color: rgba(255,255,255,0.95);
+            line-height: 1.8;
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        .behaviors {
+            background: rgba(255,255,255,0.04);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 1px solid rgba(255,107,0,0.3);
+        }
+
+        .behaviors h4 {
+            color: #ff8c00;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .behaviors ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .behaviors li {
+            padding: 14px 0 14px 40px;
+            position: relative;
+            font-size: 1.15em;
+            color: rgba(255,255,255,0.95);
+            font-weight: 600;
+            border-bottom: 1px solid rgba(255,107,0,0.15);
+        }
+
+        .behaviors li:last-child {
+            border-bottom: none;
+        }
+
+        .behaviors li::before {
+            content: '🔨';
+            position: absolute;
+            left: 0;
+            font-size: 1.3em;
+        }
+
+        .leadership-insight {
+            background: linear-gradient(135deg, rgba(255,107,0,0.25) 0%, rgba(255,107,0,0.15) 100%);
+            border: 2px solid rgba(255,107,0,0.5);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+
+        .leadership-insight h4 {
+            color: #ff8c00;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .leadership-insight p {
+            font-size: 1.15em;
+            color: rgba(255,255,255,0.95);
+            line-height: 1.9;
+            font-weight: 600;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 70px 40px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 3px solid rgba(255,107,0,0.4);
+            border-radius: 30px;
+            margin-top: 60px;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '🔥';
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 4.5em;
+            background: #1a0a0a;
+            padding: 15px;
+            border-radius: 50%;
+            border: 3px solid #ff6b00;
+        }
+
+        .footer h2 {
+            font-size: 3em;
+            color: #ff8c00;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 900;
+            margin-bottom: 30px;
+            margin-top: 25px;
+        }
+
+        .footer p {
+            font-size: 1.4em;
+            color: rgba(255,255,255,0.95);
+            line-height: 2.1;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .footer .final-word {
+            font-size: 2em;
+            color: #ff6b00;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 968px) {
+            h1 { font-size: 2.5em; }
+            .hero-tagline { font-size: 1.5em; }
+            .headline { font-size: 1.8em; }
+            .journey-stages { grid-template-columns: 1fr 1fr; }
+            .stage::after { display: none; }
+            .standard-number {
+                position: static;
+                margin-bottom: 20px;
+                width: 60px;
+                height: 60px;
+                line-height: 60px;
+                font-size: 2em;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .journey-stages { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HERO -->
+        <div class="hero">
+            <div class="forge-icon">🔥</div>
+            <h1>THE FORGE OF THE FUTURE</h1>
+            <div class="hero-tagline">Where Leaders Are Forged</div>
+            <div class="hero-description">
+                We're not just building landscapes—we're forging the future of the industry. AI-powered. Professionally excellent. Unprecedented in SE Queensland. And we're forging leaders to run it. <strong style="color: #ff8c00;">This is where apprentices become partners. This is where the future is built.</strong>
+            </div>
+        </div>
+
+        <!-- MANIFESTO -->
+        <div class="manifesto">
+            <div class="manifesto-title">🔨 THE FORGE MANIFESTO</div>
+            <div class="manifesto-text">
+                <strong style="color: #ff8c00;">We're building something that's never been built in SE Queensland.</strong>
+            </div>
+            <div class="manifesto-text">
+                Not just a landscaping company. The future of luxury landscaping. AI technology. Professional systems. Excellence at a level this region has never seen. We're not following the industry—we're forging where it's going.
+            </div>
+            <div class="manifesto-text">
+                But here's what makes us different: <strong style="color: #ff8c00;">We're not just building the company. We're forging the leaders who will run it.</strong>
+            </div>
+            <div class="manifesto-text">
+                You're not just an employee here. You're an apprentice in the forge. Heat, pressure, challenge—that's how steel gets strong. That's how leaders get forged. That's how partners get made.
+            </div>
+            <div class="manifesto-highlight">
+                🔥 WE FORGE THREE THINGS: THE FUTURE, THE COMPANY, THE LEADERS 🔥
+            </div>
+        </div>
+
+        <!-- TRAIN ALERT -->
+        <div class="train-alert">
+            <h3>🚂 THE TRAIN IS LEAVING THE STATION</h3>
+            <p>
+                Right now, we're building. The people who join NOW—while we're forging this thing—they become partners. They get profit share. They help build the future.<br><br>
+                The people who join AFTER we're #1? They're employees.<br><br>
+                <strong style="color: #ff6b00; font-size: 1.2em;">This train leaves once. You're either on it, or you're watching it go.</strong>
+            </p>
+        </div>
+
+        <!-- JOURNEY PATH -->
+        <div class="journey-path">
+            <h3>⛰️ THE CLIMB TO PARTNERSHIP</h3>
+            <p style="text-align: center; font-size: 1.2em; color: rgba(255,255,255,0.9); margin-bottom: 30px; font-weight: 600;">
+                We're climbing to #1 in SE Queensland together. Roped together. Helping each other up. This is your path:
+            </p>
+            <div class="journey-stages">
+                <div class="stage">
+                    <div class="stage-icon">🌱</div>
+                    <div class="stage-title">APPRENTICE</div>
+                    <div class="stage-desc">Learning the craft, building foundations</div>
+                </div>
+                <div class="stage">
+                    <div class="stage-icon">🔨</div>
+                    <div class="stage-title">CRAFTSMAN</div>
+                    <div class="stage-desc">Mastering skills, leading projects</div>
+                </div>
+                <div class="stage">
+                    <div class="stage-icon">🎯</div>
+                    <div class="stage-title">LEADER</div>
+                    <div class="stage-desc">Developing others, managing teams</div>
+                </div>
+                <div class="stage">
+                    <div class="stage-icon">💎</div>
+                    <div class="stage-title">PARTNER</div>
+                    <div class="stage-desc">5% profit share, building the future</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STANDARD 1 -->
+        <div class="standard">
+            <div class="standard-number">1</div>
+            <div class="headline">WE OWN IT</div>
+            <div class="we-statement">We Take Ownership—Leaders Are Forged Through Responsibility</div>
+
+            <div class="description">
+                In the forge, you can't blame the fire for being hot. You can't blame the hammer for being heavy. You own the outcome. Leaders take ownership of everything—every project, every mistake, every challenge. No excuses. No blame-shifting. Just ownership. That's how you get forged from apprentice to partner. That's how steel gets strong.
+            </div>
+
+            <div class="forge-truth">
+                <div class="forge-truth-title">🔥 FORGED IN FIRE</div>
+                <div class="forge-truth-text">
+                    "Iron doesn't become steel by avoiding the fire. Leaders aren't forged by avoiding responsibility. You want to be a partner? Start by owning everything like you already are one."
+                </div>
+            </div>
+
+            <div class="behaviors">
+                <h4>🔨 WHAT THIS LOOKS LIKE IN THE FORGE:</h4>
+                <ul>
+                    <li>Problem on site? Own it immediately: "I've got this, here's my plan"</li>
+                    <li>Mistake made? Say "I screwed up" first, then fix it fast (30 minutes)</li>
+                    <li>No blaming tools, weather, clients, or circumstances—own the outcome</li>
+                    <li>See potential issues? Call them out and solve them before they're problems</li>
+                    <li>If you see it, you own it—leaders don't walk past problems</li>
+                    <li>When things go right, share credit. When things go wrong, take responsibility.</li>
+                </ul>
+            </div>
+
+            <div class="leadership-insight">
+                <h4>🎯 WHY LEADERS DO THIS:</h4>
+                <p>
+                    Partners think like owners because they ARE owners (5% profit share). But they didn't start as partners—they started as apprentices who took ownership before they had the title. Heat + pressure + responsibility = that's how leaders get forged. You want to climb to partnership? Start by acting like one now.
+                </p>
+            </div>
+        </div>
+
+        <!-- STANDARD 2 -->
+        <div class="standard">
+            <div class="standard-number">2</div>
+            <div class="headline">WE KEEP OUR WORD</div>
+            <div class="we-statement">We Keep Our Commitments—Trust Is Forged Through Follow-Through</div>
+
+            <div class="description">
+                In a crew climbing to the top, your word is the rope that connects you. When you commit to something—to your team, to a client, to a deadline—you deliver. Every time. Leaders keep promises. Partners keep commitments. That's how trust gets forged. That's how teams become unbreakable. Your word is your reputation. Guard it like gold.
+            </div>
+
+            <div class="forge-truth">
+                <div class="forge-truth-title">🔥 FORGED IN FIRE</div>
+                <div class="forge-truth-text">
+                    "Broken promises are like cracks in steel—one crack weakens everything. Leaders forge trust by keeping every commitment, no matter how small. That's the difference between apprentices and partners."
+                </div>
+            </div>
+
+            <div class="behaviors">
+                <h4>🔨 WHAT THIS LOOKS LIKE IN THE FORGE:</h4>
+                <ul>
+                    <li>Monday: State 3 commitments publicly to your team</li>
+                    <li>Throughout week: Work them like your promotion depends on it (it does)</li>
+                    <li>Friday: Report results—delivered or not (we track this)</li>
+                    <li>Under-promise, over-deliver—never the reverse</li>
+                    <li>Can't deliver? Communicate EARLY and renegotiate—don't ghost</li>
+                    <li>Team decisions = team commitments—once we decide, 100% execution</li>
+                </ul>
+            </div>
+
+            <div class="leadership-insight">
+                <h4>🎯 WHY LEADERS DO THIS:</h4>
+                <p>
+                    We're climbing together, roped together. If you say you'll hold the rope and you don't, someone falls. Partners know their word is their bond because the whole team depends on it. Keep commitments = build trust = climb faster = reach partnership. Break commitments = lose trust = stay stuck. Choose wisely.
+                </p>
+            </div>
+        </div>
+
+        <!-- STANDARD 3 -->
+        <div class="standard">
+            <div class="standard-number">3</div>
+            <div class="headline">WE SET THE STANDARD</div>
+            <div class="we-statement">We Set The Standard—Excellence Forges The Future</div>
+
+            <div class="description">
+                We're building the future of luxury landscaping in SE Queensland. That means professional excellence at a level this region has never seen. Not scrappy work. Not "good enough." World-class. We leave every site better than we found it. We fix things even when it's not our job. We ask: "Would I be proud to show this to anyone?" Because partners build legacy work, not quick jobs. Excellence is how we forge the future.
+            </div>
+
+            <div class="forge-truth">
+                <div class="forge-truth-title">🔥 FORGED IN FIRE</div>
+                <div class="forge-truth-text">
+                    "You can't forge the future with average work. The future demands excellence. Partners understand: every project is a signature. Every detail matters. Because we're not building for today—we're building what comes next."
+                </div>
+            </div>
+
+            <div class="behaviors">
+                <h4>🔨 WHAT THIS LOOKS LIKE IN THE FORGE:</h4>
+                <ul>
+                    <li>Leave every site cleaner than you found it (even trash that's not ours)</li>
+                    <li>Fix small issues proactively—don't wait for someone to notice</li>
+                    <li>"Good enough" is not in our vocabulary—only excellence</li>
+                    <li>The Homeowner Test: "Would this be acceptable in my own home?"</li>
+                    <li>The Plus-One: "What's one extra thing that will delight this client?"</li>
+                    <li>AI and systems help us scale excellence—use them, master them</li>
+                </ul>
+            </div>
+
+            <div class="leadership-insight">
+                <h4>🎯 WHY LEADERS DO THIS:</h4>
+                <p>
+                    Partners know: our reputation determines our growth. Excellence = more high-value projects = more profit = more profit share. Mediocrity caps growth. Excellence multiplies it. We're forging the future by setting standards no one else in SE Queensland can match. That's not just pride—that's strategy. That's wealth creation.
+                </p>
+            </div>
+        </div>
+
+        <!-- STANDARD 4 -->
+        <div class="standard">
+            <div class="standard-number">4</div>
+            <div class="headline">WE SPEAK TRUTH WITH COURAGE</div>
+            <div class="we-statement">We Speak Truth With Courage—Strong Voices Forge Strong Teams</div>
+
+            <div class="description">
+                Leaders speak truth. Strong leadership means strong communication. If you see a better way, speak up. If something's not working, say it. If someone's struggling, help them. We debate ideas hard when we're planning—that's when the best thinking happens. Then we commit fully when we execute. No gossip. No passive-aggressive BS. Just honest, direct, courageous communication. That's how leaders help leaders get better.
+            </div>
+
+            <div class="forge-truth">
+                <div class="forge-truth-title">🔥 FORGED IN FIRE</div>
+                <div class="forge-truth-text">
+                    "The forge is loud. Hammers strike. Sparks fly. That's the sound of something being made stronger. Speak truth courageously—because silence doesn't help anyone climb. Leaders challenge ideas to make them better. That's love, not conflict."
+                </div>
+            </div>
+
+            <div class="behaviors">
+                <h4>🔨 WHAT THIS LOOKS LIKE IN THE FORGE:</h4>
+                <ul>
+                    <li>In planning: Challenge ideas, speak up, debate hard (best idea wins)</li>
+                    <li>Best argument beats biggest title—always (we want truth, not hierarchy)</li>
+                    <li>Once decided: 100% commitment, zero undermining, unified execution</li>
+                    <li>See a teammate struggling? Help them—that's how we all climb faster</li>
+                    <li>Got feedback? Say it directly, with respect—that's courage</li>
+                    <li>No gossip, no talking behind backs—say it to their face or stay silent</li>
+                </ul>
+            </div>
+
+            <div class="leadership-insight">
+                <h4>🎯 WHY LEADERS DO THIS:</h4>
+                <p>
+                    Partners know: we're building something unprecedented. That requires challenging old thinking, speaking truth to each other, and helping everyone see potential they don't see yet. Strong leadership with strong vision means courageous communication. We're roped together on this climb—your success is my success. Truth is how we help each other rise.
+                </p>
+            </div>
+        </div>
+
+        <!-- STANDARD 5 -->
+        <div class="standard">
+            <div class="standard-number">5</div>
+            <div class="headline">WE LEAD AT EVERY LEVEL</div>
+            <div class="we-statement">We Lead At Every Level—Leaders Forging Leaders</div>
+
+            <div class="description">
+                You don't need a title to lead. Leadership isn't about position—it's about initiative, vision, and helping others rise. See a problem? Solve it. See a better way? Propose it. See someone struggling? Help them. Apprentices who think like leaders become craftsmen. Craftsmen who think like partners become leaders. Leaders who develop others become partners. This is how we forge leaders at every level.
+            </div>
+
+            <div class="forge-truth">
+                <div class="forge-truth-title">🔥 FORGED IN FIRE</div>
+                <div class="forge-truth-text">
+                    "In the forge, the master teaches the apprentice. Then the apprentice becomes a master and teaches the next generation. Leaders aren't born—they're forged by other leaders who see potential and fan the flames. That's the climb. That's the journey."
+                </div>
+            </div>
+
+            <div class="behaviors">
+                <h4>🔨 WHAT THIS LOOKS LIKE IN THE FORGE:</h4>
+                <ul>
+                    <li>See a problem? Don't wait for permission—take initiative, communicate decisions</li>
+                    <li>Got a better idea? Speak up, propose solutions, help us improve</li>
+                    <li>Leaders coach, they don't just command—ask questions, develop thinking</li>
+                    <li>Help teammates rise—your job isn't just the work, it's helping others grow</li>
+                    <li>Strong leadership sees potential in people they don't see in themselves yet</li>
+                    <li>From apprentice to partner—that's the path. Lead at every stage.</li>
+                </ul>
+            </div>
+
+            <div class="leadership-insight">
+                <h4>🎯 WHY LEADERS DO THIS:</h4>
+                <p>
+                    Partners understand: we can't become #1 in SE Queensland without developing leaders at every level. The company grows when the people grow. We're forging leaders because leaders forge the future. You want to be a partner? Start developing others now. That's what partners do—they multiply leadership, not just manage tasks.
+                </p>
+            </div>
+        </div>
+
+        <!-- STANDARD 6 -->
+        <div class="standard">
+            <div class="standard-number">6</div>
+            <div class="headline">WE RUN THE PLAY</div>
+            <div class="we-statement">We Run The Play—Systems Forge Consistency</div>
+
+            <div class="description">
+                We're using AI. We're using technology. We're using systems that no one else in SE Queensland has. Why? Because systems create consistency. Consistency creates excellence. Excellence creates growth. Growth creates profit. Profit creates partnerships. You want to climb? Master the systems first. Then help us make them better. But during execution—we all run the same play. That's how teams move fast and scale far.
+            </div>
+
+            <div class="forge-truth">
+                <div class="forge-truth-title">🔥 FORGED IN FIRE</div>
+                <div class="forge-truth-text">
+                    "The forge has a process: heat, hammer, quench, temper. Skip a step? Weak steel. Rush the process? Brittle metal. Systems aren't constraints—they're the process that creates strength. Master the system. Then evolve it. But never skip it."
+                </div>
+            </div>
+
+            <div class="behaviors">
+                <h4>🔨 WHAT THIS LOOKS LIKE IN THE FORGE:</h4>
+                <ul>
+                    <li>Follow the SOP/system every time—that's how we maintain standards at scale</li>
+                    <li>Use the AI tools, the tech, the processes—that's how we build the future</li>
+                    <li>Want to improve the system? Master it first, then propose improvements</li>
+                    <li>During execution: unified approach, no freelancing, team synchronization</li>
+                    <li>Systems free you to think—they handle the routine so you can focus on excellence</li>
+                    <li>Partners create systems. Leaders run them. Craftsmen master them. Apprentices learn them.</li>
+                </ul>
+            </div>
+
+            <div class="leadership-insight">
+                <h4>🎯 WHY LEADERS DO THIS:</h4>
+                <p>
+                    Partners know: you can't scale excellence without systems. We're building something unprecedented in SE Queensland—that requires AI, technology, and processes that work at scale. Systems aren't about control—they're about consistency. Consistent excellence = reliable growth = profit = profit share. Master the play. Run the play. Then help us design the next play.
+                </p>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <h2>THE FORGE OF THE FUTURE</h2>
+            <p>We're not just building landscapes. We're forging the future of the industry.</p>
+            <p>We're not just hiring employees. We're forging leaders who will run it.</p>
+            <p>We're not just climbing to #1 in SE Queensland. We're building partners who share in the success.</p>
+            <p><strong style="color: #ff8c00;">The train is at the station. Right now.</strong></p>
+            <p>Get on while we're building—that's when you become a partner.</p>
+            <p>Miss this train? The opportunity passes you by.</p>
+            <div class="final-word">
+                APPRENTICE → CRAFTSMAN → LEADER → PARTNER<br>
+                HEAT + PRESSURE + EXCELLENCE = FORGED LEADERSHIP<br>
+                🔥 THE FORGE OF THE FUTURE 🔥
+            </div>
+        </div>
+    </div>
+</body>
+</html>
