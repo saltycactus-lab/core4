@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Transformation Path - Core 6 Standards</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a0a0a 0%, #2d1810 25%, #3d2415 50%, #2d1810 75%, #1a0a0a 100%);
+            color: #fff;
+            padding: 40px 20px;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            text-align: center;
+            margin-bottom: 60px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255,140,0,0.3);
+            border-radius: 20px;
+            padding: 60px 40px;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ff8c00 0%, #ffa500 50%, #ffb347 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            font-weight: 900;
+        }
+
+        .hero-tagline {
+            font-size: 1.5em;
+            color: #ffa500;
+            margin-bottom: 30px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .manifesto {
+            background: linear-gradient(135deg, rgba(255,140,0,0.15) 0%, rgba(255,165,0,0.1) 100%);
+            border-left: 5px solid #ff8c00;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 12px;
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .manifesto strong {
+            color: #ffa500;
+            font-size: 1.2em;
+        }
+
+        /* THREE TRANSFORMATIONS */
+        .three-transformations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .transformation-box {
+            background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.04) 100%);
+            border: 2px solid rgba(255,140,0,0.3);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .transformation-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255,140,0,0.4);
+            border-color: #ffa500;
+        }
+
+        .transformation-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .transformation-title {
+            font-size: 1.5em;
+            color: #ffa500;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .transformation-description {
+            font-size: 1em;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.7;
+        }
+
+        /* URGENCY BANNER */
+        .urgency-banner {
+            background: linear-gradient(135deg, #ff6b00 0%, #ff8c00 100%);
+            color: #000;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 50px 0;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(255,140,0,0.5);
+            border: 3px solid #ffa500;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .urgency-banner h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 900;
+        }
+
+        .urgency-banner p {
+            font-size: 1.2em;
+            font-weight: 700;
+            line-height: 1.6;
+        }
+
+        /* JOURNEY PATH */
+        .journey-section {
+            margin: 60px 0;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255,140,0,0.3);
+            border-radius: 20px;
+            padding: 50px 40px;
+        }
+
+        .journey-title {
+            text-align: center;
+            font-size: 2.5em;
+            color: #ffa500;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            font-weight: 900;
+            letter-spacing: 3px;
+        }
+
+        .journey-stages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .stage {
+            background: linear-gradient(135deg, rgba(255,140,0,0.15) 0%, rgba(255,165,0,0.1) 100%);
+            border: 2px solid rgba(255,140,0,0.3);
+            border-radius: 15px;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .stage:hover {
+            transform: translateY(-5px);
+            border-color: #ffa500;
+            box-shadow: 0 10px 30px rgba(255,140,0,0.3);
+        }
+
+        .stage-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .stage-title {
+            font-size: 1.3em;
+            color: #ffa500;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .stage-desc {
+            font-size: 0.95em;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.5;
+        }
+
+        .stage-partner {
+            background: linear-gradient(135deg, rgba(255,140,0,0.25) 0%, rgba(255,165,0,0.15) 100%);
+            border: 3px solid #ff8c00;
+        }
+
+        .stage-partner .stage-title {
+            font-size: 1.5em;
+        }
+
+        .profit-share {
+            background: #ff8c00;
+            color: #000;
+            padding: 10px 15px;
+            border-radius: 25px;
+            font-weight: 900;
+            margin-top: 15px;
+            display: inline-block;
+            font-size: 1em;
+        }
+
+        /* STANDARDS SECTION */
+        .standards-intro {
+            text-align: center;
+            margin: 60px 0 40px 0;
+        }
+
+        .standards-intro h2 {
+            font-size: 2.5em;
+            color: #ffa500;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: 900;
+            letter-spacing: 3px;
+        }
+
+        .standards-intro p {
+            font-size: 1.2em;
+            color: rgba(255,255,255,0.8);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .standard {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-left: 5px solid #ff8c00;
+            border: 2px solid rgba(255,140,0,0.3);
+            border-left: 5px solid #ff8c00;
+            padding: 40px;
+            margin-bottom: 30px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .standard:hover {
+            transform: translateX(10px);
+            box-shadow: 0 15px 50px rgba(255,140,0,0.3);
+            border-left-color: #ffa500;
+        }
+
+        .standard-header {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .standard-number {
+            background: linear-gradient(135deg, #ff8c00 0%, #ffa500 100%);
+            color: #000;
+            font-size: 2em;
+            font-weight: 900;
+            width: 70px;
+            height: 70px;
+            line-height: 70px;
+            text-align: center;
+            border-radius: 50%;
+            margin-right: 25px;
+            flex-shrink: 0;
+            box-shadow: 0 5px 20px rgba(255,140,0,0.4);
+        }
+
+        .standard-content {
+            flex: 1;
+        }
+
+        .identity {
+            font-size: 0.9em;
+            color: rgba(255,165,0,0.8);
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .rally-cry {
+            font-size: 1.8em;
+            color: #ffa500;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .transformation-truth {
+            background: linear-gradient(135deg, rgba(255,140,0,0.2) 0%, rgba(255,165,0,0.1) 100%);
+            border-left: 4px solid #ff8c00;
+            padding: 20px 25px;
+            margin: 20px 0;
+            border-radius: 10px;
+            font-style: italic;
+            color: rgba(255,255,255,0.9);
+            font-size: 1.05em;
+        }
+
+        .transformation-truth strong {
+            color: #ffa500;
+            font-style: normal;
+        }
+
+        .standard-description {
+            font-size: 1.05em;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .behaviors {
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+
+        .behaviors h4 {
+            color: #ffa500;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .behaviors ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .behaviors li {
+            padding: 10px 0 10px 30px;
+            position: relative;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.6;
+        }
+
+        .behaviors li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #ff8c00;
+            font-weight: 900;
+            font-size: 1.3em;
+        }
+
+        .why-transform {
+            background: linear-gradient(135deg, rgba(255,140,0,0.15) 0%, rgba(255,165,0,0.1) 100%);
+            border: 2px solid rgba(255,140,0,0.3);
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin-top: 20px;
+        }
+
+        .why-transform h4 {
+            color: #ffa500;
+            font-size: 1.1em;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .why-transform p {
+            color: rgba(255,255,255,0.85);
+            line-height: 1.7;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255,140,0,0.3);
+            border-radius: 20px;
+            padding: 50px 40px;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .footer h2 {
+            font-size: 2.5em;
+            color: #ffa500;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            font-weight: 900;
+            letter-spacing: 3px;
+        }
+
+        .footer-transformations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .footer-transform {
+            background: linear-gradient(135deg, rgba(255,140,0,0.15) 0%, rgba(255,165,0,0.1) 100%);
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid rgba(255,140,0,0.3);
+        }
+
+        .footer-transform h3 {
+            color: #ffa500;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            font-weight: 900;
+        }
+
+        .footer-transform p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .final-call {
+            background: linear-gradient(135deg, #ff6b00 0%, #ff8c00 100%);
+            color: #000;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+            font-size: 1.2em;
+            font-weight: 700;
+            line-height: 1.8;
+        }
+
+        .final-call strong {
+            font-size: 1.3em;
+            display: block;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        @media print {
+            body {
+                background: #1a0a0a;
+            }
+            .standard:hover {
+                transform: none;
+            }
+            .urgency-banner {
+                animation: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            .hero-tagline {
+                font-size: 1.1em;
+            }
+            .journey-stages {
+                grid-template-columns: 1fr;
+            }
+            .standard-header {
+                flex-direction: column;
+            }
+            .standard-number {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HERO SECTION -->
+        <div class="hero">
+            <h1>THE TRANSFORMATION PATH</h1>
+            <div class="hero-tagline">Where Spaces Transform. Where Leaders Transform. Where Industries Transform.</div>
+
+            <div class="manifesto">
+                <p><strong>This is what we do.</strong></p>
+                <p>We take a neglected outdoor space and transform it into a $50K-$400K masterpiece.</p>
+                <p>We take an apprentice and transform them into a leader worth 5% of company profits.</p>
+                <p>We take an industry stuck in the past and transform it with AI, technology, and unprecedented professional excellence.</p>
+                <p><strong>We don't just do landscaping. We transform everything we touch.</strong></p>
+                <p>Including ourselves.</p>
+            </div>
+        </div>
+
+        <!-- THREE TRANSFORMATIONS -->
+        <div class="three-transformations">
+            <div class="transformation-box">
+                <div class="transformation-icon">🌳</div>
+                <div class="transformation-title">We Transform Spaces</div>
+                <div class="transformation-description">
+                    Every outdoor space we touch becomes a luxury masterpiece. We don't do "good enough." We create transformations that make people stop and stare.
+                </div>
+            </div>
+
+            <div class="transformation-box">
+                <div class="transformation-icon">⚡</div>
+                <div class="transformation-title">We Transform The Industry</div>
+                <div class="transformation-description">
+                    AI. Technology. Professional excellence unprecedented in SE Queensland. We're not just competing—we're creating a new standard for what luxury landscaping means.
+                </div>
+            </div>
+
+            <div class="transformation-box">
+                <div class="transformation-icon">👑</div>
+                <div class="transformation-title">We Transform People</div>
+                <div class="transformation-description">
+                    From apprentice to partner. From worker to leader. We see potential in you bigger than you see in yourself. And we have 5% profit share to prove we mean it.
+                </div>
+            </div>
+        </div>
+
+        <!-- URGENCY BANNER -->
+        <div class="urgency-banner">
+            <h2>🚂 THE TRAIN IS LEAVING THE STATION</h2>
+            <p>Get in now while we're building = Become a partner.</p>
+            <p>Join after we're #1 = Be an employee.</p>
+            <p><strong>We're becoming the #1 luxury landscaping company in SE Queensland. The question is: Are you on the train?</strong></p>
+        </div>
+
+        <!-- JOURNEY PATH -->
+        <div class="journey-section">
+            <div class="journey-title">YOUR TRANSFORMATION PATH</div>
+            <p style="text-align: center; font-size: 1.2em; color: rgba(255,255,255,0.8); max-width: 700px; margin: 0 auto 40px auto; line-height: 1.8;">
+                This isn't just a job. It's a transformation. Here's the path from where you are to where you're going.
+            </p>
+
+            <div class="journey-stages">
+                <div class="stage">
+                    <div class="stage-icon">🌱</div>
+                    <div class="stage-title">APPRENTICE</div>
+                    <div class="stage-desc">Learning the craft. Building foundations. Discovering your potential.</div>
+                </div>
+
+                <div class="stage">
+                    <div class="stage-icon">🔨</div>
+                    <div class="stage-title">CRAFTSMAN</div>
+                    <div class="stage-desc">Mastering skills. Leading projects. Becoming excellent at your trade.</div>
+                </div>
+
+                <div class="stage">
+                    <div class="stage-icon">🎯</div>
+                    <div class="stage-title">LEADER</div>
+                    <div class="stage-desc">Developing others. Managing teams. Multiplying your impact.</div>
+                </div>
+
+                <div class="stage stage-partner">
+                    <div class="stage-icon">💎</div>
+                    <div class="stage-title">PARTNER</div>
+                    <div class="stage-desc">Shaping the future. Building the company. Creating the industry standard.</div>
+                    <div class="profit-share">5% PROFIT SHARE</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STANDARDS -->
+        <div class="standards-intro">
+            <h2>THE 6 TRANSFORMATION STANDARDS</h2>
+            <p>These aren't rules. They're who we are. They're the DNA of everyone who walks this transformation path. Live them. Measure them. Become them.</p>
+        </div>
+
+        <!-- STANDARD 1 -->
+        <div class="standard">
+            <div class="standard-header">
+                <div class="standard-number">1</div>
+                <div class="standard-content">
+                    <div class="identity">We Take Ownership</div>
+                    <div class="rally-cry">EXCUSES ARE FOR LOSERS.</div>
+                </div>
+            </div>
+
+            <div class="transformation-truth">
+                <strong>Transformation Truth:</strong> You cannot transform anything until you own it completely. Every transformation starts with "I screwed up" and ends with "I fixed it."
+            </div>
+
+            <div class="standard-description">
+                Ownership is the first transformation. The moment you stop blaming circumstances, equipment, weather, or other people—that's the moment you become a leader. We say "I screwed up" first. We fix problems in 30 minutes, not 30 excuses. Blame-shifting is for people who stay stuck. Ownership is for people who transform.
+            </div>
+
+            <div class="behaviors">
+                <h4>The Ownership Behaviors:</h4>
+                <ul>
+                    <li>Say "I screwed up" before anyone else does—own it immediately</li>
+                    <li>Fix problems within 30 minutes of discovery—urgency is ownership</li>
+                    <li>Never blame equipment, weather, or other people—own the outcome</li>
+                    <li>If you see a problem, you own it—even if you didn't cause it</li>
+                    <li>"What could I have done differently?" is asked after every mistake</li>
+                </ul>
+            </div>
+
+            <div class="why-transform">
+                <h4>Why Leaders Transform With Ownership:</h4>
+                <p>Excuses keep you exactly where you are. Ownership moves you forward. Every partner in this company got there by owning more than their job description required. They owned client relationships. They owned team morale. They owned outcomes. That's why they're partners.</p>
+            </div>
+        </div>
+
+        <!-- STANDARD 2 -->
+        <div class="standard">
+            <div class="standard-header">
+                <div class="standard-number">2</div>
+                <div class="standard-content">
+                    <div class="identity">We Keep Our Word</div>
+                    <div class="rally-cry">SAY IT. DO IT. NO EXCUSES.</div>
+                </div>
+            </div>
+
+            <div class="transformation-truth">
+                <strong>Transformation Truth:</strong> Trust is the currency of transformation. Without it, nothing moves. With it, everything becomes possible.
+            </div>
+
+            <div class="standard-description">
+                Your word is your bond. Every Monday, state 3 commitments. Every Friday, report results. If you say it, you do it. No exceptions. This is how apprentices become craftsmen. Craftsmen become leaders. Leaders become partners. By doing exactly what they said they would do—every single time.
+            </div>
+
+            <div class="behaviors">
+                <h4>The Commitment Behaviors:</h4>
+                <ul>
+                    <li>Monday: State 3 specific commitments for the week publicly</li>
+                    <li>Friday: Report results on all 3 commitments—done or not done</li>
+                    <li>Track every commitment in writing—your credibility is documented</li>
+                    <li>If circumstances change, renegotiate immediately—don't go silent</li>
+                    <li>Underpromise and overdeliver—build a reputation as unstoppable</li>
+                </ul>
+            </div>
+
+            <div class="why-transform">
+                <h4>Why Leaders Transform With Integrity:</h4>
+                <p>You can't transform into a partner if nobody trusts you. Trust is built one kept promise at a time. The fastest path from apprentice to partner is being the person who ALWAYS does what they say. That reputation is worth more than technical skill.</p>
+            </div>
+        </div>
+
+        <!-- STANDARD 3 -->
+        <div class="standard">
+            <div class="standard-header">
+                <div class="standard-number">3</div>
+                <div class="standard-content">
+                    <div class="identity">We Run The Play</div>
+                    <div class="rally-cry">NO ONE IS ABOVE THE SYSTEMS.</div>
+                </div>
+            </div>
+
+            <div class="transformation-truth">
+                <strong>Transformation Truth:</strong> Systems transform individual excellence into team dominance. Chaos keeps you small. Systems make you scalable.
+            </div>
+
+            <div class="standard-description">
+                Follow the SOP—every single time. Want to improve it? Great. AFTER you complete it. We're transforming an entire industry by making professional excellence repeatable. That means systems. That means consistency. That means nobody gets to be a maverick who ignores the play. Run the system. Then improve the system. In that order.
+            </div>
+
+            <div class="behaviors">
+                <h4>The Systems Behaviors:</h4>
+                <ul>
+                    <li>Follow every SOP exactly as written—prove it works first</li>
+                    <li>Document when SOPs don't work—then suggest improvements</li>
+                    <li>Never skip steps because you "know better"—systems beat egos</li>
+                    <li>Train others on systems without personal modifications—consistency scales</li>
+                    <li>Suggest system improvements weekly—but follow the current system daily</li>
+                </ul>
+            </div>
+
+            <div class="why-transform">
+                <h4>Why Leaders Transform With Systems:</h4>
+                <p>Partners think about scale. Employees think about exceptions. If you want 5% of profits, you need to think about how we do 100 projects with excellence, not just the one you're working on. Systems are how you multiply yourself. Systems are how you become indispensable.</p>
+            </div>
+        </div>
+
+        <!-- STANDARD 4 -->
+        <div class="standard">
+            <div class="standard-header">
+                <div class="standard-number">4</div>
+                <div class="standard-content">
+                    <div class="identity">We Set The Standard</div>
+                    <div class="rally-cry">EXCELLENCE IS OUR SIGNATURE.</div>
+                </div>
+            </div>
+
+            <div class="transformation-truth">
+                <strong>Transformation Truth:</strong> You don't transform an industry by matching the competition. You transform it by making the competition irrelevant.
+            </div>
+
+            <div class="standard-description">
+                We leave every site cleaner than we found it. We fix things even when it's not our job. We ask: "Would this be acceptable if I were paying $400K?" That's the homeowner test. That's professional pride. We don't accept "good enough" because good enough gets overtaken. Excellence dominates. That's our signature on SE Queensland.
+            </div>
+
+            <div class="behaviors">
+                <h4>The Excellence Behaviors:</h4>
+                <ul>
+                    <li>Leave every site cleaner than you found it—pick up trash that's not even yours</li>
+                    <li>The Homeowner Test: "Would I accept this in my own $400K yard?"</li>
+                    <li>See something that needs fixing? Fix it proactively—don't wait</li>
+                    <li>The Plus-One Mindset: "What's one extra thing we can do to delight this client?"</li>
+                    <li>"Good enough" is not in our vocabulary—we do it right or not at all</li>
+                    <li>Professional pride in every detail—our work is our signature</li>
+                </ul>
+            </div>
+
+            <div class="why-transform">
+                <h4>Why Leaders Transform With Excellence:</h4>
+                <p>Luxury clients don't pay $400K for "good enough." They pay for excellence that makes their neighbors jealous. When you set the standard, you set the price. When you set the standard, you attract the best clients. When you set the standard, you become #1. That's how partners think.</p>
+            </div>
+        </div>
+
+        <!-- STANDARD 5 -->
+        <div class="standard">
+            <div class="standard-header">
+                <div class="standard-number">5</div>
+                <div class="standard-content">
+                    <div class="identity">We Speak Truth With Love</div>
+                    <div class="rally-cry">WORDS BUILD OR DESTROY. CHOOSE COURAGE.</div>
+                </div>
+            </div>
+
+            <div class="transformation-truth">
+                <strong>Transformation Truth:</strong> You can't transform someone you're afraid to challenge. Real love speaks truth. Fake love stays silent.
+            </div>
+
+            <div class="standard-description">
+                We draw out the potential in everyone—even when it's uncomfortable. We say it to their face, not behind their back. Truth equals love here. If you see someone capable of more, tell them. If you see someone making mistakes, tell them. If you see someone who could be a partner one day, tell them. Words build or destroy. Choose courage. Choose transformation.
+            </div>
+
+            <div class="behaviors">
+                <h4>The Truth-Telling Behaviors:</h4>
+                <ul>
+                    <li>Say it to their face, not behind their back—always direct, never gossip</li>
+                    <li>"I believe you're capable of more"—call out potential before problems</li>
+                    <li>Give feedback within 24 hours—don't let resentment build</li>
+                    <li>Ask "Can I give you feedback?" before delivering it—respect first</li>
+                    <li>Praise publicly, correct privately—protect dignity while demanding growth</li>
+                    <li>Truth + love = transformation—one without the other fails</li>
+                </ul>
+            </div>
+
+            <div class="why-transform">
+                <h4>Why Leaders Transform With Courage:</h4>
+                <p>Partners have hard conversations. Employees avoid them. If you want to lead people, you have to care enough to tell them the truth. The apprentice who becomes a partner is the one who could handle feedback, act on it, and eventually give it to others. That's leadership. That's transformation.</p>
+            </div>
+        </div>
+
+        <!-- STANDARD 6 -->
+        <div class="standard">
+            <div class="standard-header">
+                <div class="standard-number">6</div>
+                <div class="standard-content">
+                    <div class="identity">We Lead At Every Level</div>
+                    <div class="rally-cry">UNDERSTAND THE MISSION. MAKE DECISIONS. LEAD.</div>
+                </div>
+            </div>
+
+            <div class="transformation-truth">
+                <strong>Transformation Truth:</strong> You don't become a leader when you get the title. You become a leader the moment you start acting like one.
+            </div>
+
+            <div class="standard-description">
+                Leaders give intent. Teams execute with autonomy. You don't wait for permission to solve problems. You don't wait for instructions to take initiative. You understand the mission: Become #1 luxury landscaping in SE Queensland. Then you make decisions that support that mission. Then you communicate up. That's decentralized command. That's how apprentices become partners faster than anywhere else.
+            </div>
+
+            <div class="behaviors">
+                <h4>The Leadership Behaviors:</h4>
+                <ul>
+                    <li>Understand the mission—ask "How does this help us become #1?"</li>
+                    <li>Make decisions within your scope—don't wait for permission on obvious calls</li>
+                    <li>Communicate up after decisions—keep leadership informed, not asking</li>
+                    <li>Take initiative on site problems—see it, own it, fix it</li>
+                    <li>Develop others intentionally—teach one thing daily to someone below you</li>
+                    <li>Think like an owner—"If this was my company, what would I do?"</li>
+                </ul>
+            </div>
+
+            <div class="why-transform">
+                <h4>Why Leaders Transform With Initiative:</h4>
+                <p>The difference between an employee and a partner is simple: Partners think and act like owners before they become owners. They make decisions. They solve problems. They lead others. If you're waiting for a title to start leading, you'll never get the title. Lead now. The partnership comes later.</p>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <h2>THIS IS THE TRANSFORMATION PATH</h2>
+
+            <div class="footer-transformations">
+                <div class="footer-transform">
+                    <h3>🌳 Spaces</h3>
+                    <p>We transform neglected outdoor spaces into $50K-$400K luxury masterpieces that set the standard in SE Queensland.</p>
+                </div>
+                <div class="footer-transform">
+                    <h3>⚡ Industry</h3>
+                    <p>We transform the landscaping industry with AI, technology, and professional excellence unprecedented in our market.</p>
+                </div>
+                <div class="footer-transform">
+                    <h3>👑 People</h3>
+                    <p>We transform apprentices into partners—with 5% profit share and leadership development that changes lives.</p>
+                </div>
+            </div>
+
+            <div class="final-call">
+                <strong>The train is at the station.</strong>
+                Get on now while we're building, and you become a partner who transforms everything—spaces, industry, and yourself.
+                <br><br>
+                Join after we're #1, and you'll just be along for the ride.
+                <br><br>
+                <strong style="font-size: 1.4em; margin-top: 15px;">THE CHOICE IS YOURS.</strong>
+            </div>
+
+            <p style="margin-top: 40px; font-size: 1.2em; color: #ffa500; font-weight: 900; letter-spacing: 3px;">
+                THE TRANSFORMATION PATH
+            </p>
+            <p style="margin-top: 10px; color: rgba(255,255,255,0.7); font-size: 0.95em;">
+                Not rules. Not suggestions. Identity.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
