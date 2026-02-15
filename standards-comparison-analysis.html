@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standards Comparison - Travis vs Tim</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0a1a0a 0%, #0d2d0d 25%, #0a2515 50%, #0d2d0d 75%, #0a1a0a 100%);
+            color: #fff;
+            padding: 40px 20px;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #00ff41 0%, #00e676 50%, #1de9b6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 900;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.1em;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 50px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(0,255,65,0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: linear-gradient(135deg, rgba(0,255,65,0.2) 0%, rgba(0,230,118,0.15) 100%);
+        }
+
+        th {
+            padding: 20px 15px;
+            text-align: left;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #00ff41;
+            font-size: 0.9em;
+            border-bottom: 2px solid rgba(0,255,65,0.3);
+        }
+
+        th:first-child {
+            width: 50px;
+            text-align: center;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid rgba(0,255,65,0.15);
+            transition: all 0.3s ease;
+        }
+
+        tbody tr:hover {
+            background: rgba(0,255,65,0.1);
+        }
+
+        td {
+            padding: 25px 15px;
+            vertical-align: top;
+        }
+
+        td:first-child {
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: 900;
+            color: #00ff41;
+        }
+
+        .standard-box {
+            padding: 15px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+            border-radius: 8px;
+            border-left: 3px solid rgba(0,255,65,0.5);
+        }
+
+        .standard-title {
+            font-weight: 900;
+            color: #00ff41;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .standard-rally {
+            color: #1de9b6;
+            font-weight: 700;
+            font-size: 0.85em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .standard-desc {
+            color: rgba(255,255,255,0.75);
+            font-size: 0.85em;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .underlying-value {
+            background: linear-gradient(135deg, rgba(0,255,65,0.2) 0%, rgba(0,230,118,0.15) 100%);
+            border: 2px solid rgba(0,255,65,0.4);
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .value-title {
+            font-weight: 900;
+            color: #00ff41;
+            font-size: 1em;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .value-desc {
+            color: rgba(255,255,255,0.85);
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        .observations {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(0,255,65,0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        .observations h2 {
+            color: #00ff41;
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .observation-section {
+            margin-bottom: 25px;
+        }
+
+        .observation-title {
+            color: #1de9b6;
+            font-size: 1.2em;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .observation-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .observation-list li {
+            padding: 8px 0 8px 25px;
+            position: relative;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.6;
+        }
+
+        .observation-list li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #00ff41;
+            font-weight: 900;
+            font-size: 1.2em;
+        }
+
+        .highlight-green {
+            color: #00ff41;
+            font-weight: 700;
+        }
+
+        .highlight-yellow {
+            color: #ffd700;
+            font-weight: 700;
+        }
+
+        .highlight-red {
+            color: #ff6b6b;
+            font-weight: 700;
+        }
+
+        @media (max-width: 1024px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+            tr {
+                margin-bottom: 30px;
+                border: 2px solid rgba(0,255,65,0.3);
+                border-radius: 10px;
+                padding: 15px;
+            }
+
+            td {
+                border: none;
+                position: relative;
+                padding: 15px;
+            }
+
+            td:first-child {
+                font-size: 2em;
+                padding-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>STANDARDS COMPARISON</h1>
+        <div class="subtitle">Travis vs Tim - Side by Side Analysis</div>
+
+        <div class="comparison-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>YOUR STANDARDS (Travis)</th>
+                        <th>TIM'S STANDARDS</th>
+                        <th>UNDERLYING VALUE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- STANDARD 1 -->
+                    <tr>
+                        <td>1</td>
+                        <td>
+                            <div class="standard-box">
+                                <div class="standard-title">We Own Our Transformation</div>
+                                <div class="standard-rally">EXCUSES ARE FOR LOSERS</div>
+                                <div class="standard-desc">Say "I screwed up" first, fix in 30 min, no blame-shifting</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="standard-box">
+                                <div class="standard-title">Plumb is Plumb</div>
+                                <div class="standard-rally">NO EXCUSES</div>
+                                <div class="standard-desc">Weather/traffic doesn't change standard, own the result</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="underlying-value">
+                                <div class="value-title">RADICAL OWNERSHIP</div>
+                                <div class="value-desc">No excuses, own outcomes regardless of circumstances</div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- STANDARD 2 -->
+                    <tr>
+                        <td>2</td>
+                        <td>
+                            <div class="standard-box">
+                                <div class="standard-title">Trust Transforms Teams</div>
+                                <div class="standard-rally">SAY IT. DO IT. NO EXCUSES.</div>
+                                <div class="standard-desc">Monday: 3 commitments, Friday: report results</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="standard-box">
+                                <div class="standard-title">One Team, One Lift</div>
+                                <div class="standard-rally">DISAGREE & COMMIT</div>
+                                <div class="standard-desc">Argue on ground, but once lift is called, everyone pulls together</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="underlying-value">
+                                <div class="value-title">ALIGNMENT & EXECUTION</div>
+                                <div class="value-desc">Different angles: commitment tracking vs unified action after decision</div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- STANDARD 3 -->
+                    <tr>
+                        <td>3</td>
+                        <td>
+                            <div class="standard-box">
+                                <div class="standard-title">Systems Transform Chaos Into Excellence</div>
+                                <div class="standard-rally">NO ONE IS ABOVE THE SYSTEMS</div>
+                                <div class="standard-desc">Follow SOP exactly, improve after you complete it</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="standard-box">
+                                <div class="standard-title">Measure Twice, Cut Once</div>
+                                <div class="standard-rally">LEAD WITH QUESTIONS</div>
+                                <div class="standard-desc">Questions are free, verify the plan, don't guess</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="underlying-value">
+                                <div class="value-title">DISCIPLINED PROCESS</div>
+                                <div class="value-desc">Follow proven systems/methods to prevent costly mistakes</div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- STANDARD 4 -->
+                    <tr>
+                        <td>4</td>
+                        <td>
+                            <div class="standard-box">
+                                <div class="standard-title">We Transform Everything We Touch</div>
+                                <div class="standard-rally">EXCELLENCE IS OUR SIGNATURE</div>
+                                <div class="standard-desc">Leave sites cleaner, fix proactively, homeowner test</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="standard-box">
+                                <div class="standard-title">Leave No Trace</div>
+                                <div class="standard-rally">DELIGHT THE CLIENT</div>
+                                <div class="standard-desc">Cleaner than we found it, treat their home like our own</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="underlying-value">
+                                <div class="value-title">EXCELLENCE & PRIDE</div>
+                                <div class="value-desc">Go beyond baseline, leave everything better than you found it</div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- STANDARD 5 -->
+                    <tr>
+                        <td>5</td>
+                        <td>
+                            <div class="standard-box">
+                                <div class="standard-title">Truth Transforms People</div>
+                                <div class="standard-rally">WORDS BUILD OR DESTROY. CHOOSE COURAGE.</div>
+                                <div class="standard-desc">Say it to their face, draw out potential, feedback within 24hrs</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="standard-box">
+                                <div class="standard-title">The Level Doesn't Lie</div>
+                                <div class="standard-rally">TRUTH OVER TENURE</div>
+                                <div class="standard-desc">Rookies speak up if they see mistakes, value truth above rank</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="underlying-value">
+                                <div class="value-title">HONEST FEEDBACK</div>
+                                <div class="value-desc">Different angles: developmental feedback vs speaking truth to power</div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- STANDARD 6 -->
+                    <tr>
+                        <td>6</td>
+                        <td>
+                            <div class="standard-box">
+                                <div class="standard-title">Leaders Transform Leaders</div>
+                                <div class="standard-rally">UNDERSTAND THE MISSION. MAKE DECISIONS. LEAD.</div>
+                                <div class="standard-desc">Think like owner, make decisions, communicate up</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="standard-box">
+                                <div class="standard-title">Sharpen Your Blade</div>
+                                <div class="standard-rally">RELENTLESS CRAFTSMANSHIP</div>
+                                <div class="standard-desc">Keep skills sharp, pride in details, craftsman not laborer</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="underlying-value">
+                                <div class="value-title">CONTINUOUS IMPROVEMENT</div>
+                                <div class="value-desc">Different angles: leadership development vs technical mastery</div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- OBSERVATIONS -->
+        <div class="observations">
+            <h2>KEY OBSERVATIONS</h2>
+
+            <div class="observation-section">
+                <div class="observation-title"><span class="highlight-green">🟢 Strong Alignment (Almost Identical)</span></div>
+                <ul class="observation-list">
+                    <li><span class="highlight-green">#1 & #4:</span> Radical ownership and excellence/client delight</li>
+                    <li><span class="highlight-green">#3:</span> Systems/Process discipline</li>
+                </ul>
+            </div>
+
+            <div class="observation-section">
+                <div class="observation-title"><span class="highlight-yellow">🟡 Same Value, Different Angle</span></div>
+                <ul class="observation-list">
+                    <li><span class="highlight-yellow">#2:</span> You focus on <em>commitment tracking</em>, Tim focuses on <em>unified execution after disagreement</em></li>
+                    <li><span class="highlight-yellow">#5:</span> You focus on <em>developmental feedback</em>, Tim focuses on <em>speaking up regardless of rank</em></li>
+                    <li><span class="highlight-yellow">#6:</span> You focus on <em>leadership pipeline</em>, Tim focuses on <em>technical craftsmanship</em></li>
+                </ul>
+            </div>
+
+            <div class="observation-section">
+                <div class="observation-title"><span class="highlight-red">🔴 The Gap</span></div>
+                <ul class="observation-list">
+                    <li><span class="highlight-red">Your #2 is the weakest</span> - commitment tracking feels corporate/vague</li>
+                    <li><span class="highlight-red">Tim's language is more concrete</span> - tradesperson-specific metaphors they already live</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
