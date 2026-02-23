@@ -3,8 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Salt Standard - SALT</title>
+    <title>The S.A.L.T Standard — Salt Landscaping</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
     <style>
+        /* DESIGN TOKENS */
+        :root {
+            /* Colors */
+            --color-salt: #F5F2ED;
+            --color-charcoal: #2C2C2A;
+            --color-timber: #A07850;
+            --color-sage: #8A9B8E;
+            --color-stone: #C8BFB0;
+            --color-sand: #E2D9CC;
+            --color-earth: #6B5E50;
+            --color-steel: #5A6068;
+
+            /* Typography */
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'DM Sans', -apple-system, sans-serif;
+
+            --text-xs: clamp(0.70rem, 0.69rem + 0.05vw, 0.75rem);
+            --text-sm: clamp(0.83rem, 0.80rem + 0.14vw, 0.94rem);
+            --text-base: clamp(1.00rem, 0.93rem + 0.33vw, 1.25rem);
+            --text-lg: clamp(1.20rem, 1.09rem + 0.56vw, 1.66rem);
+            --text-xl: clamp(1.44rem, 1.26rem + 0.89vw, 2.07rem);
+            --text-2xl: clamp(1.73rem, 1.47rem + 1.30vw, 2.59rem);
+            --text-3xl: clamp(2.07rem, 1.71rem + 1.83vw, 3.24rem);
+            --text-4xl: clamp(2.49rem, 1.98rem + 2.53vw, 4.05rem);
+
+            /* Spacing */
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-20: 5rem;
+            --space-24: 6rem;
+            --space-32: 8rem;
+
+            --section-padding-y: clamp(var(--space-16), 8vw, var(--space-32));
+            --container-xl: 1280px;
+
+            /* Effects */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,268 +68,248 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #0a1a0a 0%, #0d2d0d 25%, #0a2515 50%, #0d2d0d 75%, #0a1a0a 100%);
-            color: #fff;
-            padding: 30px 15px;
+            font-family: var(--font-body);
+            background: var(--color-salt);
+            color: var(--color-charcoal);
             line-height: 1.6;
             min-height: 100vh;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: var(--container-xl);
             margin: 0 auto;
+            padding: var(--space-6);
         }
 
         /* HERO SECTION */
         .hero {
             text-align: center;
-            margin-bottom: 45px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 2px solid rgba(0,255,65,0.3);
-            border-radius: 15px;
-            padding: 45px 30px;
-            box-shadow: 0 19px 53px rgba(0,0,0,0.5);
+            padding: var(--section-padding-y) var(--space-6);
+            background: linear-gradient(to bottom, var(--color-sand), var(--color-salt));
+            border-bottom: 1px solid var(--color-stone);
         }
 
         h1 {
-            font-size: 2.625em;
-            margin-bottom: 15px;
-            background: linear-gradient(135deg, #00ff41 0%, #00e676 50%, #1de9b6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-transform: uppercase;
-            letter-spacing: 4.5px;
-            font-weight: 900;
+            font-family: var(--font-display);
+            font-size: var(--text-4xl);
+            font-weight: 700;
+            color: var(--color-charcoal);
+            margin-bottom: var(--space-4);
+            letter-spacing: -0.02em;
         }
 
         .hero-tagline {
-            font-size: 1.125em;
-            color: #00ff41;
-            margin-bottom: 22px;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            line-height: 1.6;
-        }
-
-        .manifesto {
-            background: linear-gradient(135deg, rgba(0,255,65,0.15) 0%, rgba(0,230,118,0.1) 100%);
-            border-left: 4px solid #00ff41;
-            padding: 22px;
-            margin: 22px 0;
-            border-radius: 9px;
-            font-size: 0.825em;
-            line-height: 1.8;
-            color: rgba(255,255,255,0.9);
-        }
-
-        .manifesto strong {
-            color: #00ff41;
-            font-size: 1.2em;
+            font-family: var(--font-body);
+            font-size: var(--text-lg);
+            color: var(--color-earth);
+            font-weight: 500;
+            max-width: 700px;
+            margin: 0 auto;
         }
 
         /* THREE TRANSFORMATIONS */
         .three-transformations {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
-            gap: 22px;
-            margin: 37px 0;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-6);
+            padding: var(--section-padding-y) 0;
         }
 
         .transformation-box {
-            background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.04) 100%);
-            border: 2px solid rgba(0,255,65,0.3);
-            border-radius: 11px;
-            padding: 22px;
+            background: white;
+            border: 1px solid var(--color-stone);
+            border-radius: var(--radius-lg);
+            padding: var(--space-8);
             text-align: center;
             transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
         }
 
         .transformation-box:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 11px 30px rgba(0,255,65,0.4);
-            border-color: #00ff41;
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--color-timber);
         }
 
         .transformation-icon {
             font-size: 3em;
-            margin-bottom: 15px;
+            margin-bottom: var(--space-4);
         }
 
         .transformation-title {
-            font-size: 1.125em;
-            color: #00ff41;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 11px;
+            font-family: var(--font-display);
+            font-size: var(--text-xl);
+            color: var(--color-charcoal);
+            font-weight: 700;
+            margin-bottom: var(--space-3);
         }
 
         .transformation-description {
-            font-size: 0.75em;
-            color: rgba(255,255,255,0.8);
+            font-size: var(--text-sm);
+            color: var(--color-steel);
             line-height: 1.7;
         }
 
         /* URGENCY BANNER */
         .urgency-banner {
-            background: linear-gradient(135deg, #00c853 0%, #00ff41 100%);
-            color: #000;
-            padding: 22px;
-            border-radius: 11px;
-            margin: 37px 0;
+            background: linear-gradient(135deg, var(--color-timber), var(--color-earth));
+            color: white;
+            padding: var(--space-8);
+            border-radius: var(--radius-lg);
+            margin: var(--section-padding-y) 0;
             text-align: center;
-            box-shadow: 0 7px 30px rgba(0,255,65,0.5);
-            border: 2px solid #00ff41;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
+            box-shadow: var(--shadow-md);
         }
 
         .urgency-banner h2 {
-            font-size: 1.5em;
-            margin-bottom: 11px;
-            text-transform: uppercase;
-            letter-spacing: 2.25px;
-            font-weight: 900;
+            font-family: var(--font-display);
+            font-size: var(--text-2xl);
+            margin-bottom: var(--space-4);
+            font-weight: 700;
         }
 
         .urgency-banner p {
-            font-size: 0.9em;
-            font-weight: 700;
-            line-height: 1.6;
+            font-size: var(--text-base);
+            font-weight: 500;
+            line-height: 1.8;
+            margin-bottom: var(--space-2);
+        }
+
+        .urgency-banner p:last-of-type {
+            margin-bottom: 0;
         }
 
         /* JOURNEY PATH */
         .journey-section {
-            margin: 45px 0;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 2px solid rgba(0,255,65,0.3);
-            border-radius: 15px;
-            padding: 37px 30px;
+            padding: var(--section-padding-y) 0;
+            background: white;
+            border: 1px solid var(--color-stone);
+            border-radius: var(--radius-lg);
+            padding: var(--space-12);
+            margin: var(--section-padding-y) 0;
         }
 
         .journey-title {
+            font-family: var(--font-display);
             text-align: center;
-            font-size: 1.875em;
-            color: #00ff41;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-            font-weight: 900;
-            letter-spacing: 2.25px;
+            font-size: var(--text-3xl);
+            color: var(--color-charcoal);
+            margin-bottom: var(--space-6);
+            font-weight: 700;
+        }
+
+        .journey-intro {
+            text-align: center;
+            font-size: var(--text-base);
+            color: var(--color-steel);
+            max-width: 700px;
+            margin: 0 auto var(--space-12) auto;
+            line-height: 1.8;
         }
 
         .journey-stages {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 22px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-6);
         }
 
         .stage {
-            background: linear-gradient(135deg, rgba(0,255,65,0.15) 0%, rgba(0,230,118,0.1) 100%);
-            border: 2px solid rgba(0,255,65,0.3);
-            border-radius: 11px;
-            padding: 22px 15px;
+            background: var(--color-sand);
+            border: 2px solid var(--color-stone);
+            border-radius: var(--radius-md);
+            padding: var(--space-6);
             text-align: center;
-            position: relative;
             transition: all 0.3s ease;
         }
 
         .stage:hover {
-            transform: translateY(-4px);
-            border-color: #00ff41;
-            box-shadow: 0 7px 22px rgba(0,255,65,0.3);
+            transform: translateY(-2px);
+            border-color: var(--color-sage);
+            box-shadow: var(--shadow-md);
         }
 
         .stage-icon {
-            font-size: 2.25em;
-            margin-bottom: 11px;
+            font-size: 2.5em;
+            margin-bottom: var(--space-3);
         }
 
         .stage-title {
-            font-size: 0.975em;
-            color: #00ff41;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 7px;
+            font-family: var(--font-display);
+            font-size: var(--text-lg);
+            color: var(--color-charcoal);
+            font-weight: 700;
+            margin-bottom: var(--space-2);
         }
 
         .stage-desc {
-            font-size: 0.7125em;
-            color: rgba(255,255,255,0.8);
-            line-height: 1.5;
+            font-size: var(--text-sm);
+            color: var(--color-steel);
+            line-height: 1.6;
         }
 
         .stage-partner {
-            background: linear-gradient(135deg, rgba(0,255,65,0.25) 0%, rgba(0,230,118,0.15) 100%);
-            border: 3px solid #00ff41;
+            background: linear-gradient(135deg, var(--color-timber), var(--color-earth));
+            border-color: var(--color-timber);
+            color: white;
         }
 
-        .stage-partner .stage-title {
-            font-size: 1.125em;
+        .stage-partner .stage-title,
+        .stage-partner .stage-desc {
+            color: white;
         }
 
         .profit-share {
-            background: #00ff41;
-            color: #000;
-            padding: 7px 11px;
-            border-radius: 19px;
-            font-weight: 900;
-            margin-top: 11px;
+            background: white;
+            color: var(--color-timber);
+            padding: var(--space-2) var(--space-4);
+            border-radius: 999px;
+            font-weight: 700;
+            margin-top: var(--space-3);
             display: inline-block;
-            font-size: 0.75em;
+            font-size: var(--text-sm);
         }
 
         /* STANDARDS SECTION */
         .standards-intro {
             text-align: center;
-            margin: 45px 0 30px 0;
+            margin: var(--section-padding-y) 0 var(--space-12) 0;
         }
 
         .standards-intro h2 {
-            font-size: 1.875em;
-            color: #00ff41;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            font-weight: 900;
-            letter-spacing: 2.25px;
+            font-family: var(--font-display);
+            font-size: var(--text-3xl);
+            color: var(--color-charcoal);
+            margin-bottom: var(--space-4);
+            font-weight: 700;
         }
 
         .standards-intro p {
-            font-size: 0.9em;
-            color: rgba(255,255,255,0.8);
-            max-width: 800px;
+            font-size: var(--text-base);
+            color: var(--color-steel);
+            max-width: 700px;
             margin: 0 auto;
             line-height: 1.8;
         }
 
         .standard {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 2px solid rgba(0,255,65,0.3);
-            border-left: 4px solid #00ff41;
-            padding: 22px;
-            margin-bottom: 15px;
-            border-radius: 11px;
+            background: white;
+            border: 1px solid var(--color-stone);
+            border-left: 4px solid var(--color-timber);
+            padding: var(--space-6);
+            margin-bottom: var(--space-4);
+            border-radius: var(--radius-md);
             transition: all 0.3s ease;
             cursor: pointer;
         }
 
         .standard:hover {
-            border-color: #00ff41;
-            box-shadow: 0 7px 30px rgba(0,255,65,0.3);
+            border-left-color: var(--color-earth);
+            box-shadow: var(--shadow-md);
         }
 
         .standard.expanded {
-            box-shadow: 0 11px 37px rgba(0,255,65,0.3);
+            box-shadow: var(--shadow-lg);
+            border-left-width: 6px;
         }
 
         .standard-header {
@@ -289,18 +325,19 @@
         }
 
         .standard-number {
-            background: linear-gradient(135deg, #00ff41 0%, #00e676 100%);
-            color: #000;
-            font-size: 1.5em;
-            font-weight: 900;
-            width: 52px;
-            height: 52px;
-            line-height: 52px;
+            background: linear-gradient(135deg, var(--color-timber), var(--color-earth));
+            color: white;
+            font-family: var(--font-display);
+            font-size: var(--text-2xl);
+            font-weight: 700;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
             text-align: center;
             border-radius: 50%;
-            margin-right: 19px;
+            margin-right: var(--space-6);
             flex-shrink: 0;
-            box-shadow: 0 4px 15px rgba(0,255,65,0.4);
+            box-shadow: var(--shadow-sm);
         }
 
         .standard-content {
@@ -308,28 +345,25 @@
         }
 
         .identity {
-            font-size: 0.675em;
-            color: rgba(0,255,65,0.8);
-            text-transform: uppercase;
+            font-size: var(--text-sm);
+            color: var(--color-sage);
             font-weight: 700;
-            letter-spacing: 1.5px;
-            margin-bottom: 6px;
+            margin-bottom: var(--space-1);
         }
 
         .rally-cry {
-            font-size: 1.125em;
-            color: #00ff41;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
+            font-family: var(--font-display);
+            font-size: var(--text-xl);
+            color: var(--color-charcoal);
+            font-weight: 700;
             line-height: 1.3;
         }
 
         .expand-icon {
-            font-size: 1.5em;
-            color: #00ff41;
+            font-size: var(--text-xl);
+            color: var(--color-timber);
             transition: transform 0.3s ease;
-            margin-left: 15px;
+            margin-left: var(--space-4);
         }
 
         .standard.expanded .expand-icon {
@@ -343,234 +377,225 @@
         }
 
         .standard.expanded .standard-details {
-            max-height: 3000px;
+            max-height: 5000px;
         }
 
         .standard-details-content {
-            padding-top: 19px;
-            border-top: 1px solid rgba(0,255,65,0.2);
-            margin-top: 19px;
+            padding-top: var(--space-6);
+            border-top: 1px solid var(--color-stone);
+            margin-top: var(--space-6);
         }
 
         .transformation-truth {
-            background: linear-gradient(135deg, rgba(0,255,65,0.2) 0%, rgba(0,230,118,0.1) 100%);
-            border-left: 3px solid #00ff41;
-            padding: 15px 19px;
-            margin: 15px 0;
-            border-radius: 7px;
+            background: var(--color-sand);
+            border-left: 3px solid var(--color-sage);
+            padding: var(--space-4);
+            margin: var(--space-4) 0;
+            border-radius: var(--radius-sm);
             font-style: italic;
-            color: rgba(255,255,255,0.9);
-            font-size: 0.7875em;
+            color: var(--color-steel);
+            font-size: var(--text-sm);
         }
 
         .transformation-truth strong {
-            color: #00ff41;
+            color: var(--color-charcoal);
             font-style: normal;
         }
 
         .standard-description {
-            font-size: 0.7875em;
-            color: rgba(255,255,255,0.85);
+            font-size: var(--text-base);
+            color: var(--color-charcoal);
             line-height: 1.8;
-            margin-bottom: 15px;
+            margin-bottom: var(--space-4);
         }
 
-        .behaviors {
-            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
-            border-radius: 7px;
-            padding: 19px;
-            margin-top: 15px;
+        .behaviors,
+        .tests,
+        .why-transform {
+            background: var(--color-sand);
+            border-radius: var(--radius-md);
+            padding: var(--space-6);
+            margin-top: var(--space-4);
         }
 
-        .behaviors h4 {
-            color: #00ff41;
-            font-size: 0.9em;
-            margin-bottom: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.75px;
+        .tests {
+            background: linear-gradient(to bottom right, var(--color-sage), var(--color-stone));
         }
 
-        .behaviors ul {
+        .behaviors h4,
+        .tests h4,
+        .why-transform h4 {
+            font-family: var(--font-display);
+            color: var(--color-charcoal);
+            font-size: var(--text-lg);
+            margin-bottom: var(--space-3);
+            font-weight: 700;
+        }
+
+        .behaviors ul,
+        .tests ul {
             list-style: none;
             padding-left: 0;
         }
 
-        .behaviors li {
-            padding: 7px 0 7px 22px;
+        .behaviors li,
+        .tests li {
+            padding: var(--space-2) 0 var(--space-2) var(--space-6);
             position: relative;
-            color: rgba(255,255,255,0.85);
-            line-height: 1.6;
-            font-size: 0.7875em;
+            color: var(--color-charcoal);
+            line-height: 1.7;
+            font-size: var(--text-base);
         }
 
         .behaviors li:before {
             content: "→";
             position: absolute;
             left: 0;
-            color: #00ff41;
-            font-weight: 900;
-            font-size: 1.3em;
-        }
-
-        .tests {
-            background: linear-gradient(135deg, rgba(0,255,65,0.25) 0%, rgba(0,230,118,0.15) 100%);
-            border: 2px solid rgba(0,255,65,0.4);
-            border-radius: 7px;
-            padding: 19px;
-            margin-top: 15px;
-        }
-
-        .tests h4 {
-            color: #00ff41;
-            font-size: 0.9em;
-            margin-bottom: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.75px;
-        }
-
-        .tests ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .tests li {
-            padding: 7px 0 7px 22px;
-            position: relative;
-            color: rgba(255,255,255,0.85);
-            line-height: 1.6;
-            font-size: 0.7875em;
+            color: var(--color-timber);
+            font-weight: 700;
+            font-size: 1.2em;
         }
 
         .tests li:before {
             content: "✓";
             position: absolute;
             left: 0;
-            color: #00ff41;
-            font-weight: 900;
-            font-size: 1.3em;
+            color: var(--color-sage);
+            font-weight: 700;
+            font-size: 1.2em;
         }
 
         .tests strong {
-            color: #00ff41;
-            font-weight: 900;
-        }
-
-        .why-transform {
-            background: linear-gradient(135deg, rgba(0,255,65,0.15) 0%, rgba(0,230,118,0.1) 100%);
-            border: 2px solid rgba(0,255,65,0.3);
-            border-radius: 7px;
-            padding: 15px 19px;
-            margin-top: 15px;
-        }
-
-        .why-transform h4 {
-            color: #00ff41;
-            font-size: 0.825em;
-            margin-bottom: 9px;
-            text-transform: uppercase;
-            letter-spacing: 0.75px;
+            color: var(--color-charcoal);
+            font-weight: 700;
         }
 
         .why-transform p {
-            color: rgba(255,255,255,0.85);
-            line-height: 1.7;
-            font-size: 0.7875em;
+            color: var(--color-charcoal);
+            line-height: 1.8;
+            font-size: var(--text-base);
         }
 
         /* FOOTER */
         .footer {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 2px solid rgba(0,255,65,0.3);
-            border-radius: 15px;
-            padding: 37px 30px;
-            margin-top: 45px;
+            background: white;
+            border: 1px solid var(--color-stone);
+            border-radius: var(--radius-lg);
+            padding: var(--space-12);
+            margin-top: var(--section-padding-y);
             text-align: center;
         }
 
         .footer h2 {
-            font-size: 1.875em;
-            color: #00ff41;
-            margin-bottom: 22px;
-            text-transform: uppercase;
-            font-weight: 900;
-            letter-spacing: 2.25px;
+            font-family: var(--font-display);
+            font-size: var(--text-3xl);
+            color: var(--color-charcoal);
+            margin-bottom: var(--space-8);
+            font-weight: 700;
         }
 
         .footer-transformations {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(187px, 1fr));
-            gap: 15px;
-            margin: 22px 0;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-4);
+            margin: var(--space-8) 0;
         }
 
         .footer-transform {
-            background: linear-gradient(135deg, rgba(0,255,65,0.15) 0%, rgba(0,230,118,0.1) 100%);
-            padding: 15px;
-            border-radius: 7px;
-            border: 2px solid rgba(0,255,65,0.3);
+            background: var(--color-sand);
+            padding: var(--space-6);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--color-stone);
         }
 
         .footer-transform h3 {
-            color: #00ff41;
-            font-size: 0.975em;
-            margin-bottom: 7px;
-            font-weight: 900;
+            font-family: var(--font-display);
+            color: var(--color-charcoal);
+            font-size: var(--text-lg);
+            margin-bottom: var(--space-2);
+            font-weight: 700;
         }
 
         .footer-transform p {
-            color: rgba(255,255,255,0.8);
-            font-size: 0.7125em;
-            line-height: 1.6;
+            color: var(--color-steel);
+            font-size: var(--text-sm);
+            line-height: 1.7;
         }
 
         .final-call {
-            background: linear-gradient(135deg, #00c853 0%, #00ff41 100%);
-            color: #000;
-            padding: 22px;
-            border-radius: 11px;
-            margin-top: 22px;
-            font-size: 0.9em;
-            font-weight: 700;
+            background: linear-gradient(135deg, var(--color-timber), var(--color-earth));
+            color: white;
+            padding: var(--space-8);
+            border-radius: var(--radius-lg);
+            margin-top: var(--space-8);
+            font-size: var(--text-base);
+            font-weight: 500;
             line-height: 1.8;
         }
 
         .final-call strong {
-            font-size: 1.3em;
+            font-family: var(--font-display);
+            font-size: var(--text-xl);
             display: block;
-            margin-bottom: 7px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
+            margin-bottom: var(--space-2);
+            font-weight: 700;
+        }
+
+        .footer-branding {
+            margin-top: var(--space-8);
+            padding-top: var(--space-6);
+            border-top: 1px solid var(--color-stone);
+        }
+
+        .footer-branding .main {
+            font-family: var(--font-display);
+            color: var(--color-timber);
+            font-weight: 700;
+            font-size: var(--text-lg);
+            margin-bottom: var(--space-2);
+        }
+
+        .footer-branding .sub {
+            color: var(--color-steel);
+            font-size: var(--text-sm);
         }
 
         @media print {
-            body {
-                background: #0a1a0a;
-            }
             .standard:hover {
                 transform: none;
-            }
-            .urgency-banner {
-                animation: none;
             }
         }
 
         @media (max-width: 768px) {
+            .container {
+                padding: var(--space-4);
+            }
+
             h1 {
-                font-size: 1.5em;
+                font-size: var(--text-2xl);
             }
+
             .hero-tagline {
-                font-size: 0.825em;
+                font-size: var(--text-base);
             }
+
             .journey-stages {
                 grid-template-columns: 1fr;
             }
+
             .standard-header {
                 flex-direction: column;
                 align-items: flex-start;
             }
+
             .standard-number {
-                margin-bottom: 15px;
+                margin-bottom: var(--space-4);
+            }
+
+            .expand-icon {
+                position: absolute;
+                top: var(--space-6);
+                right: var(--space-6);
             }
         }
     </style>
@@ -579,7 +604,7 @@
     <div class="container">
         <!-- HERO SECTION -->
         <div class="hero">
-            <h1>THE S.A.L.T STANDARD</h1>
+            <h1>The S.A.L.T Standard</h1>
             <div class="hero-tagline">Transforming landscapes, transforming people, transforming industry.</div>
         </div>
 
@@ -587,7 +612,7 @@
         <div class="three-transformations">
             <div class="transformation-box">
                 <div class="transformation-icon">🌳</div>
-                <div class="transformation-title">We Transform Landscapes</div>
+                <div class="transformation-title">We transform landscapes</div>
                 <div class="transformation-description">
                     We turn our clients' dream visions into reality. Every outdoor space we touch becomes a luxury masterpiece that makes people stop and stare.
                 </div>
@@ -595,7 +620,7 @@
 
             <div class="transformation-box">
                 <div class="transformation-icon">👑</div>
-                <div class="transformation-title">We Transform Our People</div>
+                <div class="transformation-title">We transform our people</div>
                 <div class="transformation-description">
                     From apprentice to partner. We see potential in you bigger than you see in yourself. We develop leaders who enjoy profit shares as our partners.
                 </div>
@@ -603,7 +628,7 @@
 
             <div class="transformation-box">
                 <div class="transformation-icon">⚡</div>
-                <div class="transformation-title">We Transform The Industry</div>
+                <div class="transformation-title">We transform the industry</div>
                 <div class="transformation-description">
                     AI. Technology. Professional excellence unprecedented in SE Queensland. We're not just competing—we're creating a new standard for what luxury landscaping means.
                 </div>
@@ -612,7 +637,7 @@
 
         <!-- URGENCY BANNER -->
         <div class="urgency-banner">
-            <h2>🚂 THE TRAIN IS LEAVING THE STATION</h2>
+            <h2>The train is leaving the station</h2>
             <p>Get in now while we're building = Become a partner.</p>
             <p>Join after we're #1 = Be an employee.</p>
             <p><strong>We're becoming the #1 luxury landscaping company in SE Queensland. The question is: Are you on the train?</strong></p>
@@ -620,35 +645,35 @@
 
         <!-- JOURNEY PATH -->
         <div class="journey-section">
-            <div class="journey-title">YOUR TRANSFORMATION PATH</div>
-            <p style="text-align: center; font-size: 0.9em; color: rgba(255,255,255,0.8); max-width: 700px; margin: 0 auto 30px auto; line-height: 1.8;">
+            <div class="journey-title">Your transformation path</div>
+            <p class="journey-intro">
                 This isn't just a job. It's a transformation. Here's the path from where you are to where you're going.
             </p>
 
             <div class="journey-stages">
                 <div class="stage">
                     <div class="stage-icon">🌱</div>
-                    <div class="stage-title">APPRENTICE</div>
+                    <div class="stage-title">Apprentice</div>
                     <div class="stage-desc">Learning the craft. Building foundations. Discovering your potential.</div>
                 </div>
 
                 <div class="stage">
                     <div class="stage-icon">🔨</div>
-                    <div class="stage-title">CRAFTSMAN</div>
+                    <div class="stage-title">Craftsman</div>
                     <div class="stage-desc">Mastering skills. Leading projects. Becoming excellent at your trade.</div>
                 </div>
 
                 <div class="stage">
                     <div class="stage-icon">🎯</div>
-                    <div class="stage-title">LEADER</div>
+                    <div class="stage-title">Leader</div>
                     <div class="stage-desc">Developing others. Managing teams. Multiplying your impact.</div>
                 </div>
 
                 <div class="stage stage-partner">
                     <div class="stage-icon">💎</div>
-                    <div class="stage-title">PARTNER</div>
+                    <div class="stage-title">Partner</div>
                     <div class="stage-desc">Shaping the future. Building the company. Creating the industry standard.</div>
-                    <div class="profit-share">5% PROFIT SHARE</div>
+                    <div class="profit-share">5% Profit Share</div>
                 </div>
             </div>
         </div>
@@ -659,14 +684,14 @@
             <p>The Code. Four non-negotiable standards that transform everything we do. Click each to expand.</p>
         </div>
 
-        <!-- STANDARD 1: STANDARDS OVER AVERAGE (S) -->
+        <!-- STANDARD 1: STANDARD OF EXCELLENCE (S) -->
         <div class="standard" onclick="toggleStandard(this)">
             <div class="standard-header">
                 <div class="standard-header-left">
                     <div class="standard-number">S</div>
                     <div class="standard-content">
                         <div class="identity">Standard of Excellence</div>
-                        <div class="rally-cry">LEAVE NO TRACE. SHARPEN YOUR BLADE.</div>
+                        <div class="rally-cry">Leave no trace. Sharpen your blade.</div>
                     </div>
                 </div>
                 <div class="expand-icon">▼</div>
@@ -675,7 +700,7 @@
             <div class="standard-details">
                 <div class="standard-details-content">
                     <div class="transformation-truth">
-                        <strong>How This Transforms:</strong> A dull blade tears the grass; a sharp blade cuts it clean. The client shouldn't know we were there—except for the beautiful landscape we left behind. You don't transform an industry by matching the competition. You transform it by making the competition irrelevant.
+                        <strong>How this transforms:</strong> A dull blade tears the grass; a sharp blade cuts it clean. The client shouldn't know we were there—except for the beautiful landscape we left behind. You don't transform an industry by matching the competition. You transform it by making the competition irrelevant.
                     </div>
 
                     <div class="standard-description">
@@ -683,7 +708,7 @@
                     </div>
 
                     <div class="behaviors">
-                        <h4>The Excellence Behaviors:</h4>
+                        <h4>The excellence behaviors</h4>
                         <ul>
                             <li>Leave every site cleaner than you found it—pick up trash that's not even yours</li>
                             <li>No tire tracks on lawn, no cigarette butts, no dust on driveway</li>
@@ -699,7 +724,7 @@
                     </div>
 
                     <div class="tests">
-                        <h4>The Excellence Tests:</h4>
+                        <h4>The excellence tests</h4>
                         <ul>
                             <li><strong>The Homeowner Test:</strong> Would this be acceptable in your own yard?</li>
                             <li><strong>The Neighbor Test:</strong> Would this make the neighbors jealous or embarrassed?</li>
@@ -710,21 +735,21 @@
                     </div>
 
                     <div class="why-transform">
-                        <h4>Why This Transforms:</h4>
+                        <h4>Why this transforms</h4>
                         <p>Luxury clients pay for excellence that makes their neighbors jealous. When you set the standard, you set the price. When you set the standard, you attract the best clients. But partners don't just deliver excellence—they relentlessly sharpen their craft. The apprentice who becomes a partner is the one who never stopped learning. They sharpened their technical skills. They sharpened their leadership skills. They sharpened their business skills. A sharp blade cuts clean. A dull blade tears and damages. Keep your blade sharp—deliver excellence relentlessly—and teach others to do the same. That's how you transform from craftsman to leader to partner.</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- STANDARD 2: ALWAYS OWN IT (A) -->
+        <!-- STANDARD 2: ALWAYS TAKE OWNERSHIP (A) -->
         <div class="standard" onclick="toggleStandard(this)">
             <div class="standard-header">
                 <div class="standard-header-left">
                     <div class="standard-number">A</div>
                     <div class="standard-content">
                         <div class="identity">Always Take Ownership</div>
-                        <div class="rally-cry">PLUMB IS PLUMB. NO EXCUSES.</div>
+                        <div class="rally-cry">Plumb is plumb. No excuses.</div>
                     </div>
                 </div>
                 <div class="expand-icon">▼</div>
@@ -733,7 +758,7 @@
             <div class="standard-details">
                 <div class="standard-details-content">
                     <div class="transformation-truth">
-                        <strong>How This Transforms:</strong> A post is either vertical or it isn't. Weather, traffic, or a bad night doesn't change the standard. You cannot transform anything until you own it completely. Every transformation starts with "I screwed up" and ends with "I fixed it."
+                        <strong>How this transforms:</strong> A post is either vertical or it isn't. Weather, traffic, or a bad night doesn't change the standard. You cannot transform anything until you own it completely. Every transformation starts with "I screwed up" and ends with "I fixed it."
                     </div>
 
                     <div class="standard-description">
@@ -741,7 +766,7 @@
                     </div>
 
                     <div class="behaviors">
-                        <h4>The Ownership Behaviors:</h4>
+                        <h4>The ownership behaviors</h4>
                         <ul>
                             <li>Say "I screwed up" before anyone else does—own it immediately</li>
                             <li>Fix problems within 30 minutes of discovery—urgency is ownership</li>
@@ -754,7 +779,7 @@
                     </div>
 
                     <div class="tests">
-                        <h4>The Ownership Tests:</h4>
+                        <h4>The ownership tests</h4>
                         <ul>
                             <li><strong>The Mirror Test:</strong> Can you look yourself in the mirror and say "I did everything I could"?</li>
                             <li><strong>The Boss Test:</strong> If your boss was standing here right now, would you own this or blame something else?</li>
@@ -764,7 +789,7 @@
                     </div>
 
                     <div class="why-transform">
-                        <h4>Why This Transforms:</h4>
+                        <h4>Why this transforms</h4>
                         <p>Excuses keep you exactly where you are. Ownership moves you forward. Every partner in this company got there by owning more than their job description required. They owned client relationships. They owned team morale. They owned outcomes. That's why they're partners.</p>
                     </div>
                 </div>
@@ -778,7 +803,7 @@
                     <div class="standard-number">L</div>
                     <div class="standard-content">
                         <div class="identity">Lift Each Other</div>
-                        <div class="rally-cry">WORDS BUILD OR DESTROY. CHOOSE COURAGE.</div>
+                        <div class="rally-cry">Words build or destroy. Choose courage.</div>
                     </div>
                 </div>
                 <div class="expand-icon">▼</div>
@@ -787,7 +812,7 @@
             <div class="standard-details">
                 <div class="standard-details-content">
                     <div class="transformation-truth">
-                        <strong>How This Transforms:</strong> You can't transform someone you're afraid to challenge. You can't lift someone higher if you're tearing them down behind their back. Real leadership speaks truth to faces, not gossip to crowds.
+                        <strong>How this transforms:</strong> You can't transform someone you're afraid to challenge. You can't lift someone higher if you're tearing them down behind their back. Real leadership speaks truth to faces, not gossip to crowds.
                     </div>
 
                     <div class="standard-description">
@@ -795,7 +820,7 @@
                     </div>
 
                     <div class="behaviors">
-                        <h4>The Lifting Behaviors:</h4>
+                        <h4>The lifting behaviors</h4>
                         <ul>
                             <li>Say it to their face, not behind their back—always direct, never gossip</li>
                             <li>"I believe you're capable of more"—call out potential before problems</li>
@@ -809,7 +834,7 @@
                     </div>
 
                     <div class="tests">
-                        <h4>The Lifting Tests:</h4>
+                        <h4>The lifting tests</h4>
                         <ul>
                             <li><strong>The Face Test:</strong> Would I say this to their face, or am I hiding behind their back?</li>
                             <li><strong>The Potential Test:</strong> Am I helping them see what they could become?</li>
@@ -820,7 +845,7 @@
                     </div>
 
                     <div class="why-transform">
-                        <h4>Why This Transforms:</h4>
+                        <h4>Why this transforms</h4>
                         <p>Partners have hard conversations. Employees avoid them. If you want to lead people, you have to care enough to tell them the truth. The apprentice who becomes a partner is the one who could handle feedback, act on it, and eventually give it to others with love. That's leadership. That's transformation. We lift each other—not through empty praise, but through honest truth delivered with the courage to make someone better than they were yesterday.</p>
                     </div>
                 </div>
@@ -834,7 +859,7 @@
                     <div class="standard-number">T</div>
                     <div class="standard-content">
                         <div class="identity">Trust The Process</div>
-                        <div class="rally-cry">MEASURE TWICE, CUT ONCE.</div>
+                        <div class="rally-cry">Measure twice, cut once.</div>
                     </div>
                 </div>
                 <div class="expand-icon">▼</div>
@@ -843,7 +868,7 @@
             <div class="standard-details">
                 <div class="standard-details-content">
                     <div class="transformation-truth">
-                        <strong>How This Transforms:</strong> Lumber and stone are expensive; questions are free. Systems transform individual excellence into team dominance. Chaos keeps you small. Disciplined process makes you scalable.
+                        <strong>How this transforms:</strong> Lumber and stone are expensive; questions are free. Systems transform individual excellence into team dominance. Chaos keeps you small. Disciplined process makes you scalable.
                     </div>
 
                     <div class="standard-description">
@@ -851,7 +876,7 @@
                     </div>
 
                     <div class="behaviors">
-                        <h4>The Process Behaviors:</h4>
+                        <h4>The process behaviors</h4>
                         <ul>
                             <li>Ask questions before starting—questions are free, mistakes are expensive</li>
                             <li>Follow every SOP exactly as written—prove it works first</li>
@@ -863,7 +888,7 @@
                     </div>
 
                     <div class="tests">
-                        <h4>The Process Tests:</h4>
+                        <h4>The process tests</h4>
                         <ul>
                             <li><strong>The Utility Test:</strong> Am I 100% sure what's underground? If not, stop and ask.</li>
                             <li><strong>The Rework Test:</strong> Would I rather spend 2 minutes verifying now or 2 hours fixing it later?</li>
@@ -873,53 +898,8 @@
                     </div>
 
                     <div class="why-transform">
-                        <h4>Why This Transforms:</h4>
+                        <h4>Why this transforms</h4>
                         <p>Partners think about scale. Employees think about exceptions. If you want 5% of profits, you need to think about how we do 100 projects with excellence, not just the one you're working on. Disciplined process is how you multiply yourself. Systems are how you become indispensable.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-            <div class="standard-details">
-                <div class="standard-details-content">
-                    <div class="transformation-truth">
-                        <strong>How This Transforms:</strong> A dull blade tears the grass; a sharp blade cuts it clean. The client shouldn't know we were there—except for the beautiful landscape we left behind. You don't transform an industry by matching the competition. You transform it by making the competition irrelevant.
-                    </div>
-
-                    <div class="standard-description">
-                        We don't care for industry standards. If we wanted to be standard or average, we'd be overweight, broke, and depressed. We set the standard, and our standard is excellence. Excellence has two edges: the work we deliver and the craft we master. We leave every site cleaner than we found it. We don't leave tire tracks on the lawn, cigarette butts in the mulch, or dust on the driveway. We treat their home like our own. But excellence doesn't stop at client-facing work—we take pride in the details: the tight joints, the crisp edges, and the smooth finish. We keep our skills sharp and our standards high because that is the difference between a laborer and a craftsman. "Good enough" is not in our vocabulary—we do it right or not at all.
-                    </div>
-
-                    <div class="behaviors">
-                        <h4>The Excellence Behaviors:</h4>
-                        <ul>
-                            <li>Leave every site cleaner than you found it—pick up trash that's not even yours</li>
-                            <li>No tire tracks on lawn, no cigarette butts, no dust on driveway</li>
-                            <li>The Homeowner Test: "Would I accept this in my own yard?"</li>
-                            <li>The Plus-One Mindset: "What's one extra thing we can do to delight this client?"</li>
-                            <li>Pride in details: tight joints, crisp edges, smooth finishes</li>
-                            <li>Invest in your craft—read, watch, learn, practice continuously</li>
-                            <li>Ask "How can I do this better?" after every completed task</li>
-                            <li>Teach one thing daily to someone below you—sharpen their blade too</li>
-                            <li>Master your tools—maintain them, upgrade them, know them intimately</li>
-                            <li>Seek feedback from clients, teammates, and leaders</li>
-                        </ul>
-                    </div>
-
-                    <div class="tests">
-                        <h4>The Excellence Tests:</h4>
-                        <ul>
-                            <li><strong>The Homeowner Test:</strong> Would this be acceptable in your own yard?</li>
-                            <li><strong>The Neighbor Test:</strong> Would this make the neighbors jealous or embarrassed?</li>
-                            <li><strong>The Photo Test:</strong> Would you post a photo of this work online with your name on it?</li>
-                            <li><strong>The Blade Test:</strong> Is my blade sharp enough to cut this cleanly, or am I forcing it?</li>
-                            <li><strong>The Six-Month Test:</strong> Will this still look perfect in 6 months, or are we cutting corners?</li>
-                        </ul>
-                    </div>
-
-                    <div class="why-transform">
-                        <h4>Why This Transforms:</h4>
-                        <p>Luxury clients pay for excellence that makes their neighbors jealous. When you set the standard, you set the price. When you set the standard, you attract the best clients. But partners don't just deliver excellence—they relentlessly sharpen their craft. The apprentice who becomes a partner is the one who never stopped learning. They sharpened their technical skills. They sharpened their leadership skills. They sharpened their business skills. A sharp blade cuts clean. A dull blade tears and damages. Keep your blade sharp—deliver excellence relentlessly—and teach others to do the same. That's how you transform from craftsman to leader to partner.</p>
                     </div>
                 </div>
             </div>
@@ -927,7 +907,7 @@
 
         <!-- FOOTER -->
         <div class="footer">
-            <h2>THIS IS THE SALT STANDARD</h2>
+            <h2>This is the Salt Standard</h2>
 
             <div class="footer-transformations">
                 <div class="footer-transform">
@@ -950,15 +930,13 @@
                 <br><br>
                 Join after we're #1, and you'll just be along for the ride.
                 <br><br>
-                <strong style="font-size: 1.4em; margin-top: 15px;">THE CHOICE IS YOURS.</strong>
+                <strong>The choice is yours.</strong>
             </div>
 
-            <p style="margin-top: 30px; font-size: 0.9em; color: #00ff41; font-weight: 900; letter-spacing: 2.25px;">
-                THE SALT STANDARD • S.A.L.T.
-            </p>
-            <p style="margin-top: 7px; color: rgba(255,255,255,0.7); font-size: 0.7125em;">
-                Standard of Excellence • Always Take Ownership • Lift Each Other • Trust The Process
-            </p>
+            <div class="footer-branding">
+                <div class="main">The Salt Standard • S.A.L.T.</div>
+                <div class="sub">Standard of Excellence • Always Take Ownership • Lift Each Other • Trust The Process</div>
+            </div>
         </div>
     </div>
 
